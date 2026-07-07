@@ -45,6 +45,13 @@ for your real info. Search the file for class="fill" to find them all.
   .mast{text-align:center; padding:clamp(40px,7vh,68px) 0 clamp(28px,4vh,40px)}
   .mast img{height:42px; width:auto; display:inline-block}
   .mast .tag{display:block; font-style:italic; font-size:22px; color:var(--muted2); letter-spacing:0.05em; margin-top:9px}
+  .mast nav{border-top:1px solid var(--divider); margin:20px auto 0; padding-top:14px; max-width:280px;
+      font-family:'Inter',sans-serif; font-size:10.5px; font-weight:500;
+      letter-spacing:.07em; text-transform:uppercase}
+  .mast nav a{color:var(--muted); text-decoration:none}
+  .mast nav a:hover{color:var(--navy)}
+  .mast nav a[aria-current]{color:var(--navy); font-weight:700}
+  .mast nav .sep{color:var(--divider); margin:0 9px}
 
   /* ── Letter ── */
   .lead{
@@ -117,7 +124,10 @@ for your real info. Search the file for class="fill" to find them all.
   <a href="index.html">
   <img src="assets/hfm-logo-craftsman.png" alt="Homefront Markets" style="width: 300px; height: auto;">
 </a>
-  <span class="tag">Keep America Working</span>
+  <div class="tag">Keep America Working</div>
+  <nav aria-label="Site">
+    <a href="https://homefrontmarkets.com/">Our Market</a><span class="sep">|</span><a href="about.html">About</a><span class="sep">|</span><a href="index.html" aria-current="page">Subscribe</a>
+  </nav>
 </header>
 
 <article class="wrap">
