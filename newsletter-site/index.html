@@ -11,7 +11,8 @@
 HOMEFRONT MARKETS — LANDING PAGE (single-screen signup mat)
 Design language: THE DISPATCH  · Red #922B3E / Cream #FAF8F5 / Charcoal #2C2824
   · Inter (UI/headline) + Lora (serif accent)
-  · NO header nav, NO footer, NO outbound links — one job: capture the email.
+  · NO header nav, NO footer — one job: capture the email. One small "More
+    about us" link in the fine print is the only exit ramp.
   · Everything fits one viewport; the BUTTON is the dominant element.
 
 SIGNUP: Replace the <form> with your Beehiiv embed iframe, OR set the
@@ -106,6 +107,8 @@ form action= to your Beehiiv subscribe-forms POST URL. Marked below.
     font-size:12.5px; color:var(--muted); margin-top:16px; letter-spacing:0.01em;
   }
   .fine .x{color:var(--divider); margin:0 8px}
+  .fine-link{color:var(--muted); text-decoration:underline; text-underline-offset:2px}
+  .fine-link:hover{color:var(--red)}
 
   /* very short / landscape phones: tighten so nothing clips */
   @media(max-height:640px){
@@ -141,7 +144,7 @@ form action= to your Beehiiv subscribe-forms POST URL. Marked below.
     <!-- Beehiiv embed (Grow → Subscribe Forms → Embed) -->
     <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="bec7ed7a-d3e4-4269-a6e4-c4785e93d747"></script>
 
-    <p class="fine">Join fellow Patriot subscribers today<span class="x">·</span>No spam, ever<span class="x">·</span>Unsubscribe anytime</p>
+    <p class="fine">Join fellow Patriot subscribers today<span class="x">·</span>No spam, ever<span class="x">·</span>Unsubscribe anytime<span class="x">·</span><a class="fine-link" href="/about">More about us</a></p>
 
   </div>
 </main>
