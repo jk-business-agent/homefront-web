@@ -91,6 +91,24 @@ for your real info. Search the file for class="fill" to find them all.
 
   /* ── Minimal sign-off (no menu, no links row) ── */
   .end{text-align:center; padding:0 0 48px; font-style:italic; font-size:13px; color:var(--muted2)}
+
+  .btn-secondary{
+    display:inline-block; margin-top:22px; background:transparent; color:var(--red);
+    text-decoration:none; font-weight:700; font-size:13.5px; padding:10px 22px;
+    border:1.5px solid var(--navy-deep); border-radius:30px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn-secondary:hover{background:var(--navy-deep); color:#fff}
+
+  .sub-btn{display:flex; flex-direction:column; gap:10px; justify-content:center; align-items:center}
+
+  /* very short / landscape phones: tighten so nothing clips */
+  @media(max-height:640px){
+    .mark{margin-bottom:16px}
+    h1{margin-bottom:12px}
+    .cadence{margin-bottom:18px}
+  }
+
 </style>
 </head>
 <body>
@@ -148,7 +166,10 @@ for your real info. Search the file for class="fill" to find them all.
 
 <div class="cta-wrap">
   <p class="said">If this is the kind of thing you'd read, join us. The next letter goes out <span class="fill">[day]</span>.</p>
-  <a class="btn" href="index.html">Subscribe Free →</a>
+  <div class="sub-btn">
+    <a class="btn" href="index.html">Subscribe Free →</a>
+    <a class="btn-secondary" href="https://homefrontmarkets.com/archive/">Browse the Archive →</a>
+  </div>
   <p class="micro">Two emails a week · Unsubscribe anytime</p>
 </div>
 
