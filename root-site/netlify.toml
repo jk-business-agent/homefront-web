@@ -15,6 +15,22 @@
   to = "https://newsletter.homefrontmarkets.com"
   status = 301
 
+# Archive alias spellings → canonical paths
+[[redirects]]
+  from = "/archive/craftsmans-letter"
+  to = "/archive/craftsmans_letter/"
+  status = 301
+
+[[redirects]]
+  from = "/archive/letter"
+  to = "/archive/craftsmans_letter/"
+  status = 301
+
+[[redirects]]
+  from = "/dispatch"
+  to = "/archive/dispatch/"
+  status = 301
+
 # Cache static assets aggressively
 [[headers]]
   for = "/assets/*"

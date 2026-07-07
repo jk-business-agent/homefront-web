@@ -126,6 +126,14 @@ form action= to your Beehiiv subscribe-forms POST URL. Marked below.
   }
   .beehiiv-embed iframe{max-width:100%}
 
+  .cta-secondary{
+    display:inline-block; margin-top:22px; background:transparent; color:var(--red);
+    text-decoration:none; font-weight:700; font-size:13.5px; padding:10px 22px;
+    border:1.5px solid var(--red); border-radius:30px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .cta-secondary:hover{background:var(--red); color:#fff}
+
   /* very short / landscape phones: tighten so nothing clips */
   @media(max-height:640px){
     .mark{margin-bottom:16px}
@@ -161,6 +169,8 @@ form action= to your Beehiiv subscribe-forms POST URL. Marked below.
     <div class="beehiiv-embed">
       <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="bec7ed7a-d3e4-4269-a6e4-c4785e93d747"></script>
     </div>
+
+    <a class="cta-secondary" href="https://homefrontmarkets.com/archive/">Browse the Archive →</a>
 
   </div>
 

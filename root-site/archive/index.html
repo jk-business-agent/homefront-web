@@ -3,33 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Dispatch — Archive — Homefront Markets</title>
-<meta name="description" content="Every published issue of The Dispatch: Homefront Markets' scannable midweek briefing on American-made goods.">
+<title>The Archive — Homefront Markets</title>
+<meta name="description" content="Every published issue of The Dispatch and The Craftsman's Letter from Homefront Markets. The full record, on the record.">
 
 <!--
 ═══════════════════════════════════════════════════════════
-HOMEFRONT MARKETS — ARCHIVE / THE DISPATCH (branch page)
-Pure Dispatch register: red identity line, Inter-dominant,
-section-label rhythm, issue metadata strip (#F0EDE8) carried
-over from the email template. Filters posts.js → dispatch.
+HOMEFRONT MARKETS — THE ARCHIVE (main / all publications)
+Design register: The Dispatch (the house operational baseline).
+Red identity line, Inter-dominant headings, section-label
+system, cream #FAF8F5, dark Quick Links + footer zone.
+
+Engagement architecture (drawn from the highest-performing
+newsletter archives — Morning Brew, 1440, Lenny's Newsletter,
+Stratechery):
+— Latest-issue hero: the newest issue gets full editorial
+  weight; everything else is a scannable ledger below.
+— Persistent filter tabs → real URLs (/archive/dispatch,
+  /archive/craftsmans_letter), shareable and crawlable.
+— Live search: title/deck/tag filtering with zero reload.
+— Month grouping: temporal wayfinding for deep scrollers.
+— Branch color-coding: red = Dispatch, navy = Letter, learned
+  in one glance, scannable forever.
+— Subscribe capture: mid-list band + closing band; the archive
+  is a top-of-funnel surface, every exit path leads to signup.
+
+Data source: /assets/posts.js (add issues there, never here).
 ═══════════════════════════════════════════════════════════
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --red:#922B3E; --red-dark:#7A2333; --charcoal:#2C2824; --ink:#1A1A1A;
+    --red:#922B3E; --red-dark:#7A2333; --navy:#1B3A5C;
+    --charcoal:#2C2824; --ink:#1A1A1A;
     --cream:#FAF8F5; --tint:#F0EDE8; --warm:#4A3728;
     --muted:#6B5E54; --muted2:#8A7E78; --divider:#E0DBD5;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--cream);color:var(--ink);font-family:'Lora',Georgia,serif;
-       border-top:5px solid var(--red);-webkit-text-size-adjust:100%}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:'Lora',Georgia,serif;
+    border-top:5px solid var(--red);
+    -webkit-text-size-adjust:100%;
+  }
   .shell{max-width:720px;margin:0 auto;padding:0 24px}
 
+  /* ── Header ── */
   header{text-align:center;padding:34px 0 0}
   header img{width:280px;max-width:82%;height:auto}
   .tagline{font-size:14px;font-style:italic;color:var(--muted2);letter-spacing:.06em;margin-top:8px}
@@ -41,25 +63,39 @@ over from the email template. Filters posts.js → dispatch.
   nav a[aria-current]{color:var(--red);font-weight:700}
   nav .sep{color:#D5CECC;margin:0 9px}
 
-  /* Issue metadata strip — carried over from the email template */
-  .strip{background:var(--tint);border-top:1px solid var(--divider);
-      border-bottom:1px solid var(--divider);margin-top:0;padding:8px 0;text-align:center;
-      font-family:'Inter',sans-serif;font-size:10px;font-weight:600;
-      letter-spacing:.11em;text-transform:uppercase;color:var(--muted2)}
-
+  /* ── Section label system ── */
   .lbl{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
        letter-spacing:.15em;text-transform:uppercase;color:var(--red);
        display:block;margin-bottom:7px}
   .lbl-rule{width:40%;max-width:220px;height:1px;background:var(--red);margin-bottom:18px}
 
+  /* ── Page intro ── */
   .intro{padding:38px 0 8px}
   .intro h1{font-family:'Inter',sans-serif;font-size:clamp(26px,4.4vw,34px);
             font-weight:800;letter-spacing:-.022em;line-height:1.2;margin-bottom:10px}
-  .intro h1 em{font-style:normal;color:var(--red)}
   .intro p{font-size:15.5px;font-style:italic;color:var(--warm);line-height:1.6;max-width:56ch}
 
+  /* ── Latest issue hero ── */
+  .hero{margin:26px 0 0;border:1px solid var(--divider);background:#fff;
+        border-left:4px solid var(--red);padding:26px 28px;transition:box-shadow .15s ease}
+  .hero:hover{box-shadow:0 10px 28px rgba(44,40,36,.1)}
+  .hero .kicker{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+        letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--red);
+        display:inline-block;padding:4px 9px;margin-bottom:14px}
+  .hero h2{font-family:'Inter',sans-serif;font-size:clamp(20px,3.4vw,25px);
+        font-weight:700;letter-spacing:-.02em;line-height:1.25;margin-bottom:8px}
+  .hero h2 a{color:var(--ink);text-decoration:none}
+  .hero h2 a:hover{color:var(--red)}
+  .hero .deck{font-size:15px;font-style:italic;color:var(--warm);line-height:1.65;margin-bottom:14px}
+
+  .meta{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+        letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)}
+  .meta b{color:var(--muted)}
+  .meta .dot{margin:0 7px;color:#D5CECC}
+
+  /* ── Filter bar (sticky) ── */
   .filterbar{position:sticky;top:0;z-index:10;background:var(--cream);
-        border-bottom:1px solid var(--divider);margin-top:30px;padding:12px 0;
+        border-bottom:1px solid var(--divider);margin-top:34px;padding:12px 0;
         display:flex;flex-wrap:wrap;gap:10px;align-items:center}
   .tabs{display:flex;gap:8px;flex-wrap:wrap}
   .tab{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;
@@ -68,6 +104,7 @@ over from the email template. Filters posts.js → dispatch.
         color:var(--muted);background:#fff;transition:all .12s ease}
   .tab:hover{border-color:var(--red);color:var(--red)}
   .tab.active{background:var(--red);border-color:var(--red);color:#fff}
+  .tab.tab-letter:hover{border-color:var(--navy);color:var(--navy)}
   .search{flex:1;min-width:180px;display:flex;justify-content:flex-end}
   .search input{width:100%;max-width:250px;font-family:'Inter',sans-serif;
         font-size:13px;padding:9px 13px;border:1.5px solid var(--divider);
@@ -76,6 +113,7 @@ over from the email template. Filters posts.js → dispatch.
   .search input:focus{outline:none;border-color:var(--red);
         box-shadow:0 0 0 3px rgba(146,43,62,.12)}
 
+  /* ── Ledger ── */
   .count{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
         letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);padding:18px 0 4px}
   .month{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
@@ -86,16 +124,18 @@ over from the email template. Filters posts.js → dispatch.
         padding:20px 24px;margin-top:14px;
         transition:transform .12s ease, box-shadow .15s ease}
   .entry:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(44,40,36,.1)}
+  .entry.branch-letter{border-left-color:var(--navy)}
+  .chip{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;
+        letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:8px;display:block}
+  .entry.branch-letter .chip{color:var(--navy)}
   .entry h3{font-family:'Inter',sans-serif;font-size:17.5px;font-weight:700;
         letter-spacing:-.015em;line-height:1.3;margin-bottom:6px}
   .entry:hover h3{color:var(--red)}
+  .entry.branch-letter:hover h3{color:var(--navy)}
   .entry p{font-size:14px;font-style:italic;color:var(--warm);line-height:1.6;margin-bottom:12px}
-  .meta{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
-        letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)}
-  .meta b{color:var(--muted)}
-  .meta .dot{margin:0 7px;color:#D5CECC}
   .empty{padding:44px 0;text-align:center;font-style:italic;color:var(--muted)}
 
+  /* ── Subscribe bands ── */
   .subband{background:var(--charcoal);margin:34px 0;padding:28px;text-align:center}
   .subband .lbl{color:rgba(255,255,255,.52)}
   .subband .lbl-rule{background:rgba(255,255,255,.2);margin-left:auto;margin-right:auto}
@@ -107,6 +147,7 @@ over from the email template. Filters posts.js → dispatch.
         text-decoration:none;border-radius:2px;transition:background .15s ease}
   .btn-red:hover{background:var(--red-dark)}
 
+  /* ── Dark footer zone ── */
   footer{background:var(--ink);margin-top:46px}
   footer .inner{max-width:720px;margin:0 auto;padding:26px 24px 22px}
   footer .ql{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;
@@ -120,6 +161,7 @@ over from the email template. Filters posts.js → dispatch.
         border-top:1px solid rgba(255,255,255,.08)}
 
   @media (max-width:520px){
+    .hero{padding:20px 18px}
     .entry{padding:16px 16px}
     .search{justify-content:stretch}
     .search input{max-width:none}
@@ -129,33 +171,32 @@ over from the email template. Filters posts.js → dispatch.
 <body>
 
 <div class="shell">
+
   <header>
-    <a href="/"><img src="/assets/hfm-logo.png" alt="Homefront Markets"></a>
+    <a href="https://newsletter.homefrontmarkets.com/"><img src="/assets/hfm-logo.png" alt="Homefront Markets"></a>
     <div class="tagline">Keep America Working</div>
     <nav aria-label="Site">
-      <a href="/">Home</a><span class="sep">|</span><a href="/about.html">About</a><span class="sep">|</span><a href="/archive/" aria-current="page">Archive</a>
+      <a href="https://newsletter.homefrontmarkets.com/">Home</a><span class="sep">|</span><a href="https://newsletter.homefrontmarkets.com/about">About</a><span class="sep">|</span><a href="/archive/" aria-current="page">Archive</a>
     </nav>
   </header>
-</div>
 
-<div class="strip">The Dispatch &nbsp;·&nbsp; Midweek Briefing &nbsp;·&nbsp; The Full Record</div>
-
-<div class="shell">
   <section class="intro">
-    <span class="lbl">▸ Archive / The Dispatch</span>
+    <span class="lbl">▸ The Archive</span>
     <div class="lbl-rule"></div>
-    <h1>The briefing, <em>back to issue one</em>.</h1>
-    <p>Labeled departments, hard numbers, reader finds, and members-only deals — built to be read in 90 seconds or savored in six minutes. Every midweek issue we've published, newest first.</p>
+    <h1>Every issue. On the record.</h1>
+    <p>The full run of our two publications — <strong style="font-style:normal">The Dispatch</strong>, our scannable midweek briefing, and <strong style="font-style:normal">The Craftsman's Letter</strong>, our end-of-week essay on the people who make things here.</p>
   </section>
+
+  <div id="hero-slot"></div>
 
   <div class="filterbar" role="navigation" aria-label="Archive filters">
     <div class="tabs">
-      <a class="tab" href="/archive/">All Issues</a>
-      <a class="tab active" href="/archive/dispatch/" aria-current="page">The Dispatch</a>
-      <a class="tab" href="/archive/craftsmans_letter/">Craftsman's Letter</a>
+      <a class="tab active" href="/archive/" aria-current="page">All Issues</a>
+      <a class="tab" href="/archive/dispatch/">The Dispatch</a>
+      <a class="tab tab-letter" href="/archive/craftsmans_letter/">Craftsman's Letter</a>
     </div>
     <div class="search">
-      <input id="q" type="search" placeholder="Search The Dispatch…" aria-label="Search issues">
+      <input id="q" type="search" placeholder="Search the record…" aria-label="Search issues">
     </div>
   </div>
 
@@ -163,18 +204,19 @@ over from the email template. Filters posts.js → dispatch.
   <div id="ledger"></div>
 
   <div class="subband">
-    <span class="lbl">▸ Get the Next Briefing</span>
+    <span class="lbl">▸ Don't Read It Late</span>
     <div class="lbl-rule"></div>
-    <p>The Dispatch lands midweek. Numbers, finds, and deals —<br>free, in your inbox, before it hits the archive.</p>
-    <a class="btn-red" href="/">Subscribe Free →</a>
+    <p>The archive is where issues retire. Get the next one while it's news —<br>free, twice a week, no noise.</p>
+    <a class="btn-red" href="https://newsletter.homefrontmarkets.com/">Subscribe Free →</a>
   </div>
+
 </div>
 
 <footer>
   <div class="inner">
     <p class="ql">Quick Links</p>
     <p class="links">
-      <a href="https://homefrontmarkets.com">Marketplace (Coming Soon)</a><span class="sep">|</span><a href="/">Subscribe</a><span class="sep">|</span><a href="/archive/">Full Archive</a><span class="sep">|</span><a href="/archive/craftsmans_letter/">The Craftsman's Letter</a>
+      <a href="/">Marketplace (Coming Soon)</a><span class="sep">|</span><a href="https://newsletter.homefrontmarkets.com/">Subscribe</a><span class="sep">|</span><a href="/archive/dispatch/">The Dispatch</a><span class="sep">|</span><a href="/archive/craftsmans_letter/">The Craftsman's Letter</a>
     </p>
     <p class="quote">"That business of America, by America, for America,<br>shall not perish from the earth."</p>
   </div>
@@ -183,13 +225,30 @@ over from the email template. Filters posts.js → dispatch.
 <script src="/assets/posts.js"></script>
 <script>
 (function(){
-  const posts = hfmSorted(HFM_POSTS).filter(function(p){ return p.branch === "dispatch"; });
+  const posts = hfmSorted(HFM_POSTS);
+  const heroSlot = document.getElementById("hero-slot");
   const ledger = document.getElementById("ledger");
   const count = document.getElementById("count");
   const q = document.getElementById("q");
 
+  /* Latest issue → hero card */
+  if (posts.length) {
+    const p = posts[0];
+    const m = HFM_BRANCH_META[p.branch];
+    heroSlot.innerHTML =
+      '<a class="hero" style="display:block;text-decoration:none;color:inherit;border-left-color:' + m.accent + '" href="' + p.url + '">' +
+      '<span class="kicker" style="background:' + m.accent + '">Latest Issue · ' + m.name + '</span>' +
+      '<h2>' + p.title + '</h2>' +
+      '<p class="deck">' + p.deck + '</p>' +
+      '<span class="meta"><b>Vol. ' + p.vol + ', No. ' + p.no + '</b><span class="dot">·</span>' +
+      hfmFormatDate(p.date) + '<span class="dot">·</span>' + p.readMins + ' min read</span></a>';
+  }
+
   function card(p) {
-    return '<a class="entry" href="' + p.url + '">' +
+    const m = HFM_BRANCH_META[p.branch];
+    const cls = p.branch === "craftsmans_letter" ? "entry branch-letter" : "entry";
+    return '<a class="' + cls + '" href="' + p.url + '">' +
+      '<span class="chip">' + m.name + '</span>' +
       '<h3>' + p.title + '</h3>' +
       '<p>' + p.deck + '</p>' +
       '<span class="meta"><b>Vol. ' + p.vol + ', No. ' + p.no + '</b><span class="dot">·</span>' +

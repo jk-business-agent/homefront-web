@@ -10,20 +10,15 @@
   to = "/about.html"
   status = 200
 
-# Archive alias spellings → canonical paths
+# Archive now lives on the root domain — forward all archive traffic there
 [[redirects]]
-  from = "/archive/craftsmans-letter"
-  to = "/archive/craftsmans_letter/"
-  status = 301
-
-[[redirects]]
-  from = "/archive/letter"
-  to = "/archive/craftsmans_letter/"
+  from = "/archive/*"
+  to = "https://homefrontmarkets.com/archive/:splat"
   status = 301
 
 [[redirects]]
   from = "/dispatch"
-  to = "/archive/dispatch/"
+  to = "https://homefrontmarkets.com/archive/dispatch/"
   status = 301
 
 # Cache static assets aggressively
