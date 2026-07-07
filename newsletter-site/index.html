@@ -102,12 +102,18 @@ form action= to your Beehiiv subscribe-forms POST URL. Marked below.
   .cta:hover{background:var(--red-dark); transform:translateY(-2px); box-shadow:0 14px 32px rgba(146,43,62,0.36)}
   .cta:active{transform:translateY(0)}
 
-  /* ── Reassurance microcopy (text only — no links) ── */
+  /* ── Reassurance microcopy — must stay on one line, so font scales with
+     viewport and, as a safety net on the narrowest phones, the line itself
+     scrolls horizontally instead of wrapping or overflowing the page. ── */
   .fine{
-    font-size:12.5px; color:var(--muted); margin-top:16px; letter-spacing:0.01em;
+    font-size:clamp(9px,1.9vw,12.5px); color:var(--muted); margin-top:16px;
+    letter-spacing:0.01em; white-space:nowrap;
+    max-width:100%; overflow-x:auto; padding-bottom:2px;
+    scrollbar-width:none; -ms-overflow-style:none;
   }
-  .fine .x{color:var(--divider); margin:0 8px}
-  .fine-link{color:var(--muted); text-decoration:underline; text-underline-offset:2px; white-space:nowrap}
+  .fine::-webkit-scrollbar{display:none}
+  .fine .x{color:var(--divider); margin:0 clamp(3px,0.9vw,8px)}
+  .fine-link{color:var(--muted); text-decoration:underline; text-underline-offset:2px}
   .fine-link:hover{color:var(--red)}
 
   /* ── Beehiiv embed wrapper — centers whatever the loader script injects ── */
