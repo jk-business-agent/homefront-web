@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Craftsman's Letter — Archive — Homefront Markets</title>
+<meta name="description" content="The collected letters: every published issue of The Craftsman's Letter, Homefront Markets' end-of-week essay on American craft.">
+
+<!--
+═══════════════════════════════════════════════════════════
+HOMEFRONT MARKETS — ARCHIVE / THE CRAFTSMAN'S LETTER
+Letter register per the Craftsman's Letter stipulations:
+— Navy #1B3A5C is the SOLE accent. No red anywhere.
+— Lora serif carries all hierarchy weight; Inter appears
+  only in structural labels and metadata.
+— No cards, no hover-lift, no background boxes: entries are
+  a ledger of letters separated by thin rules — typography
+  does the work.
+— Letters are numbered in roman numerals (Federalist Papers
+  architecture: each letter is a numbered argument).
+— Opens with voice (salutation), not with UI.
+— Commerce is whispered: one navy-outline invitation at the
+  close, in prose.
+— Cream #FAFAF8, section tint #F5F3EF, pull-quote #EEF1F6.
+Data source: /assets/posts.js filtered to craftsmans_letter.
+═══════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#1B3A5C; --navy-deep:#142C46; --charcoal:#2C2824; --ink:#1A1A1A;
+    --cream:#FAFAF8; --tint:#F5F3EF; --quote:#EEF1F6; --warm:#4A3728;
+    --muted:#6B5E54; --muted2:#8A7E78; --divider:#E0DBD5;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--cream);color:var(--ink);font-family:'Lora',Georgia,serif;
+       border-top:5px solid var(--navy);-webkit-text-size-adjust:100%}
+  .shell{max-width:680px;margin:0 auto;padding:0 24px}
+
+  header{text-align:center;padding:32px 0 0}
+  header img{width:200px;max-width:70%;height:auto}
+  .tagline{font-size:12px;font-style:italic;color:var(--muted2);letter-spacing:.05em;margin-top:8px}
+  nav{border-top:1px solid var(--divider);margin-top:16px;padding:12px 0;
+      font-family:'Inter',sans-serif;font-size:10.5px;font-weight:500;
+      letter-spacing:.07em;text-transform:uppercase}
+  nav a{color:var(--muted);text-decoration:none}
+  nav a:hover{color:var(--navy)}
+  nav a[aria-current]{color:var(--navy);font-weight:700}
+  nav .sep{color:#D5CECC;margin:0 9px}
+
+  .lbl{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+       letter-spacing:.15em;text-transform:uppercase;color:var(--navy);
+       display:block;margin-bottom:7px}
+  .lbl-rule{width:40%;max-width:200px;height:1px;background:var(--navy);margin-bottom:18px}
+
+  /* ── The letter opens with voice ── */
+  .intro{padding:40px 0 6px}
+  .salutation{font-size:15px;font-style:italic;color:var(--muted);
+       letter-spacing:.01em;margin-bottom:16px}
+  .intro h1{font-family:'Lora',Georgia,serif;font-size:clamp(26px,4.4vw,33px);
+       font-weight:600;letter-spacing:-.015em;line-height:1.28;margin-bottom:14px}
+  .intro p{font-size:15.5px;color:var(--ink);line-height:1.82;max-width:60ch;margin-bottom:14px}
+  .pull-quote{border-left:4px solid var(--navy);padding:4px 0 4px 22px;margin:24px 0}
+  .pull-quote p{font-size:17px;font-style:italic;color:#2A3D52;line-height:1.65;margin:0}
+
+  /* ── Quiet filter row — prose-adjacent, not chips ── */
+  .filterrow{display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;
+       border-top:1px solid var(--divider);border-bottom:1px solid var(--divider);
+       margin-top:28px;padding:13px 0;
+       font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;
+       letter-spacing:.1em;text-transform:uppercase}
+  .filterrow a{color:var(--muted);text-decoration:none}
+  .filterrow a:hover{color:var(--navy)}
+  .filterrow a[aria-current]{color:var(--navy);font-weight:700;
+       border-bottom:2px solid var(--navy);padding-bottom:3px}
+  .filterrow .spacer{flex:1}
+  .filterrow input{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:400;
+       letter-spacing:0;text-transform:none;padding:7px 11px;
+       border:1px solid var(--divider);border-radius:1px;background:#fff;
+       color:var(--ink);min-width:190px}
+  .filterrow input::placeholder{color:#A79E97;font-style:italic;font-family:'Lora',Georgia,serif}
+  .filterrow input:focus{outline:none;border-color:var(--navy);
+       box-shadow:0 0 0 3px rgba(27,58,92,.1)}
+
+  .count{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;
+       letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);padding:20px 0 0}
+
+  /* ── The ledger of letters — typography only, thin rules ── */
+  .letter{display:block;text-decoration:none;color:var(--ink);
+       padding:28px 0;border-bottom:1px solid var(--divider)}
+  .letter .no{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
+       letter-spacing:.16em;text-transform:uppercase;color:var(--navy);
+       display:block;margin-bottom:9px}
+  .letter h3{font-family:'Lora',Georgia,serif;font-size:21px;font-weight:600;
+       letter-spacing:-.01em;line-height:1.32;margin-bottom:8px;
+       transition:color .12s ease}
+  .letter:hover h3{color:var(--navy);text-decoration:underline;
+       text-decoration-thickness:1px;text-underline-offset:4px}
+  .letter p{font-size:15px;font-style:italic;color:var(--warm);
+       line-height:1.7;margin-bottom:12px;max-width:58ch}
+  .meta{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;
+       letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)}
+  .meta .dot{margin:0 7px;color:#D5CECC}
+  .read{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;
+       color:var(--navy);letter-spacing:.04em;margin-left:14px}
+  .empty{padding:44px 0;text-align:center;font-style:italic;color:var(--muted)}
+
+  /* ── Closing invitation — whispered, prose, tinted section ── */
+  .closing{background:var(--tint);border-top:1px solid var(--divider);
+       margin:40px -24px 0;padding:34px 24px}
+  .closing .inner{max-width:632px;margin:0 auto}
+  .closing p{font-size:15.5px;color:var(--ink);line-height:1.82;margin-bottom:14px;max-width:60ch}
+  .closing .ps{font-size:14px;font-style:italic;color:var(--muted);margin-top:18px}
+  .btn-navy-outline{display:inline-block;border:1.5px solid var(--navy);
+       color:var(--navy);font-family:'Inter',sans-serif;font-size:12px;
+       font-weight:600;letter-spacing:.04em;padding:10px 20px;
+       text-decoration:none;border-radius:2px;transition:all .15s ease}
+  .btn-navy-outline:hover{background:var(--navy);color:#fff}
+
+  footer{background:var(--ink)}
+  footer .inner{max-width:680px;margin:0 auto;padding:26px 24px 22px}
+  footer .ql{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;
+       text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.35);margin-bottom:9px}
+  footer .links{font-family:'Inter',sans-serif;font-size:12px;line-height:1.7;margin-bottom:20px}
+  footer .links a{color:rgba(255,255,255,.72);text-decoration:none;font-weight:500}
+  footer .links a:hover{color:#fff}
+  footer .links .sep{color:rgba(255,255,255,.2);margin:0 8px}
+  footer .quote{font-size:13px;font-style:italic;color:rgba(255,255,255,.42);
+       text-align:center;line-height:1.75;padding-top:18px;
+       border-top:1px solid rgba(255,255,255,.08)}
+
+  @media (max-width:520px){
+    .filterrow input{min-width:0;width:100%}
+    .filterrow .spacer{flex-basis:100%}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <header>
+    <a href="/"><img src="/assets/hfm-logo-craftsman.png" alt="Homefront Markets"></a>
+    <div class="tagline">The Craftsman's Letter · Collected</div>
+    <nav aria-label="Site">
+      <a href="/">Home</a><span class="sep">|</span><a href="/about.html">About</a><span class="sep">|</span><a href="/archive/" aria-current="page">Archive</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <span class="lbl">The Collected Letters</span>
+    <div class="lbl-rule"></div>
+    <p class="salutation">Dear Reader —</p>
+    <h1>Every letter we've written, kept in one drawer.</h1>
+    <p>Each week we sit down with the people who still make things in this country — the tanners, the toolmakers, the mill restarters — and we write you a letter about what we found. No departments. No tickers. One story, told properly.</p>
+    <div class="pull-quote">
+      <p>A letter is a slower thing than a briefing. These are meant to be read the way they were written — one at a time.</p>
+    </div>
+  </section>
+
+  <div class="filterrow" role="navigation" aria-label="Archive filters">
+    <a href="/archive/">All Issues</a>
+    <a href="/archive/dispatch/">The Dispatch</a>
+    <a href="/archive/craftsmans_letter/" aria-current="page">The Craftsman's Letter</a>
+    <span class="spacer"></span>
+    <input id="q" type="search" placeholder="Search the letters…" aria-label="Search letters">
+  </div>
+
+  <div class="count" id="count"></div>
+  <div id="ledger"></div>
+
+</div>
+
+<div class="closing">
+  <div class="inner">
+    <span class="lbl">Before You Go</span>
+    <div class="lbl-rule"></div>
+    <p>If these letters landed with you, the next one can arrive the way the rest did — quietly, at the end of the week, written for someone who cares where things are made.</p>
+    <a class="btn-navy-outline" href="/">Receive the next letter →</a>
+    <p class="ps">P.S. — In a hurry? <a href="/archive/dispatch/" style="color:var(--navy)">The Dispatch</a> is our midweek briefing: the same convictions, read in 90 seconds.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="inner">
+    <p class="ql">Quick Links</p>
+    <p class="links">
+      <a href="https://homefrontmarkets.com">Marketplace (Coming Soon)</a><span class="sep">|</span><a href="/">Subscribe</a><span class="sep">|</span><a href="/archive/">Full Archive</a><span class="sep">|</span><a href="/archive/dispatch/">The Dispatch</a>
+    </p>
+    <p class="quote">"That business of America, by America, for America,<br>shall not perish from the earth."</p>
+  </div>
+</footer>
+
+<script src="/assets/posts.js"></script>
+<script>
+(function(){
+  const posts = hfmSorted(HFM_POSTS).filter(function(p){ return p.branch === "craftsmans_letter"; });
+  const ledger = document.getElementById("ledger");
+  const count = document.getElementById("count");
+  const q = document.getElementById("q");
+
+  function entry(p) {
+    return '<a class="letter" href="' + p.url + '">' +
+      '<span class="no">Letter No. ' + hfmRoman(p.no) + '</span>' +
+      '<h3>' + p.title + '</h3>' +
+      '<p>' + p.deck + '</p>' +
+      '<span class="meta">' + hfmFormatDate(p.date) +
+      '<span class="dot">·</span>' + p.readMins + ' min read' +
+      '<span class="read">Read the letter →</span></span></a>';
+  }
+
+  function render(list) {
+    count.textContent = list.length + (list.length === 1 ? " letter" : " letters") + " in the drawer";
+    ledger.innerHTML = list.length
+      ? list.map(entry).join("")
+      : '<p class="empty">No letter matches that search — yet.</p>';
+  }
+
+  render(posts);
+
+  q.addEventListener("input", function(){
+    const term = q.value.trim().toLowerCase();
+    if (!term) { render(posts); return; }
+    render(posts.filter(function(p){
+      return (p.title + " " + p.deck + " " + (p.tags || []).join(" ")).toLowerCase().includes(term);
+    }));
+  });
+})();
+</script>
+
+</body>
+</html>

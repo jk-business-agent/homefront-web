@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dispatch — Archive — Homefront Markets</title>
+<meta name="description" content="Every published issue of The Dispatch: Homefront Markets' scannable midweek briefing on American-made goods.">
+
+<!--
+═══════════════════════════════════════════════════════════
+HOMEFRONT MARKETS — ARCHIVE / THE DISPATCH (branch page)
+Pure Dispatch register: red identity line, Inter-dominant,
+section-label rhythm, issue metadata strip (#F0EDE8) carried
+over from the email template. Filters posts.js → dispatch.
+═══════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --red:#922B3E; --red-dark:#7A2333; --charcoal:#2C2824; --ink:#1A1A1A;
+    --cream:#FAF8F5; --tint:#F0EDE8; --warm:#4A3728;
+    --muted:#6B5E54; --muted2:#8A7E78; --divider:#E0DBD5;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--cream);color:var(--ink);font-family:'Lora',Georgia,serif;
+       border-top:5px solid var(--red);-webkit-text-size-adjust:100%}
+  .shell{max-width:720px;margin:0 auto;padding:0 24px}
+
+  header{text-align:center;padding:34px 0 0}
+  header img{width:280px;max-width:82%;height:auto}
+  .tagline{font-size:14px;font-style:italic;color:var(--muted2);letter-spacing:.06em;margin-top:8px}
+  nav{border-top:1px solid var(--divider);margin-top:16px;padding:12px 0;
+      font-family:'Inter',sans-serif;font-size:11px;font-weight:500;
+      letter-spacing:.07em;text-transform:uppercase}
+  nav a{color:var(--muted);text-decoration:none}
+  nav a:hover{color:var(--red)}
+  nav a[aria-current]{color:var(--red);font-weight:700}
+  nav .sep{color:#D5CECC;margin:0 9px}
+
+  /* Issue metadata strip — carried over from the email template */
+  .strip{background:var(--tint);border-top:1px solid var(--divider);
+      border-bottom:1px solid var(--divider);margin-top:0;padding:8px 0;text-align:center;
+      font-family:'Inter',sans-serif;font-size:10px;font-weight:600;
+      letter-spacing:.11em;text-transform:uppercase;color:var(--muted2)}
+
+  .lbl{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
+       letter-spacing:.15em;text-transform:uppercase;color:var(--red);
+       display:block;margin-bottom:7px}
+  .lbl-rule{width:40%;max-width:220px;height:1px;background:var(--red);margin-bottom:18px}
+
+  .intro{padding:38px 0 8px}
+  .intro h1{font-family:'Inter',sans-serif;font-size:clamp(26px,4.4vw,34px);
+            font-weight:800;letter-spacing:-.022em;line-height:1.2;margin-bottom:10px}
+  .intro h1 em{font-style:normal;color:var(--red)}
+  .intro p{font-size:15.5px;font-style:italic;color:var(--warm);line-height:1.6;max-width:56ch}
+
+  .filterbar{position:sticky;top:0;z-index:10;background:var(--cream);
+        border-bottom:1px solid var(--divider);margin-top:30px;padding:12px 0;
+        display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .tab{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;
+        letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
+        padding:8px 14px;border-radius:2px;border:1.5px solid var(--divider);
+        color:var(--muted);background:#fff;transition:all .12s ease}
+  .tab:hover{border-color:var(--red);color:var(--red)}
+  .tab.active{background:var(--red);border-color:var(--red);color:#fff}
+  .search{flex:1;min-width:180px;display:flex;justify-content:flex-end}
+  .search input{width:100%;max-width:250px;font-family:'Inter',sans-serif;
+        font-size:13px;padding:9px 13px;border:1.5px solid var(--divider);
+        border-radius:2px;background:#fff;color:var(--ink)}
+  .search input::placeholder{color:#A79E97}
+  .search input:focus{outline:none;border-color:var(--red);
+        box-shadow:0 0 0 3px rgba(146,43,62,.12)}
+
+  .count{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+        letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);padding:18px 0 4px}
+  .month{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
+        letter-spacing:.15em;text-transform:uppercase;color:var(--muted);
+        margin:26px 0 4px;padding-bottom:7px;border-bottom:1px solid var(--divider)}
+  .entry{display:block;text-decoration:none;color:var(--ink);background:#fff;
+        border:1px solid var(--divider);border-left:4px solid var(--red);
+        padding:20px 24px;margin-top:14px;
+        transition:transform .12s ease, box-shadow .15s ease}
+  .entry:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(44,40,36,.1)}
+  .entry h3{font-family:'Inter',sans-serif;font-size:17.5px;font-weight:700;
+        letter-spacing:-.015em;line-height:1.3;margin-bottom:6px}
+  .entry:hover h3{color:var(--red)}
+  .entry p{font-size:14px;font-style:italic;color:var(--warm);line-height:1.6;margin-bottom:12px}
+  .meta{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
+        letter-spacing:.08em;text-transform:uppercase;color:var(--muted2)}
+  .meta b{color:var(--muted)}
+  .meta .dot{margin:0 7px;color:#D5CECC}
+  .empty{padding:44px 0;text-align:center;font-style:italic;color:var(--muted)}
+
+  .subband{background:var(--charcoal);margin:34px 0;padding:28px;text-align:center}
+  .subband .lbl{color:rgba(255,255,255,.52)}
+  .subband .lbl-rule{background:rgba(255,255,255,.2);margin-left:auto;margin-right:auto}
+  .subband p{font-size:15px;font-style:italic;color:rgba(255,255,255,.82);
+        line-height:1.6;margin-bottom:16px}
+  .btn-red{display:inline-block;background:var(--red);color:#fff;
+        font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;
+        letter-spacing:.08em;text-transform:uppercase;padding:12px 22px;
+        text-decoration:none;border-radius:2px;transition:background .15s ease}
+  .btn-red:hover{background:var(--red-dark)}
+
+  footer{background:var(--ink);margin-top:46px}
+  footer .inner{max-width:720px;margin:0 auto;padding:26px 24px 22px}
+  footer .ql{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;
+        text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.35);margin-bottom:9px}
+  footer .links{font-family:'Inter',sans-serif;font-size:12px;line-height:1.7;margin-bottom:20px}
+  footer .links a{color:rgba(255,255,255,.72);text-decoration:none;font-weight:500}
+  footer .links a:hover{color:#fff}
+  footer .links .sep{color:rgba(255,255,255,.2);margin:0 8px}
+  footer .quote{font-size:13px;font-style:italic;color:rgba(255,255,255,.42);
+        text-align:center;line-height:1.75;padding-top:18px;
+        border-top:1px solid rgba(255,255,255,.08)}
+
+  @media (max-width:520px){
+    .entry{padding:16px 16px}
+    .search{justify-content:stretch}
+    .search input{max-width:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <header>
+    <a href="/"><img src="/assets/hfm-logo.png" alt="Homefront Markets"></a>
+    <div class="tagline">Keep America Working</div>
+    <nav aria-label="Site">
+      <a href="/">Home</a><span class="sep">|</span><a href="/about.html">About</a><span class="sep">|</span><a href="/archive/" aria-current="page">Archive</a>
+    </nav>
+  </header>
+</div>
+
+<div class="strip">The Dispatch &nbsp;·&nbsp; Midweek Briefing &nbsp;·&nbsp; The Full Record</div>
+
+<div class="shell">
+  <section class="intro">
+    <span class="lbl">▸ Archive / The Dispatch</span>
+    <div class="lbl-rule"></div>
+    <h1>The briefing, <em>back to issue one</em>.</h1>
+    <p>Labeled departments, hard numbers, reader finds, and members-only deals — built to be read in 90 seconds or savored in six minutes. Every midweek issue we've published, newest first.</p>
+  </section>
+
+  <div class="filterbar" role="navigation" aria-label="Archive filters">
+    <div class="tabs">
+      <a class="tab" href="/archive/">All Issues</a>
+      <a class="tab active" href="/archive/dispatch/" aria-current="page">The Dispatch</a>
+      <a class="tab" href="/archive/craftsmans_letter/">Craftsman's Letter</a>
+    </div>
+    <div class="search">
+      <input id="q" type="search" placeholder="Search The Dispatch…" aria-label="Search issues">
+    </div>
+  </div>
+
+  <div class="count" id="count"></div>
+  <div id="ledger"></div>
+
+  <div class="subband">
+    <span class="lbl">▸ Get the Next Briefing</span>
+    <div class="lbl-rule"></div>
+    <p>The Dispatch lands midweek. Numbers, finds, and deals —<br>free, in your inbox, before it hits the archive.</p>
+    <a class="btn-red" href="/">Subscribe Free →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="inner">
+    <p class="ql">Quick Links</p>
+    <p class="links">
+      <a href="https://homefrontmarkets.com">Marketplace (Coming Soon)</a><span class="sep">|</span><a href="/">Subscribe</a><span class="sep">|</span><a href="/archive/">Full Archive</a><span class="sep">|</span><a href="/archive/craftsmans_letter/">The Craftsman's Letter</a>
+    </p>
+    <p class="quote">"That business of America, by America, for America,<br>shall not perish from the earth."</p>
+  </div>
+</footer>
+
+<script src="/assets/posts.js"></script>
+<script>
+(function(){
+  const posts = hfmSorted(HFM_POSTS).filter(function(p){ return p.branch === "dispatch"; });
+  const ledger = document.getElementById("ledger");
+  const count = document.getElementById("count");
+  const q = document.getElementById("q");
+
+  function card(p) {
+    return '<a class="entry" href="' + p.url + '">' +
+      '<h3>' + p.title + '</h3>' +
+      '<p>' + p.deck + '</p>' +
+      '<span class="meta"><b>Vol. ' + p.vol + ', No. ' + p.no + '</b><span class="dot">·</span>' +
+      hfmFormatDate(p.date) + '<span class="dot">·</span>' + p.readMins + ' min read</span></a>';
+  }
+
+  function render(list) {
+    count.textContent = list.length + (list.length === 1 ? " issue" : " issues") + " on record";
+    if (!list.length) {
+      ledger.innerHTML = '<p class="empty">Nothing in the record matches that search — yet.</p>';
+      return;
+    }
+    let html = "", lastMonth = "";
+    for (const p of list) {
+      const mk = hfmMonthKey(p.date);
+      if (mk !== lastMonth) { html += '<div class="month">' + mk + '</div>'; lastMonth = mk; }
+      html += card(p);
+    }
+    ledger.innerHTML = html;
+  }
+
+  render(posts);
+
+  q.addEventListener("input", function(){
+    const term = q.value.trim().toLowerCase();
+    if (!term) { render(posts); return; }
+    render(posts.filter(function(p){
+      return (p.title + " " + p.deck + " " + (p.tags || []).join(" ")).toLowerCase().includes(term);
+    }));
+  });
+})();
+</script>
+
+</body>
+</html>
