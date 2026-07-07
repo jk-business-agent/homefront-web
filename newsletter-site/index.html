@@ -102,17 +102,20 @@ form action= to your Beehiiv subscribe-forms POST URL. Marked below.
   .cta:hover{background:var(--red-dark); transform:translateY(-2px); box-shadow:0 14px 32px rgba(146,43,62,0.36)}
   .cta:active{transform:translateY(0)}
 
-  /* ── Reassurance microcopy — must stay on one line, so font scales with
-     viewport and, as a safety net on the narrowest phones, the line itself
-     scrolls horizontally instead of wrapping or overflowing the page. ── */
+  /* ── Reassurance microcopy — must stay on one line. The box hugs its own
+     content width (fit-content) and is centered by margin:auto, so on
+     ordinary widths it just fits at full size — no shrinking or scrolling
+     needed. Only on very narrow phones does the 94vw cap kick in, and even
+     then it stays on one line via a left-anchored horizontal scroll. ── */
   .fine{
-    font-size:clamp(9px,1.9vw,12.5px); color:var(--muted); margin-top:16px;
-    letter-spacing:0.01em; white-space:nowrap;
-    max-width:100%; overflow-x:auto; padding-bottom:2px;
+    width:fit-content; max-width:94vw; margin:16px auto 0;
+    font-size:clamp(10.5px,2.3vw,12.5px); color:var(--muted);
+    letter-spacing:0.01em; white-space:nowrap; text-align:left;
+    overflow-x:auto; padding-bottom:2px;
     scrollbar-width:none; -ms-overflow-style:none;
   }
   .fine::-webkit-scrollbar{display:none}
-  .fine .x{color:var(--divider); margin:0 clamp(3px,0.9vw,8px)}
+  .fine .x{color:var(--divider); margin:0 clamp(4px,1vw,8px)}
   .fine-link{color:var(--muted); text-decoration:underline; text-underline-offset:2px}
   .fine-link:hover{color:var(--red)}
 
@@ -159,9 +162,12 @@ form action= to your Beehiiv subscribe-forms POST URL. Marked below.
       <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="bec7ed7a-d3e4-4269-a6e4-c4785e93d747"></script>
     </div>
 
-    <p class="fine">Join fellow Patriot subscribers today<span class="x">·</span>No spam, ever<span class="x">·</span>Unsubscribe anytime<span class="x">·</span><a class="fine-link" href="/about">More about us</a></p>
-
   </div>
+
+  <!-- Outside .inner (not capped at 540px) so this line has room to fit
+       without shrinking to near-illegible size on ordinary desktop widths. -->
+  <p class="fine">Join fellow Patriot subscribers today<span class="x">·</span>No spam, ever<span class="x">·</span>Unsubscribe anytime<span class="x">·</span><a class="fine-link" href="/about">More about us</a></p>
+
 </main>
 
 </body>
