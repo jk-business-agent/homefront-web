@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homefront Markets — Find the products still made in America</title>
+<meta name="description" content="A free bi-weekly briefing on the best American-made goods. We do the digging; you get the list. The Dispatch lands midweek, The Craftsman's Letter on the weekend.">
+
+<!--
+═══════════════════════════════════════════════════════════
+HOMEFRONT MARKETS — LANDING PAGE (single-screen signup mat)
+Design language: THE DISPATCH  · Red #922B3E / Cream #FAF8F5 / Charcoal #2C2824
+  · Inter (UI/headline) + Lora (serif accent)
+  · NO header nav, NO footer, NO outbound links — one job: capture the email.
+  · Everything fits one viewport; the BUTTON is the dominant element.
+
+SIGNUP: Replace the <form> with your Beehiiv embed iframe, OR set the
+form action= to your Beehiiv subscribe-forms POST URL. Marked below.
+═══════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --red:#922B3E; --red-dark:#7A2333;
+    --charcoal:#2C2824; --ink:#1A1A1A;
+    --cream:#FAF8F5; --warm:#4A3728; --muted:#6B5E54; --muted2:#8A7E78; --divider:#E0DBD5;
+  }
+  html,body{height:100%}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+    background:var(--cream); color:var(--ink);
+    border-top:5px solid var(--red);            /* brand identity line (Dispatch) */
+    -webkit-font-smoothing:antialiased;
+    /* subtle warm vignette so the white form card lifts off the page */
+    background-image:radial-gradient(120% 80% at 50% -10%, rgba(146,43,62,0.06), transparent 60%);
+  }
+
+  /* ── Single full-viewport stage, vertically centered ── */
+  .stage{
+    min-height:100vh; min-height:100dvh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:clamp(22px,5vh,56px) 22px;
+  }
+  .inner{width:100%; max-width:540px}
+
+  /* ── Wordmark (image only — NOT a link) ── */
+  .mark{margin-bottom:clamp(22px,4vh,34px)}
+  .mark img{height:clamp(34px,5vw,42px); width:auto; display:inline-block}
+  .mark .tag{
+    display:block; font-family:'Lora',Georgia,serif; font-style:italic;
+    font-size:13px; color:var(--muted2); letter-spacing:0.06em; margin-top:8px;
+  }
+
+  /* ── Promise ── */
+  h1{
+    font-size:clamp(30px,5.6vw,48px); font-weight:800; line-height:1.08;
+    letter-spacing:-0.025em; color:var(--ink); margin-bottom:16px;
+  }
+  h1 em{font-style:normal; color:var(--red)}
+  .sub{
+    font-family:'Lora',Georgia,serif; font-size:clamp(15.5px,2.4vw,18px);
+    color:var(--warm); line-height:1.62; max-width:46ch; margin:0 auto clamp(10px,2vh,16px);
+  }
+  /* Cadence line — explicit "when", visually distinct, scannable */
+  .cadence{
+    display:inline-flex; flex-wrap:wrap; justify-content:center; gap:8px 14px;
+    font-size:13px; font-weight:600; color:var(--muted);
+    margin-bottom:clamp(22px,4vh,32px);
+  }
+  .cadence b{color:var(--ink)}
+  .cadence .pill{
+    background:#fff; border:1px solid var(--divider); border-radius:30px;
+    padding:6px 13px; white-space:nowrap;
+  }
+
+  /* ── Form: one field + dominant button ── */
+  form{width:100%; max-width:420px; margin:0 auto}
+  .email{
+    width:100%; padding:16px 18px; font-family:'Inter',sans-serif; font-size:16px;
+    color:var(--ink); background:#fff; border:1.5px solid var(--divider);
+    border-radius:4px; margin-bottom:12px; text-align:center;
+  }
+  .email::placeholder{color:#A79E97}
+  .email:focus{outline:none; border-color:var(--red); box-shadow:0 0 0 4px rgba(146,43,62,0.14)}
+
+  /* THE dominant element — large, saturated, full-width, lifted */
+  .cta{
+    width:100%; padding:18px 24px; cursor:pointer; border:none; border-radius:4px;
+    background:var(--red); color:#fff;
+    font-family:'Inter',sans-serif; font-size:clamp(16px,2.4vw,19px); font-weight:800;
+    letter-spacing:0.01em; line-height:1;
+    box-shadow:0 10px 26px rgba(146,43,62,0.30);
+    transition:background .15s ease, transform .12s ease, box-shadow .15s ease;
+  }
+  .cta:hover{background:var(--red-dark); transform:translateY(-2px); box-shadow:0 14px 32px rgba(146,43,62,0.36)}
+  .cta:active{transform:translateY(0)}
+
+  /* ── Reassurance microcopy (text only — no links) ── */
+  .fine{
+    font-size:12.5px; color:var(--muted); margin-top:16px; letter-spacing:0.01em;
+  }
+  .fine .x{color:var(--divider); margin:0 8px}
+
+  /* very short / landscape phones: tighten so nothing clips */
+  @media(max-height:640px){
+    .mark{margin-bottom:16px}
+    h1{margin-bottom:12px}
+    .cadence{margin-bottom:18px}
+  }
+</style>
+</head>
+<body>
+
+<main class="stage">
+  <div class="inner">
+
+    <!-- Wordmark (not clickable — no exit ramp) -->
+    <div class="mark">
+      <img src="assets/hfm-logo.png" alt="Homefront Markets" style="width: 300px; height: auto;">
+      <span class="tag"></span>
+    </div>
+
+    <!-- Specific, tangible promise — what the reader gains -->
+    <h1>Keep <em>America</em> Working</h1>
+
+    <p class="sub">We do the digging so you don't have to — vetting the makers worth knowing and the goods worth owning, then sending you the short list.</p>
+
+    <!-- Structure + cadence, spelled out explicitly -->
+    <div class="cadence">
+      <span class="pill"><b>The Dispatch</b> — Tuesday</span>
+      <span class="pill"><b>The Craftsman's Letter</b> — Thursday</span>
+      <span class="pill">Free · twice a week</span>
+    </div>
+
+    <!-- ═══ BEEHIIV EMBED GOES HERE ═══
+         Replace this <form> with your Beehiiv iframe, e.g.:
+         <iframe src="https://embeds.beehiiv.com/XXXXXXXX" width="100%" height="64"
+                 frameborder="0" scrolling="no" style="border-radius:4px;background:transparent"></iframe>
+         OR keep this form and set action= to your Beehiiv POST URL. -->
+    <form action="REPLACE_WITH_BEEHIIV_FORM_ACTION" method="post" onsubmit="return false;">
+      <input class="email" type="email" name="email" placeholder="you@email.com" aria-label="Email address" required>
+      <button class="cta" type="submit">Send Me the Goods →</button>
+    </form>
+
+    <p class="fine">Join fellow Patriot subscribers today<span class="x">·</span>No spam, ever<span class="x">·</span>Unsubscribe anytime</p>
+
+  </div>
+</main>
+
+</body>
+</html>

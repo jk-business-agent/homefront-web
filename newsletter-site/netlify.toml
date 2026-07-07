@@ -1,0 +1,27 @@
+# Netlify config for the NEWSLETTER site (newsletter.homefrontmarkets.com)
+# In Netlify UI: Base directory = newsletter-site, Publish directory = newsletter-site
+
+[build]
+  publish = "."
+
+# Clean URL: /about works without .html
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 200
+
+# Cache static assets aggressively
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Security headers. X-Frame-Options omitted-safe here; beehiiv embed is an
+# iframe INTO this page, not the other way around, so DENY would still be fine,
+# but SAMEORIGIN kept for flexibility.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

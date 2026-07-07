@@ -1,0 +1,30 @@
+# Netlify config for the ROOT site (homefrontmarkets.com)
+# In Netlify UI: Base directory = root-site, Publish directory = root-site
+
+[build]
+  publish = "."
+
+# Send /newsletter and /join to the newsletter site
+[[redirects]]
+  from = "/newsletter"
+  to = "https://newsletter.homefrontmarkets.com"
+  status = 301
+
+[[redirects]]
+  from = "/join"
+  to = "https://newsletter.homefrontmarkets.com"
+  status = 301
+
+# Cache static assets aggressively
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Basic security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

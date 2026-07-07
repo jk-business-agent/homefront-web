@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Homefront Markets</title>
+<meta name="description" content="Why Homefront Markets exists and who is behind it. A short letter on American craft, honest curation, and what we mean by Keep America Working.">
+
+<!--
+═══════════════════════════════════════════════════════════
+HOMEFRONT MARKETS — ABOUT PAGE (decluttered)
+Design language: THE CRAFTSMAN'S LETTER · Navy #1B3A5C / Cream #FAFAF8
+  · Lora-dominant serif, single editorial column. Sole accent: navy (no red).
+  · Deliberately does NOT mirror the email template's sections.
+  · One clean read, one CTA. No menu, no basement links, no heavy footer.
+
+REAL-DETAIL SLOTS: every <span class="fill">[ ... ]</span> is a placeholder
+for your real info. Search the file for class="fill" to find them all.
+═══════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#1B3A5C; --navy-deep:#16314D; --navy-soft:#2A3D52;
+    --ink:#1A1A1A; --cream:#FAFAF8; --warm:#4A3728; --muted:#6B5E54; --muted2:#8A7E78; --divider:#E4E0D9;
+  }
+  body{
+    font-family:'Lora',Georgia,'Times New Roman',serif;
+    background:var(--cream); color:var(--ink); line-height:1.85;
+    border-top:5px solid var(--navy);          /* format signal (Letter) */
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:660px; margin:0 auto; padding:0 26px}
+
+  /* placeholder markers */
+  .fill{font-style:normal; color:var(--navy); background:rgba(27,58,92,0.07);
+        border-bottom:1px dashed var(--navy); padding:0 3px; border-radius:2px}
+
+  /* ── Masthead: just the mark, centered. No menu. ── */
+  .mast{text-align:center; padding:clamp(40px,7vh,68px) 0 clamp(28px,4vh,40px)}
+  .mast img{height:42px; width:auto; display:inline-block}
+  .mast .tag{display:block; font-style:italic; font-size:22px; color:var(--muted2); letter-spacing:0.05em; margin-top:9px}
+
+  /* ── Letter ── */
+  .lead{
+    font-family:'Inter',sans-serif; font-size:18px; font-weight:700; letter-spacing:0.16em;
+    text-transform:uppercase; color:var(--navy); text-align:center; margin-bottom:14px;
+  }
+  h1{
+    font-size:clamp(27px,4.4vw,40px); font-weight:600; line-height:1.22; letter-spacing:-0.015em;
+    text-align:center; margin:0 auto clamp(30px,5vh,44px); max-width:18ch;
+  }
+  p{font-size:17.5px; color:var(--ink); margin-bottom:22px}
+  p .salut{font-style:italic; color:var(--muted)}
+
+  .pull{border-left:4px solid var(--navy); padding:4px 0 4px 24px; margin:36px 0}
+  .pull p{font-size:21px; font-style:italic; color:var(--navy-soft); line-height:1.5; margin:0}
+
+  /* ── Values: light, inline, not boxed ── */
+  .stand{margin:40px 0 8px}
+  .stand h2{font-family:'Inter',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.14em;
+            text-transform:uppercase; color:var(--navy); margin-bottom:20px}
+  .stand .row{display:flex; gap:16px; padding:16px 0; border-top:1px solid var(--divider)}
+  .stand .row:last-child{border-bottom:1px solid var(--divider)}
+  .stand .n{font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:var(--navy); flex:none; width:28px; padding-top:4px}
+  .stand .row p{font-size:16.5px; margin:0; line-height:1.7}
+  .stand .row strong{font-weight:600}
+
+  /* ── Signature ── */
+  .sign{margin:40px 0 0; font-size:17px; font-style:italic; color:var(--navy-soft)}
+  .sign .name{display:block; font-family:'Inter',sans-serif; font-style:normal; font-weight:700; font-size:15px; color:var(--ink); letter-spacing:0.02em; margin-top:8px}
+  .sign .role{display:block; font-family:'Inter',sans-serif; font-style:normal; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-top:3px}
+
+  /* ── One CTA ── */
+  .cta-wrap{text-align:center; margin:clamp(44px,7vh,64px) 0 clamp(40px,6vh,56px)}
+  .cta-wrap .said{font-size:18px; color:var(--warm); margin-bottom:20px}
+  .cta-wrap .said .fill{font-size:inherit}
+  .btn{
+    display:inline-block; background:var(--navy); color:#fff; text-decoration:none;
+    font-family:'Inter',sans-serif; font-size:14px; font-weight:700; letter-spacing:0.05em;
+    text-transform:uppercase; padding:16px 34px; border-radius:4px;
+    box-shadow:0 8px 22px rgba(27,58,92,0.22); transition:background .15s, transform .12s;
+  }
+  .btn:hover{background:var(--navy-deep); transform:translateY(-2px)}
+  .cta-wrap .micro{font-family:'Inter',sans-serif; font-size:12.5px; color:var(--muted); margin-top:14px}
+
+  /* ── Minimal sign-off (no menu, no links row) ── */
+  .end{text-align:center; padding:0 0 48px; font-style:italic; font-size:13px; color:var(--muted2)}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <img src="assets/hfm-logo-craftsman.png" alt="Homefront Markets" style="width: 300px; height: auto;">
+  <span class="tag">Keep America Working</span>
+</header>
+
+<article class="wrap">
+
+  <div class="lead">▸ About Us</div>
+
+  <p>The heart of our country is freedom – and, with it, the obligation to choose well. As Americans, we are bound together by the freedoms we share and protect.</p>
+
+  <p>Choosing American – even at a premium – is among the most meaningful acts an individual can take for their home, for their community, and, ultimately, for our great nation.</p>
+
+  <p>In a world demanding and incentivizing dependence on business overseas, our shared sense of country, community, and self has drifted. We live more isolated lives, unaware of and unappreciative of the value we offer one another. We sacrifice quality and sustainability for what is convenient and accessible, and often without even knowing it. This silent drift from choices that strengthen our country and fellow countrymen has and will eventually weaken both. We must consciously choose a better path.</p>
+
+  <div class="pull">
+    <p></p>
+  </div>
+
+  <p>Homefront Markets is committed to empowering such a choice on every front.</p>
+
+  <section class="stand">
+    <h2>What we stand for</h2>
+    <div class="row"><div class="n">01</div><p><strong>We stand for a deeper rooted local community and a shared American patriotism.</strong></p></div>
+    <div class="row"><div class="n">02</div><p><strong>We stand for an unapologetic national and local pride – </strong> a pride that moves us to celebrate the founders, companies, and products that honor it and to denounce those that betray it, always in the spirit of hope for what America is meant to be.</p></div>
+    <div class="row"><div class="n">03</div><p><strong>We stand for the central unit of all healthy countries: the family.</strong> Fostering a local and national environment that supports and promotes the family is of greatest importance to us.</p></div>
+    <div class="row"><div class="n">04</div><p><strong>We stand for the liberated Buyer and the fair Maker.</strong> Honest business begins with honest information, which is why we strive to educate the American buyer as they exercise virtuous citizenship.</p></div>
+  </section>
+
+  <p>To help both ends of American commerce, we take our responsibility to inform with seriousness and urgency. We publish a bi-weekly newsletter to share all of the stories, founders, companies, and products from across the nation that are missing from your newsfeed or algorithms. Our company seeks information from our subscribers about local talent. We investigate business that is worthy of wider recognition and promotion. Through our newsletter and digital marketplace, we hope to empower American makers everywhere. We want to help new small businesses to flourish. Through these efforts, we aim to reach interested buyers in a space that builds trust in quality domestic products. We continuously push to expand our impact through local and national events and outreach. At Homefront Markets, we will always strive to keep America working.</p>
+
+  <p>A revival of American Commerce is where we rekindle patriotic trust. It is within our reach to live in cities and towns where neighbors and fellow citizens become the support we rely on to sustain and provide for our families. As we come together to promote our communities and our shared national interest, we will create a place of trust and fellowship. The roots of a deepened cultural heritage are forever connected to The American Marketplace.</p>
+
+  <p>So join us as we sustain the American market. Discover a deeper appreciation for your local, regional, and national community. Subscribe and learn with us about all that the American men and women of this great country have to offer.</p>
+
+  <p>Find quality.</p>
+
+  <p>Buy American.</p>
+
+  <p>Be a proud citizen of The United States of America.</p>
+
+  <p class="sign">
+    Your Humble Servant,
+    <span class="name"><span class="fill">- Fabricius</span></span>
+    <span class="role"><span class="fill">Editorial Leadership | Homefront Markets</span></span>
+  </p>
+
+</article>
+
+<div class="cta-wrap">
+  <p class="said">If this is the kind of thing you'd read, join us. The next letter goes out <span class="fill">[day]</span>.</p>
+  <a class="btn" href="index.html">Subscribe Free →</a>
+  <p class="micro">Two emails a week · Unsubscribe anytime</p>
+</div>
+
+<p class="end">Homefront Markets · Keep America Working</p>
+
+</body>
+</html>
