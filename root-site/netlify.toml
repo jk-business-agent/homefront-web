@@ -2,6 +2,7 @@
 # In Netlify UI: Base directory = root-site, Publish directory = root-site
 
 [build]
+  command = "node build.js"
   publish = "."
 
 # Send /newsletter and /join to the newsletter site
