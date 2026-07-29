@@ -3,7 +3,11 @@
 
    Turns the .html files in posts/dispatch/ and
    posts/craftsmans_letter/ into:
-     1. a published page at /archive/<branch>/<slug>/
+     1. a published page at /archive/<branch>/<slug>/ — your
+        source file is published verbatim (it's already a
+        complete, styled page); only <title>/description/
+        canonical tags get patched in from the metadata block
+        so the page can never disagree with its own summary card.
      2. an entry in assets/posts.js (consumed by the three
         archive listing pages)
 
@@ -25,16 +29,8 @@ const POSTS_JS_PATH = path.join(ROOT, "assets", "posts.js");
 const SITE_URL = "https://homefrontmarkets.com";
 
 const BRANCHES = {
-  dispatch: {
-    name: "The Dispatch",
-    accent: "#922B3E",
-    home: "/archive/dispatch/"
-  },
-  craftsmans_letter: {
-    name: "The Craftsman's Letter",
-    accent: "#1B3A5C",
-    home: "/archive/craftsmans_letter/"
-  }
+  dispatch: { name: "The Dispatch" },
+  craftsmans_letter: { name: "The Craftsman's Letter" }
 };
 
 function fail(message) {
@@ -42,17 +38,8 @@ function fail(message) {
   process.exit(1);
 }
 
-function formatDate(iso) {
-  const d = new Date(iso + "T12:00:00");
-  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
-}
-
-function roman(n) {
-  const table = [[1000,"M"],[900,"CM"],[500,"D"],[400,"CD"],[100,"C"],[90,"XC"],
-                 [50,"L"],[40,"XL"],[10,"X"],[9,"IX"],[5,"V"],[4,"IV"],[1,"I"]];
-  let out = "", rem = n;
-  for (const [v, s] of table) { while (rem >= v) { out += s; rem -= v; } }
-  return out;
+function warn(message) {
+  console.warn("  warning: " + message);
 }
 
 function slugify(base) {
@@ -66,6 +53,49 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, (c) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   }[c]));
+}
+
+function isSpaceCode(code) {
+  return code === 32 || code === 9 || code === 10 || code === 13;
+}
+
+/* Detects text that was UTF-8 encoded, then read back in using the wrong
+   single-byte encoding (Windows-1252/Latin-1), then saved as UTF-8 again —
+   the classic "double-encoding" bug. Three signatures, all by character
+   code so nothing ambiguous ends up embedded in this source file:
+     1. C1 control characters (0x80-0x9f) — never legitimate in prose.
+     2. 0xC2 ("Â") or 0xC3 ("Ã") immediately followed by a Latin-1
+        Supplement character (0x80-0xbf) — e.g. a middle dot "·" (which is
+        UTF-8 bytes C2 B7) misread as Latin-1 becomes "Â" + "·".
+     3. A lone char 0xE2 ("â") standing as its own word — almost always a
+        collapsed em dash from the same corruption, not the letter itself. */
+function hasEncodingCorruption(str) {
+  for (let i = 0; i < str.length; i++) {
+    const code = str.charCodeAt(i);
+    if (code >= 128 && code <= 159) return true;
+    if ((code === 0xc2 || code === 0xc3) && i + 1 < str.length) {
+      const next = str.charCodeAt(i + 1);
+      if (next >= 128 && next <= 191) return true;
+    }
+    if (code === 0xe2) {
+      const prev = i === 0 ? 32 : str.charCodeAt(i - 1);
+      const next = i + 1 >= str.length ? 32 : str.charCodeAt(i + 1);
+      if (isSpaceCode(prev) && isSpaceCode(next)) return true;
+    }
+  }
+  return false;
+}
+
+/* Pulls a leading "YYYY-M-D_" or "YYYY-MM-DD-" date off a filename (for
+   your own browsing/sorting in posts/), returning the date (normalized to
+   YYYY-MM-DD) and the remainder to use as the URL slug. Returns null if
+   the filename doesn't start with a date. */
+function extractDatePrefix(basename) {
+  const m = basename.match(/^(\d{4})-(\d{1,2})-(\d{1,2})[_-](.+)$/);
+  if (!m) return null;
+  const [, y, mo, d, rest] = m;
+  const iso = `${y}-${mo.padStart(2, "0")}-${d.padStart(2, "0")}`;
+  return { iso, rest };
 }
 
 /* ── 1. Read every post source file ── */
@@ -85,9 +115,13 @@ function readPosts() {
       const raw = fs.readFileSync(fullPath, "utf8");
       const rel = path.relative(ROOT, fullPath);
 
+      if (hasEncodingCorruption(raw)) {
+        warn(rel + " looks like it was saved with the wrong encoding (e.g. Windows-1252 instead of UTF-8) — this shows up as garbled dashes/quotes/bullets on the live page. Re-save (or re-export from whatever tool produced it) as UTF-8.");
+      }
+
       const match = raw.replace(/^﻿/, "").match(/^\s*<!--([\s\S]*?)-->/);
       if (!match) {
-        fail(`${rel}\nMissing the metadata block. Every post must start with:\n<!--\n{ "title": "...", "deck": "...", "date": "YYYY-MM-DD", "readMins": 5 }\n-->`);
+        fail(`${rel}\nMissing the metadata block. Every post must start with:\n<!--\n{ "title": "...", "deck": "...", "date": "YYYY-MM-DD", "readMins": 5, "vol": 1, "no": 1 }\n-->`);
       }
 
       let meta;
@@ -97,7 +131,7 @@ function readPosts() {
         fail(`${rel}\nThe metadata block isn't valid JSON: ${e.message}`);
       }
 
-      for (const field of ["title", "deck", "date", "readMins"]) {
+      for (const field of ["title", "deck", "date", "readMins", "vol", "no"]) {
         if (meta[field] === undefined || meta[field] === null || meta[field] === "") {
           fail(`${rel}\nMissing required field "${field}" in the metadata block.`);
         }
@@ -108,6 +142,9 @@ function readPosts() {
       if (typeof meta.readMins !== "number") {
         fail(`${rel}\n"readMins" must be a number, got: ${JSON.stringify(meta.readMins)}`);
       }
+      if (typeof meta.vol !== "number" || typeof meta.no !== "number") {
+        fail(`${rel}\n"vol" and "no" must both be numbers — match whatever issue number is already written into the page itself.`);
+      }
       if (meta.branch && meta.branch !== branch) {
         fail(`${rel}\nThis file lives in posts/${branch}/ but its metadata says branch "${meta.branch}". Move the file or fix the field — they must match.`);
       }
@@ -115,22 +152,35 @@ function readPosts() {
         fail(`${rel}\n"tags" must be an array of at most 3 short strings.`);
       }
 
-      const slug = slugify(meta.slug || path.basename(file, ".html"));
-      if (!slug) fail(`${rel}\nCouldn't derive a URL slug from the filename — rename it to something like "my-post-title.html".`);
+      const basename = path.basename(file, ".html");
+      const datePrefix = extractDatePrefix(basename);
+      if (datePrefix && datePrefix.iso !== meta.date) {
+        fail(`${rel}\nThe date in the filename (${datePrefix.iso}) doesn't match "date" in the metadata block (${meta.date}). Fix whichever one is stale.`);
+      }
 
-      const body = raw.slice(match[0].length).trim();
-      if (!body) fail(`${rel}\nThe post body is empty — add the article content below the metadata block.`);
+      const slug = slugify(meta.slug || (datePrefix ? datePrefix.rest : basename));
+      if (!slug) fail(`${rel}\nCouldn't derive a URL slug from the filename — rename it to something like "2026-07-29_my-post-title.html".`);
+
+      const page = raw.slice(match[0].length).trim();
+      if (!page) fail(`${rel}\nThe page content is empty — paste your integrated archive-template HTML below the metadata block.`);
+      if (!/<html[\s>]/i.test(page)) {
+        warn(`${rel} doesn't look like a complete HTML document (no <html> tag found) — the build publishes it as-is, so double check it's your full integrated template, not just a body fragment.`);
+      }
+      if (/src=["']\.\.\//.test(page)) {
+        warn(`${rel} uses a relative path (src="../...") for an image or asset. This page will publish at /archive/${branch}/${slug}/, so relative paths resolve from there — use an absolute path instead, e.g. src="/assets/${branch}/your-image.jpg", so it doesn't 404.`);
+      }
 
       posts.push({
         branch,
         slug,
-        vol: typeof meta.vol === "number" ? meta.vol : 1,
+        vol: meta.vol,
+        no: meta.no,
         title: meta.title,
         deck: meta.deck,
         date: meta.date,
         readMins: meta.readMins,
         tags: meta.tags || [],
-        body,
+        page,
         sourceFile: rel
       });
     }
@@ -139,327 +189,46 @@ function readPosts() {
   return posts;
 }
 
-/* ── 2. Auto-number issues within each branch + volume, oldest first ── */
+/* ── 2. Guard against duplicate issue numbers within a branch+volume ── */
 
-function assignIssueNumbers(posts) {
-  const groups = {};
+function checkForDuplicateNumbers(posts) {
+  const seen = {};
   for (const p of posts) {
-    const key = p.branch + "::" + p.vol;
-    (groups[key] = groups[key] || []).push(p);
-  }
-  for (const key of Object.keys(groups)) {
-    groups[key]
-      .sort((a, b) => (a.date === b.date ? a.slug.localeCompare(b.slug) : a.date < b.date ? -1 : 1))
-      .forEach((p, i) => { p.no = i + 1; });
+    const key = `${p.branch}::vol ${p.vol}::no ${p.no}`;
+    if (seen[key]) {
+      fail(`${p.sourceFile}\nDuplicate issue number: ${seen[key]} is already Vol. ${p.vol}, No. ${p.no} in ${p.branch}. Each issue needs a unique vol/no pair.`);
+    }
+    seen[key] = p.sourceFile;
   }
 }
 
-/* ── 3. Shared page chrome ── */
+/* ── 3. Patch <title>/description/canonical into the page's own <head> ── */
 
-function siteHeader(logo) {
-  return `<header>
-    <a href="https://newsletter.homefrontmarkets.com/"><img src="/assets/${logo}" alt="Homefront Markets"></a>
-    <div class="tagline">Keep America Working</div>
-    <nav aria-label="Site">
-      <a href="https://newsletter.homefrontmarkets.com/">Home</a><span class="sep">|</span><a href="https://newsletter.homefrontmarkets.com/about">About</a><span class="sep">|</span><a href="/archive/" aria-current="page">Archive</a>
-    </nav>
-  </header>`;
-}
+function patchHead(page, post) {
+  const canonical = `${SITE_URL}/archive/${post.branch}/${post.slug}/`;
+  const titleTag = `<title>${escapeHtml(post.title)} — ${BRANCHES[post.branch].name} — Homefront Markets</title>`;
+  const metaTags = [
+    `<meta name="description" content="${escapeHtml(post.deck)}">`,
+    `<link rel="canonical" href="${canonical}">`,
+    `<meta property="og:type" content="article">`,
+    `<meta property="og:title" content="${escapeHtml(post.title)}">`,
+    `<meta property="og:description" content="${escapeHtml(post.deck)}">`,
+    `<meta property="og:url" content="${canonical}">`
+  ].join("\n  ");
 
-function siteFooter(extraLink) {
-  return `<footer>
-  <div class="inner">
-    <p class="ql">Quick Links</p>
-    <p class="links">
-      <a href="/">Marketplace (Coming Soon)</a><span class="sep">|</span><a href="https://newsletter.homefrontmarkets.com/">Subscribe</a><span class="sep">|</span><a href="/archive/">Full Archive</a><span class="sep">|</span>${extraLink}<span class="sep">|</span><a href="/terms/">Terms</a><span class="sep">|</span><a href="/privacy/">Privacy</a>
-    </p>
-    <p class="quote">"That business of America, by America, for America,<br>shall not perish from the earth."</p>
-  </div>
-</footer>`;
-}
+  let out = page.replace(/<meta\s+name=["']description["'][^>]*>\s*/i, "");
 
-/* ── 4. Dispatch post template (red register) ── */
-
-function renderDispatchPost(p) {
-  const canonical = `${SITE_URL}/archive/dispatch/${p.slug}/`;
-  const tags = p.tags.map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("");
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${escapeHtml(p.title)} — The Dispatch — Homefront Markets</title>
-<meta name="description" content="${escapeHtml(p.deck)}">
-<link rel="canonical" href="${canonical}">
-<meta property="og:type" content="article">
-<meta property="og:title" content="${escapeHtml(p.title)}">
-<meta property="og:description" content="${escapeHtml(p.deck)}">
-<meta property="og:url" content="${canonical}">
-
-<!-- Generated by build.js from posts/dispatch/${path.basename(p.sourceFile)} — do not edit directly. -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400;1,500&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --red:#922B3E; --red-dark:#7A2333; --charcoal:#2C2824; --ink:#1A1A1A;
-    --cream:#FAF8F5; --tint:#F0EDE8; --warm:#4A3728;
-    --muted:#6B5E54; --muted2:#8A7E78; --divider:#E0DBD5;
+  if (/<title>[\s\S]*?<\/title>/i.test(out)) {
+    out = out.replace(/<title>[\s\S]*?<\/title>/i, `${titleTag}\n  ${metaTags}`);
+  } else if (/<head[^>]*>/i.test(out)) {
+    out = out.replace(/<head[^>]*>/i, (m) => `${m}\n  ${titleTag}\n  ${metaTags}`);
+  } else {
+    warn(`${post.sourceFile} has no <head> tag — couldn't patch in the page title/description.`);
   }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--cream);color:var(--ink);font-family:'Lora',Georgia,serif;
-       border-top:5px solid var(--red);-webkit-text-size-adjust:100%}
-  .shell{max-width:720px;margin:0 auto;padding:0 24px}
-  header{text-align:center;padding:34px 0 0}
-  header img{width:280px;max-width:82%;height:auto}
-  .tagline{font-size:14px;font-style:italic;color:var(--muted2);letter-spacing:.06em;margin-top:8px}
-  nav{border-top:1px solid var(--divider);margin-top:16px;padding:12px 0;
-      font-family:'Inter',sans-serif;font-size:11px;font-weight:500;
-      letter-spacing:.07em;text-transform:uppercase}
-  nav a{color:var(--muted);text-decoration:none}
-  nav a:hover{color:var(--red)}
-  nav a[aria-current]{color:var(--red);font-weight:700}
-  nav .sep{color:#D5CECC;margin:0 9px}
-  .strip{background:var(--tint);border-top:1px solid var(--divider);
-      border-bottom:1px solid var(--divider);margin-top:0;padding:8px 0;text-align:center;
-      font-family:'Inter',sans-serif;font-size:10px;font-weight:600;
-      letter-spacing:.11em;text-transform:uppercase;color:var(--muted2)}
-  .lbl{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
-       letter-spacing:.15em;text-transform:uppercase;color:var(--red);
-       display:block;margin-bottom:7px}
-  .lbl-rule{width:40%;max-width:220px;height:1px;background:var(--red);margin-bottom:18px}
-  .intro{padding:38px 0 8px}
-  .intro h1{font-family:'Inter',sans-serif;font-size:clamp(26px,4.4vw,34px);
-            font-weight:800;letter-spacing:-.022em;line-height:1.22;margin-bottom:14px}
-  .intro .deck{font-size:16px;font-style:italic;color:var(--warm);line-height:1.65;max-width:60ch;margin-bottom:16px}
-  .meta{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;
-        letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);
-        display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-bottom:8px}
-  .meta b{color:var(--muted)}
-  .meta .dot{margin:0 7px;color:#D5CECC}
-  .tag{display:inline-block;background:var(--tint);color:var(--warm);
-       font-family:'Inter',sans-serif;font-size:10px;font-weight:600;
-       letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;
-       border-radius:2px;margin:10px 6px 0 0}
-  .article-body{padding:24px 0 6px;font-size:16.5px;line-height:1.78;color:var(--ink)}
-  .article-body p{margin-bottom:19px}
-  .article-body h2{font-family:'Inter',sans-serif;font-size:22px;font-weight:800;
-        letter-spacing:-.02em;margin:36px 0 14px;color:var(--ink)}
-  .article-body h3{font-family:'Inter',sans-serif;font-size:18px;font-weight:700;
-        margin:28px 0 12px;color:var(--ink)}
-  .article-body a{color:var(--red)}
-  .article-body strong{color:var(--ink)}
-  .article-body blockquote,.pull-quote{border-left:4px solid var(--red);
-        padding:4px 0 4px 20px;margin:26px 0;font-style:italic;color:var(--warm);font-size:17px}
-  .article-body img{max-width:100%;height:auto;margin:22px 0;border:1px solid var(--divider)}
-  .article-body ul,.article-body ol{margin:0 0 19px 22px}
-  .article-body li{margin-bottom:8px}
-  .article-body hr{border:none;border-top:1px solid var(--divider);margin:36px 0}
-  .back{display:block;margin:30px 0 0;font-family:'Inter',sans-serif;font-size:12px;
-        font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none}
-  .back:hover{color:var(--red)}
-  .subband{background:var(--charcoal);margin:40px 0 0;padding:28px;text-align:center}
-  .subband .lbl{color:rgba(255,255,255,.52)}
-  .subband .lbl-rule{background:rgba(255,255,255,.2);margin-left:auto;margin-right:auto}
-  .subband p{font-size:15px;font-style:italic;color:rgba(255,255,255,.82);
-        line-height:1.6;margin-bottom:16px}
-  .btn-red{display:inline-block;background:var(--red);color:#fff;
-        font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;
-        letter-spacing:.08em;text-transform:uppercase;padding:12px 22px;
-        text-decoration:none;border-radius:2px;transition:background .15s ease}
-  .btn-red:hover{background:var(--red-dark)}
-  footer{background:var(--ink);margin-top:46px}
-  footer .inner{max-width:720px;margin:0 auto;padding:26px 24px 22px}
-  footer .ql{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;
-        text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.35);margin-bottom:9px}
-  footer .links{font-family:'Inter',sans-serif;font-size:12px;line-height:1.7;margin-bottom:20px}
-  footer .links a{color:rgba(255,255,255,.72);text-decoration:none;font-weight:500}
-  footer .links a:hover{color:#fff}
-  footer .links .sep{color:rgba(255,255,255,.2);margin:0 8px}
-  footer .quote{font-size:13px;font-style:italic;color:rgba(255,255,255,.42);
-        text-align:center;line-height:1.75;padding-top:18px;
-        border-top:1px solid rgba(255,255,255,.08)}
-</style>
-</head>
-<body>
-
-<div class="shell">
-  ${siteHeader("hfm-logo.png")}
-</div>
-
-<div class="strip">The Dispatch &nbsp;·&nbsp; Vol. ${p.vol}, No. ${p.no} &nbsp;·&nbsp; ${formatDate(p.date)}</div>
-
-<div class="shell">
-  <section class="intro">
-    <span class="lbl">▸ The Dispatch</span>
-    <div class="lbl-rule"></div>
-    <h1>${escapeHtml(p.title)}</h1>
-    <p class="deck">${escapeHtml(p.deck)}</p>
-    <div class="meta"><b>Vol. ${p.vol}, No. ${p.no}</b><span class="dot">·</span>${formatDate(p.date)}<span class="dot">·</span>${p.readMins} min read</div>
-    ${tags}
-  </section>
-
-  <article class="article-body">
-    ${p.body}
-  </article>
-
-  <a class="back" href="/archive/dispatch/">&larr; Back to The Dispatch archive</a>
-
-  <div class="subband">
-    <span class="lbl">▸ Get the Next Briefing</span>
-    <div class="lbl-rule"></div>
-    <p>The Dispatch lands midweek. Numbers, finds, and deals —<br>free, in your inbox, before it hits the archive.</p>
-    <a class="btn-red" href="https://newsletter.homefrontmarkets.com/">Subscribe Free →</a>
-  </div>
-</div>
-
-${siteFooter('<a href="/archive/craftsmans_letter/">The Craftsman\'s Letter</a>')}
-
-</body>
-</html>
-`;
+  return out;
 }
 
-/* ── 5. Craftsman's Letter post template (navy register) ── */
-
-function renderLetterPost(p) {
-  const canonical = `${SITE_URL}/archive/craftsmans_letter/${p.slug}/`;
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${escapeHtml(p.title)} — The Craftsman's Letter — Homefront Markets</title>
-<meta name="description" content="${escapeHtml(p.deck)}">
-<link rel="canonical" href="${canonical}">
-<meta property="og:type" content="article">
-<meta property="og:title" content="${escapeHtml(p.title)}">
-<meta property="og:description" content="${escapeHtml(p.deck)}">
-<meta property="og:url" content="${canonical}">
-
-<!-- Generated by build.js from posts/craftsmans_letter/${path.basename(p.sourceFile)} — do not edit directly. -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --navy:#1B3A5C; --navy-deep:#142C46; --charcoal:#2C2824; --ink:#1A1A1A;
-    --cream:#FAFAF8; --tint:#F5F3EF; --quote:#EEF1F6; --warm:#4A3728;
-    --muted:#6B5E54; --muted2:#8A7E78; --divider:#E0DBD5;
-  }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--cream);color:var(--ink);font-family:'Lora',Georgia,serif;
-       border-top:5px solid var(--navy);-webkit-text-size-adjust:100%}
-  .shell{max-width:680px;margin:0 auto;padding:0 24px}
-  header{text-align:center;padding:32px 0 0}
-  header img{width:200px;max-width:70%;height:auto}
-  .tagline{font-size:12px;font-style:italic;color:var(--muted2);letter-spacing:.05em;margin-top:8px}
-  nav{border-top:1px solid var(--divider);margin-top:16px;padding:12px 0;
-      font-family:'Inter',sans-serif;font-size:10.5px;font-weight:500;
-      letter-spacing:.07em;text-transform:uppercase}
-  nav a{color:var(--muted);text-decoration:none}
-  nav a:hover{color:var(--navy)}
-  nav a[aria-current]{color:var(--navy);font-weight:700}
-  nav .sep{color:#D5CECC;margin:0 9px}
-  .lbl{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
-       letter-spacing:.15em;text-transform:uppercase;color:var(--navy);
-       display:block;margin-bottom:7px}
-  .lbl-rule{width:40%;max-width:200px;height:1px;background:var(--navy);margin-bottom:18px}
-  .intro{padding:40px 0 6px}
-  .no{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
-       letter-spacing:.16em;text-transform:uppercase;color:var(--navy);
-       display:block;margin-bottom:12px}
-  .intro h1{font-family:'Lora',Georgia,serif;font-size:clamp(26px,4.4vw,33px);
-       font-weight:600;letter-spacing:-.015em;line-height:1.28;margin-bottom:14px}
-  .intro .deck{font-size:16px;font-style:italic;color:var(--warm);line-height:1.7;max-width:60ch;margin-bottom:14px}
-  .meta{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;
-       letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px}
-  .meta .dot{margin:0 7px;color:#D5CECC}
-  .article-body{padding:22px 0 6px;font-size:16.5px;line-height:1.85;color:var(--ink)}
-  .article-body p{margin-bottom:20px}
-  .article-body h2{font-family:'Lora',Georgia,serif;font-size:23px;font-weight:600;
-        letter-spacing:-.01em;margin:36px 0 14px}
-  .article-body h3{font-family:'Lora',Georgia,serif;font-size:19px;font-weight:600;margin:28px 0 12px}
-  .article-body a{color:var(--navy)}
-  .article-body strong{color:var(--ink)}
-  .article-body blockquote,.pull-quote{border-left:4px solid var(--navy);
-        padding:4px 0 4px 22px;margin:28px 0}
-  .article-body blockquote p,.pull-quote p{font-size:17px;font-style:italic;color:#2A3D52;line-height:1.65;margin:0}
-  .article-body img{max-width:100%;height:auto;margin:24px 0}
-  .article-body ul,.article-body ol{margin:0 0 20px 22px}
-  .article-body li{margin-bottom:9px}
-  .article-body hr{border:none;border-top:1px solid var(--divider);margin:38px 0}
-  .back{display:block;margin:32px 0 0;font-family:'Inter',sans-serif;font-size:11.5px;
-        font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none}
-  .back:hover{color:var(--navy)}
-  .closing{background:var(--tint);border-top:1px solid var(--divider);
-       margin:40px -24px 0;padding:34px 24px}
-  .closing .inner{max-width:632px;margin:0 auto}
-  .closing p{font-size:15.5px;color:var(--ink);line-height:1.82;margin-bottom:14px;max-width:60ch}
-  .closing .ps{font-size:14px;font-style:italic;color:var(--muted);margin-top:18px}
-  .btn-navy-outline{display:inline-block;border:1.5px solid var(--navy);
-       color:var(--navy);font-family:'Inter',sans-serif;font-size:12px;
-       font-weight:600;letter-spacing:.04em;padding:10px 20px;
-       text-decoration:none;border-radius:2px;transition:all .15s ease}
-  .btn-navy-outline:hover{background:var(--navy);color:#fff}
-  footer{background:var(--ink)}
-  footer .inner{max-width:680px;margin:0 auto;padding:26px 24px 22px}
-  footer .ql{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;
-       text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.35);margin-bottom:9px}
-  footer .links{font-family:'Inter',sans-serif;font-size:12px;line-height:1.7;margin-bottom:20px}
-  footer .links a{color:rgba(255,255,255,.72);text-decoration:none;font-weight:500}
-  footer .links a:hover{color:#fff}
-  footer .links .sep{color:rgba(255,255,255,.2);margin:0 8px}
-  footer .quote{font-size:13px;font-style:italic;color:rgba(255,255,255,.42);
-       text-align:center;line-height:1.75;padding-top:18px;
-       border-top:1px solid rgba(255,255,255,.08)}
-</style>
-</head>
-<body>
-
-<div class="shell">
-  ${siteHeader("hfm-logo-craftsman.png")}
-
-  <section class="intro">
-    <span class="lbl">The Craftsman's Letter</span>
-    <div class="lbl-rule"></div>
-    <span class="no">Letter No. ${roman(p.no)} &nbsp;·&nbsp; ${formatDate(p.date)}</span>
-    <h1>${escapeHtml(p.title)}</h1>
-    <p class="deck">${escapeHtml(p.deck)}</p>
-    <div class="meta">${p.readMins} min read</div>
-  </section>
-
-  <article class="article-body">
-    ${p.body}
-  </article>
-
-  <a class="back" href="/archive/craftsmans_letter/">&larr; Back to The Collected Letters</a>
-</div>
-
-<div class="closing">
-  <div class="inner">
-    <span class="lbl">Before You Go</span>
-    <div class="lbl-rule"></div>
-    <p>If this letter landed with you, the next one can arrive the way the rest did — quietly, at the end of the week, written for someone who cares where things are made.</p>
-    <a class="btn-navy-outline" href="https://newsletter.homefrontmarkets.com/">Receive the next letter →</a>
-    <p class="ps">P.S. — In a hurry? <a href="/archive/dispatch/" style="color:var(--navy)">The Dispatch</a> is our midweek briefing: the same convictions, read in 90 seconds.</p>
-  </div>
-</div>
-
-${siteFooter('<a href="/archive/dispatch/">The Dispatch</a>')}
-
-</body>
-</html>
-`;
-}
-
-const RENDERERS = { dispatch: renderDispatchPost, craftsmans_letter: renderLetterPost };
-
-/* ── 6. Write pages, prune stale ones ── */
+/* ── 4. Write pages, prune stale ones ── */
 
 function writePages(posts) {
   for (const branch of Object.keys(BRANCHES)) {
@@ -479,11 +248,11 @@ function writePages(posts) {
   for (const p of posts) {
     const outDir = path.join(ARCHIVE_ROOT, p.branch, p.slug);
     fs.mkdirSync(outDir, { recursive: true });
-    fs.writeFileSync(path.join(outDir, "index.html"), RENDERERS[p.branch](p));
+    fs.writeFileSync(path.join(outDir, "index.html"), patchHead(p.page, p));
   }
 }
 
-/* ── 7. Regenerate assets/posts.js ── */
+/* ── 5. Regenerate assets/posts.js ── */
 
 function writePostsJs(posts) {
   const sorted = [...posts].sort((a, b) => (a.date < b.date ? 1 : -1));
@@ -562,7 +331,7 @@ function hfmSorted(posts) {
 
 function build() {
   const posts = readPosts();
-  assignIssueNumbers(posts);
+  checkForDuplicateNumbers(posts);
   writePages(posts);
   writePostsJs(posts);
 

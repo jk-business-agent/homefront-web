@@ -10,7 +10,16 @@
    ═══════════════════════════════════════════════════════════ */
 
 const HFM_POSTS = [
-
+  {
+    branch: "craftsmans_letter",
+    vol: 1, no: 1,
+    title: "On the Origin of Homefront Markets",
+    deck: "Why we do all of this — and how to join us.",
+    date: "2026-07-29",
+    readMins: 8,
+    url: "/archive/craftsmans_letter/on-the-origin-of-homefront-markets/",
+    tags: ["Origin", "Mission"]
+  }
 ];
 
 /* ── Shared helpers used by the archive pages ── */
