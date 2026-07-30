@@ -21,6 +21,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 
 const ROOT = __dirname;
 const POSTS_ROOT = path.join(ROOT, "posts");
@@ -325,6 +326,32 @@ function hfmSorted(posts) {
 `;
 
   fs.writeFileSync(POSTS_JS_PATH, content);
+  return crypto.createHash("sha1").update(content).digest("hex").slice(0, 10);
+}
+
+/* ── 6. Cache-bust the listing pages' <script src="/assets/posts.js"> tag ──
+   /assets/* is served with a year-long immutable Cache-Control (see
+   netlify.toml), which would otherwise freeze every visitor's browser on
+   whatever snapshot of posts.js it first fetched. Appending a hash of the
+   file's own content makes each change a new URL, so it's always fetched
+   fresh — without touching the (correctly aggressive) caching for images. */
+
+const LISTING_PAGES = [
+  path.join(ARCHIVE_ROOT, "index.html"),
+  path.join(ARCHIVE_ROOT, "dispatch", "index.html"),
+  path.join(ARCHIVE_ROOT, "craftsmans_letter", "index.html")
+];
+
+function patchPostsJsVersion(version) {
+  for (const file of LISTING_PAGES) {
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, "utf8");
+    const patched = html.replace(
+      /src="\/assets\/posts\.js(?:\?v=[a-f0-9]+)?"/,
+      `src="/assets/posts.js?v=${version}"`
+    );
+    if (patched !== html) fs.writeFileSync(file, patched);
+  }
 }
 
 /* ── Run ── */
@@ -333,7 +360,8 @@ function build() {
   const posts = readPosts();
   checkForDuplicateNumbers(posts);
   writePages(posts);
-  writePostsJs(posts);
+  const version = writePostsJs(posts);
+  patchPostsJsVersion(version);
 
   const counts = Object.keys(BRANCHES).map((b) => `${posts.filter((p) => p.branch === b).length} ${BRANCHES[b].name}`);
   console.log(`Archive build OK — ${posts.length} post(s): ${counts.join(", ")}.`);
