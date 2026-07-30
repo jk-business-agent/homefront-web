@@ -39,6 +39,11 @@
   status = 301
 
 [[redirects]]
+  from = "/contact-us"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
   from = "/tos"
   to = "/terms/"
   status = 301

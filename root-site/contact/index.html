@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Homefront Markets</title>
+<meta name="description" content="Get in touch with Homefront Markets — questions, vendor applications, press, or just a hello. A person reads every message.">
+
+<!--
+═══════════════════════════════════════════════════════════
+HOMEFRONT MARKETS — CONTACT US (Dispatch register)
+Red identity line, Inter-dominant section labels, matches
+/terms/ and the archive root page's baseline chrome.
+Form is powered by Netlify Forms (data-netlify="true") —
+no backend, submissions land in the Netlify dashboard and
+can email buy@homefrontmarkets.com via a dashboard notification.
+═══════════════════════════════════════════════════════════
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --red:#922B3E; --red-dark:#7A2333; --charcoal:#2C2824; --ink:#1A1A1A;
+    --cream:#FAF8F5; --tint:#F0EDE8; --warm:#4A3728;
+    --muted:#6B5E54; --muted2:#8A7E78; --divider:#E0DBD5;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--cream);color:var(--ink);font-family:'Lora',Georgia,serif;
+       border-top:5px solid var(--red);-webkit-text-size-adjust:100%}
+  .shell{max-width:720px;margin:0 auto;padding:0 24px}
+
+  header{text-align:center;padding:34px 0 0}
+  header img{width:280px;max-width:82%;height:auto}
+  .tagline{font-size:14px;font-style:italic;color:var(--muted2);letter-spacing:.06em;margin-top:8px}
+  nav{border-top:1px solid var(--divider);margin-top:16px;padding:12px 0;
+      font-family:'Inter',sans-serif;font-size:11px;font-weight:500;
+      letter-spacing:.07em;text-transform:uppercase}
+  nav a{color:var(--muted);text-decoration:none}
+  nav a:hover{color:var(--red)}
+  nav a[aria-current]{color:var(--red);font-weight:700}
+  nav .sep{color:#D5CECC;margin:0 9px}
+
+  .strip{background:var(--tint);border-top:1px solid var(--divider);
+      border-bottom:1px solid var(--divider);margin-top:0;padding:8px 0;text-align:center;
+      font-family:'Inter',sans-serif;font-size:10px;font-weight:600;
+      letter-spacing:.11em;text-transform:uppercase;color:var(--muted2)}
+
+  .lbl{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;
+       letter-spacing:.15em;text-transform:uppercase;color:var(--red);
+       display:block;margin-bottom:7px}
+  .lbl-rule{width:40%;max-width:220px;height:1px;background:var(--red);margin-bottom:18px}
+
+  .intro{padding:38px 0 8px}
+  .intro h1{font-family:'Inter',sans-serif;font-size:clamp(26px,4.4vw,34px);
+            font-weight:800;letter-spacing:-.022em;line-height:1.2;margin-bottom:10px}
+  .intro h1 em{font-style:normal;color:var(--red)}
+  .intro p{font-size:15.5px;font-style:italic;color:var(--warm);line-height:1.6;max-width:56ch}
+
+  /* ── Contact form ── */
+  .form-wrap{padding:30px 0 6px}
+  .hp{position:absolute;left:-9999px}
+  form .field{margin-bottom:18px}
+  form label{display:block;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+       letter-spacing:.08em;text-transform:uppercase;color:var(--warm);margin-bottom:7px}
+  form input[type="text"],form input[type="email"],form textarea{
+       width:100%;border:1px solid var(--divider);background:#fff;color:var(--ink);
+       font-family:'Lora',Georgia,serif;font-size:15.5px;padding:11px 13px;
+       border-radius:2px;line-height:1.5}
+  form input[type="text"]:focus,form input[type="email"]:focus,form textarea:focus{
+       outline:none;border-color:var(--red)}
+  form textarea{resize:vertical;min-height:140px}
+  .btn-red{display:inline-block;background:var(--red);color:#fff;
+        font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;
+        letter-spacing:.08em;text-transform:uppercase;padding:12px 22px;
+        text-decoration:none;border:none;border-radius:2px;cursor:pointer;
+        transition:background .15s ease}
+  .btn-red:hover{background:var(--red-dark)}
+
+  .alt-contact{border-top:1px solid var(--divider);margin-top:38px;padding-top:22px}
+  .alt-contact p{font-size:15px;color:var(--muted);line-height:1.75}
+  .alt-contact address{font-style:normal;line-height:1.75;font-size:15px;color:var(--muted);margin-top:6px}
+  .alt-contact a{color:var(--red)}
+
+  footer{background:var(--ink);margin-top:46px}
+  footer .inner{max-width:720px;margin:0 auto;padding:26px 24px 22px}
+  footer .ql{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:700;
+        text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.35);margin-bottom:9px}
+  footer .links{font-family:'Inter',sans-serif;font-size:12px;line-height:1.7;margin-bottom:20px}
+  footer .links a{color:rgba(255,255,255,.72);text-decoration:none;font-weight:500}
+  footer .links a:hover{color:#fff}
+  footer .links .sep{color:rgba(255,255,255,.2);margin:0 8px}
+  footer .quote{font-size:13px;font-style:italic;color:rgba(255,255,255,.42);
+        text-align:center;line-height:1.75;padding-top:18px;
+        border-top:1px solid rgba(255,255,255,.08)}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <header>
+    <a href="https://newsletter.homefrontmarkets.com/"><img src="/assets/hfm-logo.png" alt="Homefront Markets"></a>
+    <div class="tagline">Keep America Working</div>
+    <nav aria-label="Site">
+      <a href="https://newsletter.homefrontmarkets.com/">Home</a><span class="sep">|</span><a href="https://newsletter.homefrontmarkets.com/about">About</a><span class="sep">|</span><a href="/archive/">Archive</a><span class="sep">|</span><a href="/contact/" aria-current="page">Contact</a>
+    </nav>
+  </header>
+</div>
+
+<div class="strip">Contact Us &nbsp;·&nbsp; We Read Every Message</div>
+
+<div class="shell">
+  <section class="intro">
+    <span class="lbl">▸ Get In Touch</span>
+    <div class="lbl-rule"></div>
+    <h1>Questions, vendor pitches, press, or just a <em>hello</em>.</h1>
+    <p>Send us a note below — a person reads this inbox, not a bot.</p>
+  </section>
+
+  <div class="form-wrap">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact/thanks/">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp" hidden>
+        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+      </p>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-red">Send Message</button>
+    </form>
+
+    <div class="alt-contact">
+      <p>Prefer email? Reach us directly, or write to us the old-fashioned way.</p>
+      <address>
+        Homefront Markets<br>
+        711 North, 540 East<br>
+        Smithfield, UT 84335<br>
+        <a href="mailto:buy@homefrontmarkets.com">buy@homefrontmarkets.com</a>
+      </address>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="inner">
+    <p class="ql">Quick Links</p>
+    <p class="links">
+      <a href="/">Marketplace (Coming Soon)</a><span class="sep">|</span><a href="https://newsletter.homefrontmarkets.com/">Subscribe</a><span class="sep">|</span><a href="/archive/">Full Archive</a><span class="sep">|</span><a href="/contact/" aria-current="page">Contact</a><span class="sep">|</span><a href="/terms/">Terms of Use</a><span class="sep">|</span><a href="/privacy/">Privacy Policy</a>
+    </p>
+    <p class="quote">"That business of America, by America, for America,<br>shall not perish from the earth."</p>
+  </div>
+</footer>
+
+</body>
+</html>
