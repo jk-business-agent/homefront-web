@@ -19,6 +19,16 @@ const HFM_POSTS = [
     readMins: 8,
     url: "/archive/craftsmans_letter/on-the-origin-of-homefront-markets/",
     tags: ["Origin", "Mission"]
+  },
+  {
+    branch: "dispatch",
+    vol: 1, no: 2,
+    title: "Evaluating American Made: It's Complicated",
+    deck: "What counts as American made? Who decides? What is the HFM Standard?",
+    date: "2026-07-29",
+    readMins: 6,
+    url: "/archive/dispatch/how-we-evaluate/",
+    tags: ["Evaluation", "Manufacturing", "Craftsmanship"]
   }
 ];
 
