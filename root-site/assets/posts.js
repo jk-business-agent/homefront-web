@@ -21,6 +21,16 @@ const HFM_POSTS = [
     tags: ["Origin", "Mission"]
   },
   {
+    branch: "craftsmans_letter",
+    vol: 1, no: 3,
+    title: "250 Years of Excellence in Commerce",
+    deck: "Twenty-five pivotal moments: one for nearly every decade since 1776 — that built the American marketplace we inherited.",
+    date: "2026-07-29",
+    readMins: 10,
+    url: "/archive/craftsmans_letter/250-years-of-excellence/",
+    tags: ["History", "American Commerce"]
+  },
+  {
     branch: "dispatch",
     vol: 1, no: 2,
     title: "Evaluating American Made: It's Complicated",

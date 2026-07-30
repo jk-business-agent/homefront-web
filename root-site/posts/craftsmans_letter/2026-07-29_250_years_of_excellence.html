@@ -1,0 +1,901 @@
+<!--
+{
+  "title": "250 Years of Excellence in Commerce",
+  "deck": "Twenty-five pivotal moments: one for nearly every decade since 1776 — that built the American marketplace we inherited.",
+  "date": "2026-07-29",
+  "readMins": 10,
+  "vol": 1,
+  "no": 3,
+  "tags": ["History", "American Commerce"]
+}
+-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Homefront Markets — The Craftsman's Letter</title>
+ 
+  <!--
+  ═══════════════════════════════════════════════════════════
+  HOMEFRONT MARKETS — THE CRAFTSMAN'S LETTER
+  Complete Visual Reference Template
+  ═══════════════════════════════════════════════════════════
+ 
+  COLOR PALETTE
+  ─────────────
+  Deep Navy (Letter accent):     #1B3A5C
+  Dark Charcoal (stat/footer):   #2C2824
+  Cream background:              #FAFAF8
+  Section tint:                  #F5F3EF
+  Pull-quote tint:               #EEF1F6
+  Near-black body:               #1A1A1A
+  Warm dividers:                 #E0DBD5
+  Warm text secondary:           #4A3728
+  Muted label/caption:           #6B5E54
+  Cool divider (stat block):     #D4D9E2
+ 
+  NOTE: No red in The Craftsman's Letter. Deep navy (#1B3A5C)
+  is the sole accent color. It appears in: top border, wordmark
+  "HOMEFRONT," section labels, the [G] stat block, links, and
+  the [C] data indicators — always sparingly.
+ 
+  DESIGN PHILOSOPHY
+  ─────────────────
+  The Craftsman's Letter is a letter, not a magazine. Typography
+  carries all hierarchy weight — Lora serif is dominant throughout.
+  Section labels are used sparingly. No hero image at top: the essay
+  opens with voice. The inline image appears mid-section, contextual
+  not decorative. The [G] stat is the only fully "designed" element.
+  Commerce ([F] discount) is whispered, not announced.
+ 
+  Federalist Papers architecture: each letter opens with a clear
+  proposition, develops evidence through the body, and closes with
+  a conclusion that anticipates the next issue. The issue strip
+  names the argument being advanced this week.
+ 
+  RESONANCE WITH THE DISPATCH
+  ───────────────────────────
+  Both templates share: 600px max-width, Inter + Lora font pair,
+  identical padding rhythm (44px horizontal), the same warm
+  charcoal/cream palette, the same Quick Links dark zone, the
+  same footer (dark #1A1A1A, same quote), the same wordmark
+  structure, and the same Before You Go section architecture.
+  The 4px top border (navy here, red in The Dispatch) is the
+  primary visual signal of format.
+ 
+  BEEHIIV BLOCK MAP
+  ─────────────────
+  [A]  Text blocks (salutation + headline + body). Image block
+       mid-section between two Text blocks.
+  [C]  Text block — woven prose, no label, no separate styling.
+  [B]  Text block (prose aside) + SparkLoop native block (minimal).
+       No Section background color — stays in the text column.
+  ───  Thin Divider block (full-width, #E0DBD5)
+  [D]  Text block (label + attribution) + Image block + Text blocks.
+  [G]  Section block (background #EEF1F6) → Text blocks, center-
+       aligned. Or Beehiiv's native Pull Quote block if available.
+  [F]  Text block only — italic paragraph. No Section wrapper.
+  [E]  Text block intro + Native Poll block + Text block outro.
+  ───  Thin Divider block
+  [H]  Text blocks (editorial prose, pledge in prose).
+  [J]  Section block (background #F5F3EF) → Text blocks +
+       Button block (dark outline).
+  [K]  Text block (P.S. paragraph) — within [J] section.
+  [I]  Section block (background #1A1A1A) → Text block
+       (inline pipe-separated links).
+  Footer: Global Footer + brand quote as final body Section
+          (background #1A1A1A) — identical to The Dispatch.
+  ═══════════════════════════════════════════════════════════
+  -->
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+ 
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #DDD9D3;
+      font-family: 'Lora', Georgia, 'Times New Roman', serif;
+      margin: 0;
+      padding: 32px 0 48px;
+      -webkit-text-size-adjust: 100%;
+    }
+ 
+    /* ── Email shell ── */
+    .email-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #FAFAF8;
+      border-radius: 1px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.14);
+    }
+ 
+    /* ── Section spacing (same rhythm as The Dispatch) ── */
+    .section    { padding: 34px 44px; }
+    .section-sm { padding: 20px 44px; }
+    .section-lg { padding: 44px 44px; }
+ 
+    /* ── Section label system — navy, used sparingly ──
+       Present only where structure aids navigation:
+       [D], [G], [E], [H], [J].
+       Absent for [A], [C], [B], [F], [K] — those sections
+       open with editorial prose or italic asides. */
+    .lbl {
+      font-family: 'Inter', -apple-system, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #1B3A5C;
+      display: block;
+      margin-bottom: 7px;
+    }
+    .lbl-rule {
+      width: 40%;
+      height: 1px;
+      background: #1B3A5C;
+      margin-bottom: 18px;
+    }
+ 
+    /* ── White label variant (for dark backgrounds) ── */
+    .lbl-white { color: rgba(255,255,255,0.52); }
+    .lbl-rule-white { background: rgba(255,255,255,0.2); }
+ 
+    /* ── Typography — Lora-dominant ──
+       The Craftsman's Letter uses serif for headings as well
+       as body. Inter appears only for structural/label elements
+       and stat numbers. This signals intellectual register vs.
+       The Dispatch's Inter-dominant commercial register. */
+    .headline {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 27px;
+      font-weight: 600;
+      color: #1A1A1A;
+      line-height: 1.28;
+      letter-spacing: -0.015em;
+      margin-bottom: 16px;
+    }
+    .deck {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 15px;
+      font-style: italic;
+      color: #4A3728;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .body-copy {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 15.5px;
+      color: #1A1A1A;
+      line-height: 1.82;   /* Slightly more open than Dispatch's 1.75 — letter reading pace */
+      margin-bottom: 16px;
+    }
+    .salutation {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 15px;
+      font-style: italic;
+      color: #6B5E54;
+      letter-spacing: 0.01em;
+      margin-bottom: 18px;
+    }
+    .read-more {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #1B3A5C;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .read-more:hover { text-decoration: underline; }
+ 
+    /* ── Pull quote — the editorial device; left-navy border ──
+       Used inline within essay sections. Navy left border
+       ties to the accent color without over-designing. */
+    .pull-quote {
+      border-left: 4px solid #1B3A5C;
+      padding: 4px 0 4px 22px;
+      margin: 24px 0;
+    }
+    .pull-quote p {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 17px;
+      font-style: italic;
+      color: #2A3D52;
+      line-height: 1.65;
+      margin: 0;
+    }
+ 
+    /* ── Dividers ── */
+    .rule      { border: none; border-top: 1px solid #E0DBD5; margin: 0; }
+    .rule-full { border: none; border-top: 1px solid #E0DBD5; margin: 0; }
+ 
+    /* ── Buttons ── */
+    /* Navy outline — the primary CTA in The Craftsman's Letter.
+       Same construction as The Dispatch's btn-dark-outline,
+       navy hue signals the Letter's editorial register. */
+    .btn-navy-outline {
+      display: inline-block;
+      border: 1.5px solid #1B3A5C;
+      color: #1B3A5C !important;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 10px 18px;
+      text-decoration: none !important;
+      border-radius: 2px;
+    }
+    /* Dark charcoal outline — used for forward/sharing CTA.
+       Same as The Dispatch's btn-dark-outline. Identical visual
+       language creates resonance across both templates. */
+    .btn-dark-outline {
+      display: inline-block;
+      border: 1.5px solid #2C2824;
+      color: #2C2824 !important;
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 10px 18px;
+      text-decoration: none !important;
+      border-radius: 2px;
+    }
+ 
+    /* ── Responsive ── */
+    @media only screen and (max-width: 480px) {
+      .section      { padding: 26px 20px !important; }
+      .section-sm   { padding: 16px 20px !important; }
+      .section-lg   { padding: 34px 20px !important; }
+      .headline     { font-size: 22px !important; }
+      .stat-num     { font-size: 58px !important; }
+      .pull-quote   { padding-left: 16px !important; }
+    }
+  </style>
+</head>
+ 
+<body>
+<div class="email-wrapper">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+     Beehiiv: Global Header block in Template Settings.
+     4px navy top border signals The Craftsman's Letter format —
+     same structural device as The Dispatch's red border,
+     different color = different register.
+     NO navigation links. The letter is a closed, focused form.
+═══════════════════════════════════════════════════════════ -->
+<div style="background:#FAFAF8; border-top:4px solid #1B3A5C; padding:26px 44px 0;">
+  <div style="text-align:center; margin-bottom:14px;">
+    <a href="https://www.homefrontmarkets.com/archive/craftsmans_letter" style="text-decoration:none; display:inline-block;">
+      <img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/e4a7ba85-3bfb-44f4-9416-3b4e49657f03/hfm-logo-craftsman.png?t=1782234077"
+        alt="Homefront Markets"
+        width="315"
+        style="display:inline-block; width:315px; max-width:84%; height:auto;">
+    </a>
+    <div style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; color:#8A7E78; letter-spacing:0.06em; margin-top:9px;">
+      Keep America Working
+    </div>
+  </div>
+
+<!--<div style="background:#FAFAF8; border-top:4px solid #1B3A5C; padding:22px 44px 0;">
+  <div style="text-align:center; margin-bottom:14px;">
+    <img src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/e4a7ba85-3bfb-44f4-9416-3b4e49657f03/hfm-logo-craftsman.png?t=1782234077" alt="Homefront Markets"
+         width="190" style="display:inline-block; width:190px; max-width:100%; height:auto;">
+    <div style="font-family:'Lora',Georgia,serif; font-size:11px; font-style:italic; color:#8A7E78; letter-spacing:0.05em; margin-top:8px;">
+      Keep America Working
+    </div>
+  </div>-->
+ 
+  <!-- Thin rule — no navigation; the letter stands alone -->
+  <div style="border-top:1px solid #E0DBD5;"></div>
+</div>
+ 
+<!-- Issue metadata strip: Letter number + date (first line) + argument title (second line).
+     The topic/argument lives here — not as an article headline inside the letter body.
+     This mirrors the Federalist Papers convention: each paper named its argument
+     in the heading, then opened directly with the salutation and proposition. -->
+<div style="background:#F5F3EF; border-bottom:1px solid #E0DBD5; padding:10px 44px 13px;">
+  <span style="font-family:'Inter',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.11em; text-transform:uppercase; color:#8A7E78; display:block; margin-bottom:5px;">
+    Letter No. 3 &nbsp;·&nbsp; Vol. 1 &nbsp;·&nbsp; July 30, 2026
+  </span>
+  <p style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; color:#4A3728; letter-spacing:0.01em; line-height:1.45; margin:0;">
+    On 250 years of American commerce: twenty-five moments that built the marketplace we inherited
+  </p>
+</div>
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [A] HOOK / LEAD — Narrative-open format
+     Beehiiv: Text blocks throughout. Image block inserted
+     mid-section between two Text blocks — never a hero.
+     DESIGN: Opens with salutation + proposition sentence.
+     No section label — the editorial voice does that work.
+     Federalist architecture: proposition stated in the first
+     strong sentence; evidence developed through the body.
+     Image is contextual (documentary/workshop), not a product shot.
+     Pull quote breaks the body — gives the reader a visual
+     resting point and surfaces the essay's core argument.
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+
+  <!-- Banner image — hero placement above the salutation, per explicit
+       user instruction for this issue (overrides the template's default
+       "no hero image" convention noted above). -->
+  <div style="margin:-34px -44px 26px; line-height:0; overflow:hidden;">
+    <img
+      src="../../rsc/1776-2026.jpg"
+      alt=""
+      width="600"
+      style="display:block; width:100%; height:230px; object-fit:cover; object-position:center;">
+  </div>
+
+  <!-- Salutation — the letter begins personally, opens directly. -->
+  <p class="salutation">Dear Reader,</p>
+
+  <p class="body-copy">
+    We just exited July of 2026 – celebrating our nation’s 250th. For 25 decades, this country has proven time and time again its dedication to life, liberty, and the pursuit of happiness (of virtue, that is). There is no better mantra than this, pulled directly from our Declaration of Independence, to point to how fundamental the American commercial interest is in understanding what it means to be a free American people.
+  </p>
+
+  <p class="body-copy">
+    Benjamin Franklin once sat to list thirteen virtues most worthy of pursuit. Virtues 5-7 are especially relevant to life in the marketplace: Frugality, Industry, and Sincerity. When we participate in the ebb and flow of this great nation’s economy, we practice those virtues as an expression of our lives, our liberties, and our moral pursuits. This year, of all years, is a most prudent one to choose to remember and celebrate the successes of America down through the decades.
+  </p>
+
+  <p class="body-copy">
+    It is in the spirit of this gratitude and remembrance that we want to take your through a journey across those decades and give brief mention to notable moments in the market on the homefront. Feel free to skim through and celebrate with us the wins that are most telling and inspiring to you.
+  </p>
+
+  <p style="font-family:'Lora',Georgia,serif; font-size:19px; font-weight:600; color:#1A1A1A; letter-spacing:-0.01em; margin:8px 0 26px;">
+    25 wins – 1776-2026
+  </p>
+
+  <!-- Founding Frontier: 1776-1825 -->
+  <div>
+    <div style="float:left; width:25%; margin:4px 18px 12px 0;">
+      <img src="../../rsc/ben_franklin.jpg" alt="The Benjamin Franklin National Memorial." width="128"
+           style="display:block; width:100%; height:150px; object-fit:cover; object-position:top;">
+      <span style="display:block; font-family:'Lora',Georgia,serif; font-size:10.5px; font-style:italic; color:#8A7E78; line-height:1.4; margin-top:6px;">
+        The Benjamin Franklin National Memorial.
+      </span>
+    </div>
+    <p style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:600; color:#1A1A1A; line-height:1.3; margin:0 0 4px; letter-spacing:-0.008em;">
+      Founding Frontier: 1776-1825
+    </p>
+    <p style="font-family:'Lora',Georgia,serif; font-size:14px; font-style:italic; color:#4A3728; line-height:1.5; margin:0 0 14px;">
+      Securing commercial independence through early maritime trade and agrarian expansion.
+    </p>
+    <p class="body-copy"><u>1781</u>: The Bank of North America was chartered in Philadelphia, the first true commercial bank in the U.S. Thanks to the great Robert Morris, this bank, chartered by the Continental Congress, literally saved the country from wartime bankruptcy and restored faith in a new specie-backed currency.</p>
+    <p class="body-copy"><u>1790</u>: Employing *cough* innovative techniques to circumvent British bans on sharing plans for textile machinery, Samuel Slater memorized the complex workings of the water-powered cotton spinning mill by sight alone. Slater founded his own textile mill in Pawtucket, Rhode Island – the beginning of the American textile industry.</p>
+    <p class="body-copy"><u>1803</u>: President Jefferson secured the grandest land deal in history (no contest). The initial deal offered no more than $10 million for a strip of West Florida containing the all important Port of New Orleans. A desperate Napolean made a different offer: buy the whole Louisiana Territory for $15 Million. Jefferson believed in the vivacity of American commerce, and he took the deal, doubling the country and securing rich agricultural land, timbers, minerals, and control of the fourth largest watershed in the world.</p>
+    <p class="body-copy"><u>1807</u>: River navigation was a vital source of transportation for various persons and commodities in the frontier period. Robert Fulton crafted the Clermont in what was the first commercially successful steam-powered water vessel. The added efficiency made freighting costs plummet by 90%, and it spurred on a lumber and coal boom.</p>
+    <p class="body-copy" style="margin-bottom:0;"><u>1825</u>: William Henry Ashley organizes the first Rocky Mountain Rendezvous on Henry’s Fork, Green River in southwestern Wyoming. The event attracted Mountain Men and Native Americans from across The West to trade pelts, supplies, firearms, and whiskey.</p>
+    <div style="clear:both;"></div>
+  </div>
+
+  <!-- Industrial Awakening: 1826-1875 -->
+  <div style="margin-top:28px;">
+    <div style="float:right; width:25%; margin:4px 0 12px 18px;">
+      <img src="../../rsc/golden_spike_train.jpg" alt="Engine 119 at Golden Spike National Historical Park." width="128"
+           style="display:block; width:100%; height:150px; object-fit:cover; object-position:center;">
+      <span style="display:block; font-family:'Lora',Georgia,serif; font-size:10.5px; font-style:italic; color:#8A7E78; line-height:1.4; margin-top:6px;">
+        Engine 119 at Golden Spike National Historical Park.
+      </span>
+    </div>
+    <p style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:600; color:#1A1A1A; line-height:1.3; margin:0 0 4px; letter-spacing:-0.008em;">
+      Industrial Awakening: 1826-1875
+    </p>
+    <p style="font-family:'Lora',Georgia,serif; font-size:14px; font-style:italic; color:#4A3728; line-height:1.5; margin:0 0 14px;">
+      Linking a fractured nation with the power of steam, iron, and electricity.
+    </p>
+    <p class="body-copy"><u>1827</u>: The Thomas brothers (Quaker businessmen) and George Brown met to discuss how Baltimore might keep up with commercial competition caused by canal access to the Ohio River Valley. They make a bold decision to build a double track railroad over land to the Ohio River – 350 miles away. The B&O was a true investment gamble, the first long-distance passenger or freight railroad in the world, and over mountains no less.</p>
+    <p class="body-copy"><u>1844</u>: Samuel Morse, an artist with a growing interest in technology and invention, took a gamble on a new career path. Partnering with a chemistry professor, a young tool maker, and a former Yale classmate, Morse ran a series of short experiments. Petitioning the House Committee on commerce for funding, Morse secured the money to test a 50-mile line. The Panic of 1837 and installation problems almost derailed him entirely, but he pushed on. He sent “What hath God wrought” from Washington to Baltimore.</p>
+    <p class="body-copy"><u>1851</u>: The sewing machine was revolutionized by Isaac Singer, who introduced the vertical presser foot, a horizontal table, and a continuous foot treadle. The innovations brought the sewing machine from the factory to the household, which would go on to have a major impact on the home economy for decades to come.</p>
+    <p class="body-copy"><u>1859</u>: George Bissell and Jonathan Eveleth see opportunity in refining crude oil for kerosene lamp light. They turned to Edwin Drake, an unemployed railway conductor and called him “Colonel Drake” to gain confidence from other investors. No one in the world knew how to drill for oil. Drake’s attempts met with failure after failure. Doubters dubbed his work “Drake’s Folly.” Then Drake tried a brilliant casing drill technique, and he hit it, changing the world forever.</p>
+    <p class="body-copy" style="margin-bottom:0;"><u>1869</u>: The Transcontinental Railroad project was a divisive one in the lead up to the Civil War. Lincoln saw the railroad as a vital wartime measure, but he couldn’t afford the material cost for it until after the war ended in 1865. Ultimately, this grand commercial project employed former Union and Confederate soldiers side by side with Irish and Chinese immigrants. The two rail lines were stitching a fractured nation back together, and driving the Golden Spike was the first mass media event in United States history.</p>
+    <div style="clear:both;"></div>
+  </div>
+
+  <!-- Mass Market: 1876-1925 -->
+  <div style="margin-top:28px;">
+    <div style="float:left; width:25%; margin:4px 18px 12px 0;">
+      <img src="../../rsc/electricity.jpg" alt="The early light bulb." width="128"
+           style="display:block; width:100%; height:150px; object-fit:cover; object-position:center;">
+      <span style="display:block; font-family:'Lora',Georgia,serif; font-size:10.5px; font-style:italic; color:#8A7E78; line-height:1.4; margin-top:6px;">
+        The early light bulb.
+      </span>
+    </div>
+    <p style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:600; color:#1A1A1A; line-height:1.3; margin:0 0 4px; letter-spacing:-0.008em;">
+      Mass Market: 1876-1925
+    </p>
+    <p style="font-family:'Lora',Georgia,serif; font-size:14px; font-style:italic; color:#4A3728; line-height:1.5; margin:0 0 14px;">
+      Harnessing assembly lines, mass migration, and Wall Street capital to achieve at scale.
+    </p>
+    <p class="body-copy"><u>1876</u>: Alexander Graham Bell patented and tested his telephone - an invention stemming from his harmonic telegraph experiments. Bell’s invention would be rejected by the Western Union telegraph company as a mere “scientific toy”, but Bell would go on to found his own telephone company, which eventually evolved into AT&T.</p>
+    <p class="body-copy"><u>1886</u>: Coca-Cola was invented as a medicinal tonic and temperance drink in Atlanta. Georgia. Pemberton, a pharmacist, sold the 5-cent drink for headache and fatigue. The beverage would evolve and go on to become the most popular drink in the world.</p>
+    <p class="body-copy"><u>1902</u>: James Cash Penney invests his savings and a large loaned sum in a store that he and his two partners named “The Golden Rule Store.” His business was strictly cash only, devoted to a one-price policy over haggling, and strove for value pricing, despite an opportunity to gouge customers in mining and logging towns. J.C. Penney became a major retail success story.</p>
+    <p class="body-copy"><u>1913</u>: The moving assembly line implemented in Henry Ford’s Highland Park car plant was a tipping point in mass production. The Model T dropped from a 12 hour build time to 90 minutes. Only then was the car able to become an affordable household tool.</p>
+    <p class="body-copy" style="margin-bottom:0;"><u>1920</u>: KDKA (a Westinghouse callsign) began to schedule regular commercial broadcasting to create more demand for items already sold through irregular announcements on radio airwaves. The strategy would change marketing forever.</p>
+    <div style="clear:both;"></div>
+  </div>
+
+  <!-- Pax Americana: 1926-1975 -->
+  <div style="margin-top:28px;">
+    <div style="float:right; width:25%; margin:4px 0 12px 18px;">
+      <img src="../../rsc/old_cars.jpg" alt="Vehicle innovation drives down price of cars - Shaniko, Oregon." width="128"
+           style="display:block; width:100%; height:150px; object-fit:cover; object-position:center;">
+      <span style="display:block; font-family:'Lora',Georgia,serif; font-size:10.5px; font-style:italic; color:#8A7E78; line-height:1.4; margin-top:6px;">
+        Vehicle innovation drives down price of cars - Shaniko, Oregon.
+      </span>
+    </div>
+    <p style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:600; color:#1A1A1A; line-height:1.3; margin:0 0 4px; letter-spacing:-0.008em;">
+      Pax Americana: 1926-1975
+    </p>
+    <p style="font-family:'Lora',Georgia,serif; font-size:14px; font-style:italic; color:#4A3728; line-height:1.5; margin:0 0 14px;">
+      Navigating war and depression to anchor the Western world's postwar prosperity.
+    </p>
+    <p class="body-copy"><u>1930</u>: King Kullen Grocery Co. was founded to provide a place for cash strapped families during the Great Depression to buy basic groceries. It is credited as the world’s first true supermarket, employing high-volume, low-margin pricing on a variety of goods.</p>
+    <p class="body-copy"><u>1940</u>: Packard Motor Car Company agreed to manufacture the highly complex British Rolls-Royce Merlin aircraft engine. Packard engineers spent months completely redrawing 2,000 British blueprints from scratch to adapt them from hand-fitted assembly to American high-speed mass production.</p>
+    <p class="body-copy"><u>1955</u>: Ray Kroc was a 52-year-old milkshake machine salesman struggling to sell his "Multimixers." He saw a small drive-in burger joint in San Bernardino, California running a highly efficient system with a stripped down menu for “speedee” service. Kroc saw the potential for a national franchise and pitched it to the McDonald brothers.</p>
+    <p class="body-copy"><u>1956</u>: The Federal-Aid Highway Act authorized 41,000 miles of controlled-access expressways, an investment of $26 Billion. The move was transformative for modern supply chains and shipping goods across the nation. The system is just over 1% of US road mileage overall, but it came to carry almost 25% of all US traffic. It is estimated that every $1 spent building it returned $6 in production for the economy.</p>
+    <p class="body-copy" style="margin-bottom:0;"><u>1971</u>: The establishment of Amtrak as an inner-city transport alternative put a spotlight on the failing railroad network. It became clear that the overbearing regulations of the ICC were keeping the transportation industry from adapting to the realities of modern markets. In its wake, several legislative moves were made to deregulate the sector and allow the market economy to rule the day.</p>
+    <div style="clear:both;"></div>
+  </div>
+
+  <!-- Digital Curve: 1976-2026 -->
+  <div style="margin-top:28px;">
+    <div style="float:left; width:25%; margin:4px 18px 12px 0;">
+      <img src="../../rsc/macintosh_personal_1984.jpg" alt="Apple’s second attempt at a GUI-based personal computer." width="128"
+           style="display:block; width:100%; height:150px; object-fit:cover; object-position:center;">
+      <span style="display:block; font-family:'Lora',Georgia,serif; font-size:10.5px; font-style:italic; color:#8A7E78; line-height:1.4; margin-top:6px;">
+        Apple’s second attempt at a GUI-based personal computer.
+      </span>
+    </div>
+    <p style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:600; color:#1A1A1A; line-height:1.3; margin:0 0 4px; letter-spacing:-0.008em;">
+      Digital Curve: 1976-2026
+    </p>
+    <p style="font-family:'Lora',Georgia,serif; font-size:14px; font-style:italic; color:#4A3728; line-height:1.5; margin:0 0 14px;">
+      Pursuing value, work, and communication in an era of rapid technological development.
+    </p>
+    <p class="body-copy"><u>1976</u>: Steve Jobs convinces his friend and former classmate, Steve Wozniak, to market his newly designed micro circuit board as a fully assembled unit. They registered the Apple Computer Company, and they pooled $1,300 in working capital to fund it. Apple I was first produced in Jobs’ parents’ garage, and the bare circuit board retailed initially for $666.66. Apple became a tech giant, building computers for the consumer.</p>
+    <p class="body-copy"><u>1991</u>: Tim Berners-Lee posted a summation of the WorldWideWeb Project on the alt.hypertext Usenet newsgroup. The subsequent release of the browser and server code utilized for it laid the groundwork for an open, free, and collaborative community of users to build the web as we know it today.</p>
+    <p class="body-copy"><u>1996</u>: As the first major update to American Telecommunications law in more than 60 years, the Telecommunications Act of 1996 served as a catalyst to the transition from dial-up to high speed broadband connections. Because of these breakthroughs, America dominated the world in internet-based commerce.</p>
+    <p class="body-copy"><u>2008</u>: Early in the year, Brian Chesky and Joe Gebbia partnered with Nathan Bleckarczyk to launch Airbnb, the official launch capitalizing on attendees to the DNC in Denver, Colorado. After a series of creative funding efforts, the platform began to aggressively grow at scale. The platform was the first of a series to define the new “gig economy” – redefining traditional economic and investment systems altogether.</p>
+    <p class="body-copy" style="margin-bottom:0;"><u>2026</u>: The Universal Commerce Protocol was unveiled by Google’s Sundar Pichai alongside a team formed from several adjacent web-commerce companies. The move toward the new UCP standard enabled AI Agentic commercial work on the web using a machine-to-machine security check. The machines could then communicate directly through JSON-RPC data layers, paving the way for an explosion in Agentic Entrepreneurship.</p>
+    <div style="clear:both;"></div>
+  </div>
+
+  <!-- Essay closes — returns to editorial voice after the retrospective -->
+  <p class="body-copy" style="margin-top:28px;">
+    This, of course, is no more than a sampling of the successes and wins our 250 years of history have brought about. The lives, liberties, and pursuits of astounding Americans on through the decades have culminated in a country that still offers the greatest opportunities and freedoms the world has ever had to offer. We should be deeply grateful for shoulders we now are invited to stand on.
+  </p>
+
+  <!-- Pull quote — features the letter's closing line verbatim, per user
+       instruction, to give the reader a visual resting point before the close. -->
+  <div class="pull-quote">
+    <p>"As Americans, commercial opportunities are all around us. The will to seize it is in our blood."</p>
+  </div>
+
+  <p class="body-copy">
+    Follow in the footsteps of the great Makers of our time. Go out and build something incredible. And when you see someone else doing just that, applaud and support them.
+  </p>
+
+  <p class="body-copy" style="margin-bottom:0;">
+    As Americans, commercial opportunities are all around us. The will to seize it is in our blood. <a href="https://www.homefrontmarkets.com/archive" class="read-more">Continue reading at the archive →</a>
+  </p>
+
+</div>
+
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [C] NOTABLE TRENDS — Woven into editorial prose
+     Beehiiv: Text block — no section label, no Section wrapper.
+     The data appears as a natural inflection point in the essay.
+     Left-bordered container treats data as a block quotation
+     from the numbers — consistent with the pull-quote device.
+     The leading stat gets a navy border; the others, muted.
+     Returns to editorial voice before [B].
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+ 
+  <!-- No section label — transitional prose introduces the data -->
+  <!--<p class="body-copy">
+    Meanwhile, the numbers tell their own story. The market does not wait for sentiment to catch up:
+  </p>-->
+ 
+  <!-- Data list — styled as a block notation, not a graphic element.
+       One container, left border, all three stats inside.
+       Keeps the design restrained while giving the data visual weight. -->
+  <!--<div style="border-left:3px solid #1B3A5C; padding:4px 0 4px 20px; margin-bottom:22px;">
+    <p style="font-family:'Inter',Arial,sans-serif; font-size:14px; color:#1A1A1A; line-height:1.78; margin:0;">
+      <strong style="color:#1B3A5C;">↑ 31%</strong> &ensp;Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor, per lorem ipsum initiative tracker Q1 2026.<br>
+      <strong style="color:#1B3A5C;">$2.1B</strong> &ensp;Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore, per Q1 2026 tracker.<br>
+      <strong style="color:#1B3A5C;">14 States</strong> &ensp;Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod, doubling lorem ipsum prior-year rate.
+    </p>
+  </div>-->
+ 
+  <!-- Returns to editorial voice — closes the data detour -->
+  <!--<p class="body-copy" style="margin-bottom:0;">
+    These are not abstractions. Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, the trend is not reversing.
+  </p>-->
+ 
+</div>
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [B] SPARKLOOP REFERRAL — Aside style
+     Beehiiv: Text block (no background color on Section) +
+     SparkLoop native block set to minimal display mode.
+     No box. No color. This reads as a paragraph of the letter,
+     not an ad. The referral feels like the editor passing a note.
+     Sequence: A (story) → C (data) → B (invitation to share) —
+     natural logic: "here's the story, here's why it matters,
+     here's how you can bring someone else in."
+═══════════════════════════════════════════════════════════ -->
+<div class="section-sm" style="padding-top:0; padding-bottom:32px;">
+ 
+  <!-- Plain prose aside — no label, no box, no button. Just a link. -->
+  <p style="font-family:'Lora',Georgia,serif; font-size:15px; color:#4A3728; line-height:1.75; margin:0; padding-top:2px; border-top:1px dashed #D5CEC9;">
+    <em>If this letter landed with you, consider passing it to someone who bleeds, and buys, American.</em>
+    Referring 5 readers earns you <strong>a 10% discount in the coming marketplace;</strong> referrals help this letter reach the readers it was written for.<br>Use the following link to earn your reward: https://www.newsletter.homefrontmarkets.com
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px;">
+<!--<div style="font-family:'Inter',sans-serif; font-size:36px; font-weight:700; color:#1B3A5C; line-height:1; margin-bottom:4px;">
+          {{rp_num_referrals}}
+        </div>
+        <div style="font-family:'Inter',sans-serif; font-size:11px; color:#8A7E78; margin-bottom:14px;">
+          of 20 needed
+        </div>-->
+ </div>
+    <a href="www.newsletter.homefrontmarkets.com" class="btn-blue" style="display:block; text-align:center;">Share and Earn →</a>
+  </p>
+
+    <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15px; padding: 20px;">
+         <!-- Facebook Icon Button -->
+        <a href="https://facebook.com" target="_blank" title="Facebook"
+           style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px; border-radius: 50%; background-color: #1877F2; color: #ffffff; text-decoration: none; font-size: 20px;">
+            <i class="fab fa-facebook-f"><img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/d62bd6a3-d4c1-4d08-ac37-b895494a85bd/Facebook_Logo_2023.png?t=1782497803"; width=25px; height=25px;></img></i>
+        </a>
+
+        <!-- X / Twitter Icon Button -->
+        <a href="https://x.com" target="_blank" title="X (Twitter)"
+           style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px; border-radius: 50%; background-color: #000000; color: #ffffff; text-decoration: none; font-size: 20px;">
+            <i class="fab fa-x-twitter"><img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/58604e06-bbd1-47ba-ba9d-5bd09d5bdc1b/X-Logo-Round-Color.png?t=1782499848"; width=25px; height=25px;></img></i>
+        </a>
+
+        <!-- LinkedIn Icon Button -->
+        <a href="https://linkedin.com" target="_blank" title="LinkedIn"
+           style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px; border-radius: 50%; background-color: #0077B5; color: #ffffff; text-decoration: none; font-size: 20px;">
+            <i class="fab fa-linkedin-in"><img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/f751a2fe-ba49-4b54-bd50-bc9c7f1b69fc/LinkedIn_icon_circle.svg.png?t=1782499848"; width=25px; height=25px;></img></i>
+        </a>
+
+        <!-- YouTube Icon Button -->
+        <a href="https://youtube.com" target="_blank" title="YouTube"
+           style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px; border-radius: 50%; background-color: #FF0000; color: #ffffff; text-decoration: none; font-size: 20px;">
+            <i class="fab fa-youtube"><img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/65ef1093-3f67-4054-b965-05320f03ee54/Antu_youtube-dl.svg.png?t=1782499848"; width=25px; height=25px;></img></i>
+        </a>
+
+</div>
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [D] READER PICK — Personal introduction format
+     Beehiiv: Text block (label + attribution intro) +
+     Image block (full-width, not a card layout) + Text blocks.
+     The reader's name and city are the lede — recognition is
+     the entire point of this section. The product is secondary.
+     Image is full-width here: in a letter, an image presented
+     full-width feels like something worth examining closely.
+     Two links at close: marketplace (navy, primary) and
+     maker application (muted, secondary).
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+ 
+  <span class="lbl">▸ This Week's Reader Find</span>
+  <div class="lbl-rule"></div>
+ 
+  <!-- Reader attribution — the recognition element, set first -->
+  <p style="font-family:'Lora',Georgia,serif; font-size:13.5px; font-style:italic; color:#6B5E54; margin-bottom:16px; line-height:1.5;">
+    We owe our growth and reach to you. <!--<strong style="font-style:normal; color:#1A1A1A; letter-spacing:0.02em;">Marcus T. &nbsp;·&nbsp; Nashville, TN</strong>-->
+  </p>
+ 
+  <!-- Full-width image — editorial presentation, not a product card.
+       In Beehiiv: Image block, width set to full column width. -->
+  <div style="margin:0 -44px 20px; line-height:0; overflow:hidden;">
+    <img
+      src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&h=240&fit=crop&crop=center&auto=format&q=80"
+      alt="Reader-submitted American-made product — placeholder"
+      width="600"
+      style="display:block; width:100%; height:240px; object-fit:cover;">
+  </div>
+ 
+  <!-- Product name as h3 — Lora serif -->
+  <!--<h3 style="font-family:'Lora',Georgia,serif; font-size:17px; font-weight:600; color:#1A1A1A; margin-bottom:10px; line-height:1.35; letter-spacing:-0.008em;">
+    Lorem Ipsum Hand-Stitched Field Journal — Made in Tennessee
+  </h3>-->
+ 
+  <p class="body-copy" style="margin-bottom:18px;">
+    We are always looking for the right businesses to promote and forward to our devoted readers. If you refer us to a business we want to connect with, we'd like to feature you as a shout out right here in the newsletter! We appreciate all you do to help us with our mission.
+  </p>
+ 
+  <!-- Two links: primary marketplace CTA (navy, weighted) +
+       secondary maker application (muted) -->
+  <!--<p style="font-family:'Lora',Georgia,serif; font-size:14px; color:#4A3728; margin:0;">
+    <a href="https://www.homefrontmarkets.com" style="color:#1B3A5C; font-weight:600; text-decoration:none;">Find it in the marketplace →</a>-->
+
+    <p>Are you a maker? Know someone in your hometown that deserves a shout out?</p> 
+    <span style="color:#D5CEC9; margin:0 10px;">|</span>
+    <a href="#" style="font-family:'Inter',Arial,sans-serif; font-size:11.5px; color:#6B5E54; text-decoration:none; letter-spacing:0.02em;">Apply to be featured.</a>
+  </p>
+ 
+</div>
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [G] BY THE NUMBERS — Pull-quote stat format
+     Beehiiv: Section block (background #EEF1F6, padding 0) →
+     Custom HTML block, or native Text block with center
+     alignment + H2 style for the stat number.
+     DESIGN: This is "the only 'design-forward' element" in
+     The Craftsman's Letter (layout guide, §4). It creates the
+     same visual stop as The Dispatch's dark charcoal block —
+     but restrained to match the letter's register.
+     Pale navy tint + centered type vs. dark full-bleed block.
+     Same DNA, different volume. The stat color (#1B3A5C navy)
+     echoes the accent throughout; no red percent sign here.
+═══════════════════════════════════════════════════════════ -->
+<!--<div style="background:#EEF1F6; padding:38px 44px 34px; border-top:1px solid #D4D9E2; border-bottom:1px solid #D4D9E2;">
+ 
+  <span class="lbl" style="text-align:center; display:block; margin-bottom:7px;">▸ By the Numbers</span>
+  <div style="width:40%; height:1px; background:#1B3A5C; margin:0 auto 24px;"></div>-->
+ 
+  <!-- Enormous centered stat — navy, not red; Lora italic context below -->
+  <!--<div style="text-align:center;">
+    <div class="stat-num" style="font-family:'Inter',Arial,sans-serif; font-size:82px; font-weight:700; color:#1B3A5C; line-height:0.9; letter-spacing:-0.04em; margin-bottom:6px;">
+      73<span style="font-size:40px; font-weight:600; color:#2C3F52;">%</span>
+    </div>-->
+ 
+    <!-- Context — Lora italic, centered; smaller than Dispatch version -->
+    <!--<p style="font-family:'Lora',Georgia,serif; font-size:16px; font-style:italic; color:#4A3728; line-height:1.65; max-width:420px; margin:20px auto 14px; text-align:center;">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit amet.
+    </p>-->
+ 
+    <!-- Source citation — muted, small, same as Dispatch -->
+    <!--<p style="font-family:'Inter',Arial,sans-serif; font-size:10px; color:#8A7E78; letter-spacing:0.07em; text-transform:uppercase; text-align:center; margin:0;">
+      Source: Lorem Ipsum Research Institute &nbsp;·&nbsp; Lorem Ipsum Consumer Survey, Q1 2026
+    </p>
+  </div>
+ 
+</div>-->
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [F] MEMBERS-ONLY DEAL — Whispered aside
+     Beehiiv: Text block only — italic paragraph, no Section
+     background, no box, no button. The discount is an
+     insider tip, not a CTA card. The coupon code links
+     directly to the product page so readers can act in one tap.
+     Placement after [G] is deliberate: the stat's intellectual
+     weight makes the discount feel earned, not intrusive.
+     Italics distinguish this paragraph without design overhead.
+═══════════════════════════════════════════════════════════ -->
+<div class="section-sm" style="padding-top:28px; padding-bottom:28px;">
+ 
+  <!-- Hairline separator: thin dashed rule distinguishes the aside
+       from the essay body without requiring a full visual section break -->
+  <!--<p style="font-family:'Lora',Georgia,serif; font-size:14.5px; font-style:italic; color:#4A3728; line-height:1.72; margin:0; padding:16px 0 16px 18px; border-left:2px solid #D4D9E2;">
+    <span style="font-family:'Inter',Arial,sans-serif; font-size:9px; text-transform:uppercase; letter-spacing:0.14em; color:#1B3A5C; font-weight:700; font-style:normal; display:block; margin-bottom:6px;">For Subscribers</span>
+    This week, <strong style="font-style:normal;">Lorem Ipsum Leather Goods Co.</strong> is offering 20% off to Homefront Markets readers through [Date]. Use code <strong style="font-style:normal; letter-spacing:0.08em;">HOMEFRONT20</strong> at checkout.
+    <a href="https://www.homefrontmarkets.com" style="color:#1B3A5C; font-weight:600; font-style:normal; text-decoration:underline;">Shop here →</a>
+    <span style="font-family:'Inter',Arial,sans-serif; font-size:10px; color:#8A7E78; font-style:normal; display:block; margin-top:8px; letter-spacing:0.03em;">One per subscriber. Excludes prior purchases.</span>
+  </p>-->
+ 
+</div>
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [E] COMMUNITY VOTE — Participatory close
+     Beehiiv: Text block (intro) + Native Poll block +
+     Text block (result promise). In the Craftsman's Letter,
+     the poll is framed as an editorial question, not a game.
+     Placement: after the essay and the stat, the reader is
+     invested enough to participate rather than scroll past.
+     Options are simpler and more substantive than The Dispatch's
+     commercial poll — matching the letter's intellectual register.
+═══════════════════════════════════════════════════════════ -->
+<!--<div class="section" style="background:#F5F3EF;">
+ 
+  <span class="lbl">▸ Shape The Topics To Come</span>
+  <div class="lbl-rule"></div>
+ 
+  <p style="font-family:'Inter',Arial,sans-serif; font-size:14.5px; font-weight:700; color:#1A1A1A; margin-bottom:6px; line-height:1.3;">
+    What would be of most interest to you?
+  </p>
+  <p style="font-family:'Lora',Georgia,serif; font-size:13.5px; color:#6B5E54; margin-bottom:22px; line-height:1.6;">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. We'll open next week's letter with the results.
+  </p>-->
+ 
+  <!-- Poll options — simpler, more substantive than Dispatch version.
+       No progress bars here: the native Beehiiv block handles tallying.
+       In the HTML reference, each option is a plain linked block. -->
+  <!--<a href="#" style="display:block; text-decoration:none; border:1.5px solid #D4D9E2; border-left:4px solid #1B3A5C; background:#FFFFFF; padding:13px 16px; margin-bottom:9px; border-radius:2px;">
+    <span style="font-family:'Lora',Georgia,serif; font-size:14px; color:#1A1A1A; font-weight:600;">The history of a single American industry</span>
+  </a>
+  <a href="#" style="display:block; text-decoration:none; border:1.5px solid #D4D9E2; border-left:4px solid #D4D9E2; background:#FFFFFF; padding:13px 16px; margin-bottom:9px; border-radius:2px;">
+    <span style="font-family:'Lora',Georgia,serif; font-size:14px; color:#1A1A1A; font-weight:600;">A maker profile: one craftsman, in depth</span>
+  </a>
+  <a href="#" style="display:block; text-decoration:none; border:1.5px solid #D4D9E2; border-left:4px solid #D4D9E2; background:#FFFFFF; padding:13px 16px; margin-bottom:9px; border-radius:2px;">
+    <span style="font-family:'Lora',Georgia,serif; font-size:14px; color:#1A1A1A; font-weight:600;">The economics of buying domestic</span>
+  </a>
+  <a href="#" style="display:block; text-decoration:none; border:1.5px solid #D4D9E2; border-left:4px solid #D4D9E2; background:#FFFFFF; padding:13px 16px; border-radius:2px;">
+    <span style="font-family:'Lora',Georgia,serif; font-size:14px; color:#1A1A1A; font-weight:600;">A forgotten American brand worth remembering</span>
+  </a>
+ 
+  <p style="font-family:'Lora',Georgia,serif; font-size:12px; font-style:italic; color:#8A7E78; margin-top:14px; letter-spacing:0.02em;">
+    Results shared in next week's letter.
+  </p>
+ 
+</div>-->
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [H] THANK YOU + PLEDGE REMINDER
+     Beehiiv: Text blocks — editorial prose throughout.
+     No table, no columns, no tier graphics. Pledge tiers
+     are described in a single flowing sentence with one link.
+     "The emotional anchor of this layout." (Layout guide, §4)
+     The editor's voice is direct and warm — not a fundraising
+     pitch. Readers who reach this section have read the full
+     letter. They deserve a personal close.
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+ 
+  <span class="lbl">▸ Thank You, Patriot </span>
+  <div class="lbl-rule"></div>
+ 
+  <!-- Editorial prose — 3-4 sentences, editor's voice -->
+  <p class="body-copy">
+    Through our newsletter and online marketplace, we champion American craftspeople. We empower the buyers who support them, too. As someone who subscribes to and follows the content we bring together, you're essential to our mission. Truly, none of this happens without you. Come to see your local, regional, and national community in a new light. There's plenty left to discover. Keep reading. Keep exploring. Grasp a portion of what this remarkable country has to offer.
+  </p>
+ 
+  <!-- Pledge tiers in prose — no graphic, no table.
+       One link serves all three tiers. -->
+  <p class="body-copy" style="margin-bottom:22px;">
+    Homefront Markets is committed to clarity through the HFM Certification brand: <strong>Gold HFM Tier</strong> - their labor and means of production are American; <strong>Silver HFM Tier</strong> - 75%+ of their materials are American; <strong>Bronze HFM Tier</strong> - their employees are American. <a href="#" style="color:#1B3A5C; font-weight:600; text-decoration:underline;">join here →</a>
+  </p>
+ 
+  <!-- Optional navy outline button — available if the inline link
+       doesn't stand out enough in production -->
+  <a href="https://www.newsletter.homefrontmarkets.com" class="btn-dark-outline">Support our Message →</a>
+ 
+</div>
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [J] BEFORE YOU GO — Natural close
+     Beehiiv: Section block (background #F5F3EF) →
+     Text blocks + Button block.
+     The same two-part structure as The Dispatch's Before You Go
+     (archive link + forward prompt) — but written in editorial
+     prose, not labeled subsections. This creates resonance with
+     The Dispatch while honoring the letter's voice.
+     [K] P.S. SMS invite is embedded here as a final paragraph —
+     appropriate for the letter format; does not warrant its
+     own visual section in The Craftsman's Letter.
+═══════════════════════════════════════════════════════════ -->
+<div class="section" style="background:#F5F3EF;">
+ 
+  <span class="lbl">▸ Before You Go</span>
+  <div class="lbl-rule"></div>
+ 
+  <!-- Archive close — "Miss last week?" in editorial voice -->
+  <div style="padding-bottom:20px; border-bottom:1px solid #E0DBD5; margin-bottom:20px;">
+    <span style="font-family:'Inter',Arial,sans-serif; font-size:9.5px; text-transform:uppercase; letter-spacing:0.14em; color:#1B3A5C; font-weight:700; display:block; margin-bottom:7px;">
+      Miss Last Issue?
+    </span>
+    <p style="font-family:'Lora',Georgia,serif; font-size:14px; color:#4A3728; line-height:1.65; margin-bottom:9px;">
+      Learn more about what Homefront Markets is doing to fairly evaluate American-made products and support the makers who create them.
+    </p>
+    <a href="https://www.homefrontmarkets.com/archive/dispatch/how-we-evaluate" style="font-family:'Inter',Arial,sans-serif; font-size:12px; color:#1B3A5C; font-weight:700; text-decoration:none; letter-spacing:0.02em;">Read it in the archive →</a>
+  </div>
+ 
+  <!-- Next issue tease + forward prompt -->
+  <div style="margin-bottom:20px;">
+    <span style="font-family:'Inter',Arial,sans-serif; font-size:9.5px; text-transform:uppercase; letter-spacing:0.14em; color:#3A3530; font-weight:700; display:block; margin-bottom:7px;">
+      Next Publication:
+    </span>
+    <p style="font-family:'Lora',Georgia,serif; font-size:14px; color:#4A3728; line-height:1.65; margin-bottom:16px;">
+      <em>Dive deeper into our process</em> — If you'd appreciate an inside-look at how we assess American-made products, this next issue is one you won't want to miss.
+    </p>
+    <!-- Dark charcoal outline — same visual language as The Dispatch's
+         forward CTA. Identical button class = visual resonance. -->
+    <a href="https://www.homefrontmarkets.com/archive/craftsmans_letter/" class="btn-dark-outline">→ Forward this letter to a friend</a>
+  </div>
+ 
+  <!-- [K] P.S. SMS — final note within the Before You Go section.
+       In The Craftsman's Letter, this is a P.S. paragraph,
+       not a full CTA card. One italic sentence. One link. -->
+  <!--<p style="font-family:'Lora',Georgia,serif; font-size:14px; font-style:italic; color:#6B5E54; margin:18px 0 0 0; padding-top:18px; border-top:1px dashed #D5CEC9; line-height:1.65;">
+    <em>P.S. —</em> Get flash sale alerts and new American-made drops by text before anyone else.
+    <a href="#" style="color:#1B3A5C; font-weight:600; font-style:normal; text-decoration:underline;">Join the SMS list →</a>
+  </p>-->
+ 
+</div>
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [I] QUICK LINKS
+     Beehiiv: Section block (background #1A1A1A) → Text block.
+     Identical to The Dispatch's Quick Links zone — same dark
+     background, same pipe-separated format.
+     Visual resonance: both templates share this "basement"
+     zone as the transition into the footer.
+═══════════════════════════════════════════════════════════ -->
+<!--<div style="background:#1A1A1A; padding:18px 44px;">
+  <p style="font-family:'Inter',Arial,sans-serif; font-size:9.5px; text-transform:uppercase; letter-spacing:0.13em; color:rgba(255,255,255,0.35); margin-bottom:9px; font-weight:700;">
+    Quick Links
+  </p>
+  <p style="font-family:'Inter',Arial,sans-serif; font-size:12px; line-height:1.7;">
+    <a href="https://www.homefrontmarkets.com/" style="color:rgba(255,255,255,0.72); text-decoration:none; font-weight:500;">Marketplace</a>
+    <span style="color:rgba(255,255,255,0.2); margin:0 8px;">|</span>
+    <a href="https://www.newsletter.homefrontmarkets.com/" style="color:rgba(255,255,255,0.72); text-decoration:none; font-weight:500;">Referral Program</a>
+    <span style="color:rgba(255,255,255,0.2); margin:0 8px;">|</span>
+    <a href="https://www.newsletter.homefrontmarkets.com/archive/" style="color:rgba(255,255,255,0.72); text-decoration:none; font-weight:500;">Letter Archive</a>
+    <span style="color:rgba(255,255,255,0.2); margin:0 8px;">|</span>
+    <a href="#" style="color:rgba(255,255,255,0.72); text-decoration:none; font-weight:500;">Partner Newsletters</a>
+  </p>
+</div>-->
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER — Brand quote + legal block
+     Beehiiv: Global Footer in Template Settings.
+     Identical to The Dispatch footer — same background,
+     same quote, same legal structure. The shared footer is
+     the strongest visual DNA between the two templates.
+     Beehiiv auto-generates the unsubscribe/legal text.
+     The brand quote should be the last Section of the email body
+     (dark bg Section block) so it can be styled in Lora italic —
+     Beehiiv's native footer font settings won't allow Lora.
+═══════════════════════════════════════════════════════════ -->
+<!-- <div style="background:#1A1A1A; padding:30px 44px 24px;">
+  <p style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(255,255,255,0.42); text-align:center; margin-bottom:18px; line-height:1.75;">
+    "That the commercial interest of America, by America, for America,<br>shall not perish from the earth."
+  </p>
+  <hr style="border:none; border-top:1px solid rgba(255,255,255,0.08); margin-bottom:18px;">
+  <p style="font-family:'Inter',Arial,sans-serif; font-size:10px; color:rgba(255,255,255,0.28); text-align:center; line-height:1.8; letter-spacing:0.02em;">
+    You're receiving this because you subscribed at homefrontmarkets.com
+    <br>
+    <a href="{{unsubscribe_url}}" style="color:rgba(255,255,255,0.38); text-decoration:underline;">Unsubscribe</a>
+    &nbsp;·&nbsp;
+    <a href="{{subscriber_preferences_url}}" style="color:rgba(255,255,255,0.38); text-decoration:underline;">Manage preferences</a>
+    <br>
+    Homefront Markets &nbsp;·&nbsp; [Street Address] &nbsp;·&nbsp; [City, State ZIP]
+  </p>
+</div>
+ 
+ 
+</div>--><!-- /email-wrapper -->
+</body>
+</html>
