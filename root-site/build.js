@@ -101,6 +101,23 @@ function extractDatePrefix(basename) {
 
 /* ── 1. Read every post source file ── */
 
+/* Posts can live directly in posts/<branch>/ or nested in subfolders (e.g.
+   posts/<branch>/2026/) — organize them however keeps the folder browsable
+   as the archive grows. */
+function collectHtmlFiles(dir) {
+  const results = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name.startsWith("_") || entry.name.startsWith(".")) continue;
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...collectHtmlFiles(full));
+    } else if (entry.isFile() && entry.name.endsWith(".html")) {
+      results.push(full);
+    }
+  }
+  return results;
+}
+
 function readPosts() {
   const posts = [];
 
@@ -108,11 +125,7 @@ function readPosts() {
     const dir = path.join(POSTS_ROOT, branch);
     if (!fs.existsSync(dir)) continue;
 
-    const files = fs.readdirSync(dir)
-      .filter((f) => f.endsWith(".html") && !f.startsWith("_") && !f.startsWith("."));
-
-    for (const file of files) {
-      const fullPath = path.join(dir, file);
+    for (const fullPath of collectHtmlFiles(dir)) {
       const raw = fs.readFileSync(fullPath, "utf8");
       const rel = path.relative(ROOT, fullPath);
 
@@ -153,7 +166,7 @@ function readPosts() {
         fail(`${rel}\n"tags" must be an array of at most 3 short strings.`);
       }
 
-      const basename = path.basename(file, ".html");
+      const basename = path.basename(fullPath, ".html");
       const datePrefix = extractDatePrefix(basename);
       if (datePrefix && datePrefix.iso !== meta.date) {
         fail(`${rel}\nThe date in the filename (${datePrefix.iso}) doesn't match "date" in the metadata block (${meta.date}). Fix whichever one is stale.`);

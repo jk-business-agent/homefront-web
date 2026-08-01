@@ -5,16 +5,18 @@ long-term-relevant version — not the email send) with one small metadata
 block pasted at the very top. The build publishes everything after that
 block **verbatim** as the page; it doesn't rewrite or wrap your HTML.
 
-1. Save your integrated archive-template file into `posts/dispatch/` or
-   `posts/craftsmans_letter/`, named `YYYY-MM-DD_slug.html` — the date
-   prefix is just for your own browsing/sorting in the folder and must
+1. Save your integrated archive-template file into `posts/dispatch/<year>/` or
+   `posts/craftsmans_letter/<year>/` (year = the post's own date — keeps the
+   folder browsable as the archive grows), named `YYYY-MM-DD_slug.html` — the
+   date prefix is just for your own browsing/sorting in the folder and must
    match the `date` in the metadata block (the build checks this and
    fails if they disagree); everything after the date becomes the URL
    slug. e.g.:
-   `posts/craftsmans_letter/2026-07-29_on-the-origin-of-homefront-markets.html` → published at
+   `posts/craftsmans_letter/2026/2026-07-29_on-the-origin-of-homefront-markets.html` → published at
    `/archive/craftsmans_letter/on-the-origin-of-homefront-markets/`
    Use zero-padded month/day (`07`, not `7`) so filenames sort chronologically
-   in a plain alphabetical folder listing.
+   in a plain alphabetical folder listing. (The build scans subfolders at any
+   depth, so this is just a convention, not a requirement.)
 2. Paste this at the very top of the file, above your `<!DOCTYPE html>`, and fill it in:
    ```html
    <!--
