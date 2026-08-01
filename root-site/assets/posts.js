@@ -32,6 +32,16 @@ const HFM_POSTS = [
   },
   {
     branch: "dispatch",
+    vol: 1, no: 4,
+    title: "The Maker Questionnaire",
+    deck: "From the first phone call to the questions we actually ask, here's how a business earns an HFM Certification.",
+    date: "2026-07-29",
+    readMins: 7,
+    url: "/archive/dispatch/the-maker-questionnaire/",
+    tags: ["Certification", "American Made"]
+  },
+  {
+    branch: "dispatch",
     vol: 1, no: 2,
     title: "Evaluating American Made: It's Complicated",
     deck: "What counts as American made? Who decides? What is the HFM Standard?",

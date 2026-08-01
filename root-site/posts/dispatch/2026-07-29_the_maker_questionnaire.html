@@ -1,0 +1,909 @@
+<!--
+{
+  "title": "The Maker Questionnaire",
+  "deck": "From the first phone call to the questions we actually ask, here's how a business earns an HFM Certification.",
+  "date": "2026-07-29",
+  "readMins": 7,
+  "vol": 1,
+  "no": 4,
+  "tags": ["Certification", "American Made"]
+}
+-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Homefront Markets — The Dispatch</title>
+ 
+  <!--
+  ═══════════════════════════════════════════════════════════
+  HOMEFRONT MARKETS — THE DISPATCH
+  Complete Visual Reference Template
+  ═══════════════════════════════════════════════════════════
+ 
+  COLOR PALETTE
+  ─────────────
+  Deep Red (Dispatch accent):    #922B3E
+  Dark Charcoal (stat block):    #2C2824
+  Cream background:              #FAF8F5
+  Section tint:                  #F0EDE8
+  Near-black body:               #1A1A1A
+  Warm mid-gray (dividers):      #E0DBD5
+  Warm text secondary:           #4A3728
+  Muted label gray:              #6B5E54
+ 
+  NOTE: No blue accent in The Dispatch. Navy (#1B3A5C) is
+  reserved for The Craftsman's Letter template.
+ 
+  BEEHIIV IMPLEMENTATION MAP
+  ──────────────────────────
+  This file is a full visual reference. In Beehiiv, each section
+  maps to native blocks as noted in the comments below. Use this
+  HTML file in a browser to review the design, then replicate
+  section by section in Beehiiv's editor.
+ 
+  The Beehiiv "Custom HTML" block is only needed for:
+  — The Referral 2-column layout (if SparkLoop block is too rigid)
+  — The Stat Highlight (BY THE NUMBERS) — dark charcoal bg + large type
+  — The poll vote bars (replace with Beehiiv's native Poll block in production)
+  — The Members-Only Deal card (or Section + Image + Text + Button blocks)
+ 
+  Everything else replicates cleanly with Beehiiv's native blocks.
+  ═══════════════════════════════════════════════════════════
+  -->
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+ 
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #DDD9D3;
+      font-family: Georgia, 'Times New Roman', serif;
+      margin: 0;
+      padding: 32px 0 48px;
+      -webkit-text-size-adjust: 100%;
+    }
+ 
+    /* ── Email shell ── */
+    .email-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #FAF8F5;
+      border-radius: 1px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.14);
+    }
+ 
+    /* ── Section spacing ── */
+    .section    { padding: 34px 44px; }
+    .section-sm { padding: 20px 44px; }
+    .section-lg { padding: 44px 44px; }
+ 
+    /* ── Section label system (F-pattern left anchoring) ──
+       All labels flush left. Accent rule ~40% width pulls
+       the reader's eye back to the left margin — the spine
+       of the F-pattern scan — after each image or stat block. */
+    .lbl {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #922B3E;
+      display: block;
+      margin-bottom: 7px;
+    }
+    .lbl-rule {
+      width: 40%;
+      height: 1px;
+      background: #922B3E;
+      margin-bottom: 18px;
+    }
+ 
+    /* ── White label variant (for dark backgrounds) ── */
+    .lbl-white { color: rgba(255,255,255,0.52); }
+    .lbl-rule-white { background: rgba(255,255,255,0.2); }
+ 
+    /* ── Typography ── */
+    .headline {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #1A1A1A;
+      line-height: 1.23;
+      letter-spacing: -0.022em;
+      margin-bottom: 10px;
+    }
+    .deck {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 15px;
+      font-style: italic;
+      color: #4A3728;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .body-copy {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 15.5px;
+      color: #1A1A1A;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .read-more {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #922B3E;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+    .read-more:hover { text-decoration: underline; }
+ 
+    /* ── Dividers ── */
+    .rule { border: none; border-top: 1px solid #E0DBD5; margin: 0; }
+ 
+    /* ── Buttons ── */
+    .btn-red {
+      display: inline-block;
+      background: #922B3E;
+      color: #fff !important;
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 11px 20px;
+      text-decoration: none !important;
+      border-radius: 2px;
+    }
+    /* Dark charcoal outline — used for the forward/sharing CTA.
+       Visually distinct from red action buttons to signal
+       "this is a sharing action, not a commercial one." */
+    .btn-dark-outline {
+      display: inline-block;
+      border: 1.5px solid #2C2824;
+      color: #2C2824 !important;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 10px 18px;
+      text-decoration: none !important;
+      border-radius: 2px;
+    }
+    .btn-white {
+      display: inline-block;
+      background: #FFFFFF;
+      color: #922B3E !important;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 11px 20px;
+      text-decoration: none !important;
+      border-radius: 2px;
+    }
+    .btn-red-full {
+      display: block;
+      background: #922B3E;
+      color: #fff !important;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 15px 20px;
+      text-decoration: none !important;
+      border-radius: 2px;
+      text-align: center;
+    }
+ 
+    /* ── Responsive ── */
+    @media only screen and (max-width: 480px) {
+      .section      { padding: 26px 20px !important; }
+      .section-sm   { padding: 16px 20px !important; }
+      .section-lg   { padding: 34px 20px !important; }
+      .headline     { font-size: 21px !important; }
+      .stat-num     { font-size: 70px !important; }
+      .ref-col      { display: block !important; width: 100% !important; padding: 0 !important; }
+      .ref-col-r    { text-align: left !important; padding-top: 18px !important; border-left: none !important; }
+      .tier-col     { display: block !important; width: 100% !important; border-right: none !important; padding: 14px 0 !important; border-bottom: 1px solid #E0DBD5 !important; }
+      .pledge-table { display: block !important; }
+    }
+  </style>
+</head>
+ 
+<body>
+<div class="email-wrapper">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+     Beehiiv: Global Header block in Template Settings.
+     Red top border = brand identity line; signals Dispatch format.
+═══════════════════════════════════════════════════════════ -->
+<div style="background:#FAF8F5; border-top:4px solid #922B3E; padding:26px 44px 0;">
+  <div style="text-align:center; margin-bottom:14px;">
+    <a href="https://www.homefrontmarkets.com/archive" style="text-decoration:none; display:inline-block;">
+      <img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/8cff60bc-b7dc-48b1-b88d-ebb8234d1487/hfm-newsletter-logo-1.png?t=1782010879"
+        alt="Homefront Markets"
+        width="315"
+        style="display:inline-block; width:315px; max-width:84%; height:auto;">
+    </a>
+    <div style="font-family:'Lora',Georgia,serif; font-size:15px; font-style:italic; color:#8A7E78; letter-spacing:0.06em; margin-top:9px;">
+      Keep America Working
+    </div>
+  </div>
+ 
+  <!-- Nav bar -->
+  <div style="border-top:1px solid #E0DBD5; padding:12px 0 0; text-align:center;">
+    <span style="font-family:'Inter',sans-serif; font-size:10.5px; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; color:#6B5E54;">
+      <a href="https://www.homefrontmarkets.com" style="color:#6B5E54; text-decoration:none;">Marketplace</a>
+      <span style="color:#D5CECC; margin:0 9px;">|</span>
+      <a href="https://www.homefrontmarkets.com/archive" style="color:#6B5E54; text-decoration:none;">Archive</a>
+      <span style="color:#D5CECC; margin:0 9px;">|</span>
+      <a href="https://www.newsletter.homefrontmarkets.com/" style="color:#922B3E; text-decoration:none; font-weight:700;">Refer &amp; Earn ↗</a>
+    </span>
+  </div>
+</div>
+ 
+<!-- Issue metadata strip -->
+<div style="background:#F0EDE8; border-bottom:1px solid #E0DBD5; padding:8px 44px;">
+  <span style="font-family:'Inter',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.11em; text-transform:uppercase; color:#8A7E78;">
+    Midweek Issue &nbsp;·&nbsp; Vol. 1, No. 4 &nbsp;·&nbsp; [{{current_date_full}}]
+  </span>
+</div>
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [A] THIS WEEK'S FEATURE
+     Beehiiv: Image block (full-width) + Text blocks.
+     F-PATTERN: Hero image anchors the first full-width scan.
+     Headline is the second element read — front-loads the core
+     value proposition in the first 6–8 words. First word of
+     each body paragraph bolded for left-axis vertical scan.
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <span class="lbl">▸ This Week's Feature</span>
+  <div class="lbl-rule"></div>
+ 
+  <!-- Hero image — no image supplied for this slot in this round's content; commented out per user direction (2026-07-31 Maker Questionnaire round) -->
+  <!--
+  <div style="margin:0 -44px 26px; line-height:0; overflow:hidden;">
+    <img
+      src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600&h=280&fit=crop&crop=center&auto=format&q=80"
+      alt="American craftsman at work — placeholder image"
+      width="600"
+      style="display:block; width:100%; height:270px; object-fit:cover; object-position:center;">
+    <div style="background:rgba(26,26,26,0.88); padding:6px 44px;">
+      <span style="font-family:'Inter',sans-serif; font-size:9.5px; color:rgba(255,255,255,0.52); letter-spacing:0.07em; text-transform:uppercase;">
+        Photo: Lorem Ipsum Photography &nbsp;/&nbsp; Homefront Markets
+      </span>
+    </div>
+  </div>
+  -->
+
+  <!-- Headline — no headline/deck supplied in source content; written by the integration agent per explicit user go-ahead (2026-07-31) -->
+  <h2 class="headline">
+    How We Vet a Maker: Inside the HFM Certification Call
+  </h2>
+
+  <p class="deck">
+    From the first phone call to the questions we actually ask, here's how a business earns Bronze, Silver, or Gold under the HFM Certification.
+  </p>
+
+  <!-- Dialogue open — image 75% width, centered above the dialogue -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:20px;">
+    <tr>
+      <td align="center" style="padding-bottom:18px;">
+        <img
+          src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/d0b759cd-98c1-4faa-b8c4-2af8dccb055c/phone_interview.jpg?t=1785539028"
+          alt=""
+          width="75%"
+          style="display:block; width:75%; height:auto; border-radius:2px; object-fit:cover;">
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align:top;">
+        <p class="body-copy" style="margin-bottom:0;">
+          “Hello, this is Faber with Homefront Markets. Am I speaking with the owner?”<br>
+          “Hey. Yeah this is Nick.”<br>
+          “It’s nice to meet you … We’ve featured your business and product on our Newsletter and we would like to offer you the opportunity to earn our HFM certification. Would you be willing to answer a few questions about your business and commitment to American Commerce?”<br>
+          “Go ahead. Shoot.”
+        </p>
+      </td>
+    </tr>
+  </table>
+
+  <p class="body-copy">
+    As an American Buyer, you care about quality. But you also want to support businesses that create quality in the right way – right here in America. We do a lot of work behind the scenes to ensure that you get both. We want to help you see that process a bit better.
+  </p>
+  <p class="body-copy">
+    Our team is doing constant research to uncover those hidden gems. When we find a product, company, or founder that stands out for their commitment to American Making and quality products, we get right to work drafting a feature in our newsletter. We want that information brought to your attention as soon as we’re able to bring it to your inbox.
+  </p>
+  <p class="body-copy">
+    But our evaluation process doesn’t end there. Within a week of publication, our team starts trying to make contact with company management, preferably the owner. We have a specific set of questions – our Maker Questionnaire – designed to help us evaluate them against our HFM Certification standard. Their honest responses to these questions give us the insight we need for a preliminary certification under Bronze, Silver, or Gold.
+  </p>
+  <p class="body-copy">
+    Certified companies are valuable to us as well as our subscribers. We reach regularly for products to feature in coming newsletters that will promote the business of those that are HFM Certified. This is also part of our regular reassessment of their certified status: with every feature posted to the newsletter, we dive deep into a particular product offered by the company. We scour customer reviews, investigate the materials used in production, and ensure that the certification holds up as they suggested initially. We encourage our readers to assist us in keeping the Makers accountable to their claims.
+  </p>
+  <p class="body-copy">
+    Occasionally, our first impression is formed on false information. In other cases, a company’s initial commitment and drive for American-based commerce may have drifted or faded over time. Either way, when Homefront Markets discovers the discrepancy, we prioritize a certification revocation announcement on a future issue of the newsletter. We also want this information brought to your attention as soon as we’re able to bring it to your inbox.
+  </p>
+  <p class="body-copy">
+    You may have a handful of nuanced questions about the HFM Certification we offer. Here are a few common ones we’ll tackle right away, in case you’re also curious about it.
+  </p>
+
+  <p class="body-copy">
+    <em>Is the Bronze Certification inherently less American than the Silver Certification?</em> These certifications are not intended to be ranked against one another, since they are awarded on the dual metric system explained in this prior post. These are simply alternative awards to acknowledge steps in the right direction: labor or material. Gold is the biggest success story because they’ve managed to do both.
+  </p>
+  <p class="body-copy">
+    <em>What about a business that is trying to be an American Maker but doesn’t quite meet the Bronze or Silver standard yet?</em> We reward businesses against clear achievements that are measurable and factual so that our readers, the American Buyers, are not left to wade through the ambiguous. This might mean that Makers who are giving it their best effort are left out of the conversation. But that also means they have something to strive for, and we look forward to featuring them and promoting their business when they make it. Once they have, they can apply for certification at www.homefrontmarkets.com.
+  </p>
+  <p class="body-copy">
+    <em>Does material from U.S. territories count the same as the 50 states?</em> Yes. If the territory in question is an American territory, growth and success in the commerce of that region helps all of us.
+  </p>
+
+  <!-- Banner image — horizontal span, per bracketed instruction -->
+  <div style="margin:0 -44px 26px; line-height:0; overflow:hidden;">
+    <img
+      src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/384ecb0e-fedb-4828-95ca-2574e939a857/raised_hands.jpg?t=1785539031"
+      alt=""
+      width="600"
+      style="display:block; width:100%; height:auto; object-fit:cover; object-position:center;">
+  </div>
+
+  <p class="body-copy">
+    <em>What counts as a U.S. citizen employee?</em> The Department of Labor defines a “U.S. Worker” strictly as a U.S. citizen, U.S. national, permanent resident, refugee, or asylee. So do we.
+  </p>
+  <p class="body-copy">
+    <em>Do you take money from the businesses you certify?</em> We are always working to ensure we can afford to continue to produce the content our readers need, and we are aiming to launch an exclusive HFM marketplace in the coming weeks. To make this possible, we regularly seek to establish affiliate partnerships with companies featured in our newsletter. With that said, those conversations come after they are first featured in the newsletter, not before. Their willingness to pay us for publicity or marketing services is not a prerequisite to their recognition on Homefront Markets. We want to promote American commerce all across the nation, regardless of whether the business can afford to draw up an affiliate agreement with us.
+  </p>
+  <p class="body-copy">
+    <em>What if a business disagrees with the certification you gave them?</em> Feedback on certification status is welcomed and encouraged from American Buyers and American Makers alike, and both in the same place: here. Appeals of this kind are reviewed and will always trigger a re-evaluation of the business’ certification status.
+  </p>
+
+  <p class="body-copy">
+    In order to be transparent about our process, we thought we would append here the full questionnaire we use in direct communication with a company about their certification status. These are the actual questions we ask. Each question will not always be relevant to any given interview, but we’ll provide you with the comprehensive list for your review.
+  </p>
+
+  <p class="body-copy">
+    <strong>The Makers Questionnaire</strong>
+  </p>
+
+  <p class="body-copy" style="margin-bottom:8px;">
+    <strong>Section 1: Structure</strong> <em>(context)</em>
+  </p>
+  <p class="body-copy">
+    What's the legal name of your business, and where is it headquartered?<br>
+    Is the company privately owned, and is majority ownership held by U.S. citizens?<br>
+    Roughly how many people work for the company in total, counting employees and contractors?
+  </p>
+
+  <p class="body-copy" style="margin-bottom:8px;">
+    <strong>Section 2: Workforce</strong>
+  </p>
+  <p class="body-copy">
+    Of your total workforce, how many are classified as employees versus independent contractors or freelancers?<br>
+    Are all of your employees U.S. citizens? If not, roughly how many are, and what's the status of the rest (permanent resident, visa holder, etc.)?<br>
+    Does any part of your workforce, including contractors, freelancers, or customer service, work from outside the United States?<br>
+    Is your product manufactured in-house, or do you outsource production to a third party? If outsourced, where is that manufacturer located, and do you know who they employ?
+  </p>
+
+  <p class="body-copy" style="margin-bottom:8px;">
+    <strong>Section 3: Materials</strong>
+  </p>
+  <p class="body-copy">
+    What are the two or three primary materials that go into your central product?<br>
+    For each of those materials, where do you obtain them? (country, and state if it's domestic)<br>
+    Roughly what percentage of your total material cost or weight comes from U.S. sources?<br>
+    Are there any parts, components, or sub-assemblies in your product that are imported? If so, which ones, and from where?<br>
+    Where does final assembly or manufacturing take place?
+  </p>
+
+  <p class="body-copy" style="margin-bottom:8px;">
+    <strong>Section 4: Verification</strong>
+  </p>
+  <p class="body-copy">
+    Do you have supplier invoices, certificates of origin, or similar paperwork that could confirm where your materials come from if requested?<br>
+    Would you be willing to share payroll records or a signed attestation confirming employee citizenship status?<br>
+    Is there a public statement already on your website or packaging about your hiring or sourcing practices that we could reference?
+  </p>
+
+  <p class="body-copy" style="margin-bottom:8px;">
+    <strong>Section 5: Self-Assessment</strong>
+  </p>
+  <p class="body-copy">
+    Which certification – Bronze, Silver, or Gold – do you believe your business currently qualifies for, and why?<br>
+    Is there anything about your labor or sourcing that you're actively working to change or improve?
+  </p>
+
+  <p class="body-copy" style="margin-bottom:22px;">
+    We hope our process to verify and vet the HFM Certification is clear to you. If you have further questions beyond what has been covered here, please don’t hesitate to contact us.
+  </p>
+
+  <a href="https://www.homefrontmarkets.com/archive" class="read-more">Continue reading at the archive →</a>
+</div>
+ 
+<hr class="rule">
+ 
+ <!-- ═══════════════════════════════════════════════════════════
+     [B] REFER & EARN — SparkLoop referral block
+     Beehiiv: SparkLoop native block inside a Section with
+     background #F0EDE8. Use Custom HTML if SparkLoop's layout
+     is too rigid to achieve the 2-column structure below.
+     F-PATTERN: Copy LEFT (higher visual priority). Count + CTA RIGHT.
+═══════════════════════════════════════════════════════════ -->
+<div style="background:#F0EDE8; padding:24px 44px;">
+  <span class="lbl">▸ Refer &amp; Earn</span>
+  <div class="lbl-rule"></div>
+ 
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <!-- LEFT: Copy — F-pattern priority column -->
+      <td class="ref-col" width="65%" style="vertical-align:middle; padding-right:24px; border-right:1px solid #DDD9D3;">
+        <p style="font-family:'Inter',sans-serif; font-size:14.5px; font-weight:700; color:#1A1A1A; margin-bottom:6px; line-height:1.3;">
+          Know Patriots who want to buy American?
+        </p>
+        <p style="font-family:'Lora',Georgia,serif; font-size:14px; color:#4A3728; line-height:1.6; margin-bottom:0;">
+          Refer <strong>20 friends</strong> and earn <strong>$10 in Market credit</strong>.<br>We reserve the right to verify referrals and cancel rewards in cases of suspected fraud or invalid email addresses.
+        </p>
+	<p style="font-family:'Lora',Georgia,serif; font-size:12px; color:#4A3728; line-height:1.6; margin-bottom:0;">
+          
+        </p>
+      </td>
+      <!-- RIGHT: Count + CTA -->
+      <td class="ref-col ref-col-r" width="35%" style="vertical-align:top; text-align:center; padding-left:24px;">
+        <div style="font-family:'Inter',sans-serif; font-size:9.5px; text-transform:uppercase; letter-spacing:0.12em; color:#8A7E78; margin-bottom:4px; font-weight:600;">
+          referral gift
+        </div>
+        <!--<div style="font-family:'Inter',sans-serif; font-size:36px; font-weight:700; color:#922B3E; line-height:1; margin-bottom:4px;">
+          {{rp_num_referrals}}
+        </div>
+        <div style="font-family:'Inter',sans-serif; font-size:11px; color:#8A7E78; margin-bottom:14px;">
+          of 20 needed
+        </div>-->
+        <div style="background:#DDD9D3; height:4px; border-radius:2px; margin-bottom:16px;">
+          <div style="background:#922B3E; height:4px; width:0%; border-radius:2px;"></div>
+        </div>
+        <a href="https://www.newsletter.homefrontmarkets.com/" class="btn-red" style="display:block; text-align:center;">Reader Share Link →</a>
+    <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 15px; padding: 20px;">
+        
+        <!-- Facebook Icon Button -->
+        <a href="https://facebook.com" target="_blank" title="Facebook"
+           style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px; border-radius: 50%; background-color: #1877F2; color: #ffffff; text-decoration: none; font-size: 20px;">
+            <i class="fab fa-facebook-f"><img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/d62bd6a3-d4c1-4d08-ac37-b895494a85bd/Facebook_Logo_2023.png?t=1782497803"; width=25px; height=25px;></img></i>
+        </a>
+
+        <!-- X / Twitter Icon Button -->
+        <a href="https://x.com" target="_blank" title="X (Twitter)"
+           style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px; border-radius: 50%; background-color: #000000; color: #ffffff; text-decoration: none; font-size: 20px;">
+            <i class="fab fa-x-twitter"><img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/58604e06-bbd1-47ba-ba9d-5bd09d5bdc1b/X-Logo-Round-Color.png?t=1782499848"; width=25px; height=25px;></img></i>
+        </a>
+
+        <!-- LinkedIn Icon Button -->
+        <a href="https://linkedin.com" target="_blank" title="LinkedIn"
+           style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px; border-radius: 50%; background-color: #0077B5; color: #ffffff; text-decoration: none; font-size: 20px;">
+            <i class="fab fa-linkedin-in"><img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/f751a2fe-ba49-4b54-bd50-bc9c7f1b69fc/LinkedIn_icon_circle.svg.png?t=1782499848"; width=25px; height=25px;></img></i>
+        </a>
+
+        <!-- YouTube Icon Button -->
+        <a href="https://youtube.com" target="_blank" title="YouTube"
+           style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px; border-radius: 50%; background-color: #FF0000; color: #ffffff; text-decoration: none; font-size: 20px;">
+            <i class="fab fa-youtube"><img
+        src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/65ef1093-3f67-4054-b965-05320f03ee54/Antu_youtube-dl.svg.png?t=1782499848"; width=25px; height=25px;></img></i>
+        </a>
+
+    </div>
+      </td>
+    </tr>
+  </table>
+<p style="font-family:'Lora',Georgia,serif; font-size:12px; color:#4A3728; line-height:1.6; margin-bottom:0;">
+          Share the following link to earn: https://www.newsletter.homefrontmarkets.com/
+        </p>
+</div>
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [C] NOTABLE TRENDS
+     Beehiiv: Text block with bold formatting, or Columns block.
+     4 data rows: bold red stat + 1-sentence lorem ipsum context.
+═══════════════════════════════════════════════════════════ -->
+<!--<div class="section">
+  <span class="lbl">▸ Notable Trends ↑</span>
+  <div class="lbl-rule"></div>
+ 
+  <div style="padding-bottom:16px; border-bottom:1px solid #E0DBD5; margin-bottom:16px;">
+    <p style="font-family:'Inter',sans-serif; font-size:14px; color:#1A1A1A; line-height:1.6;">
+      <strong style="font-size:15.5px; color:#922B3E;">↑ 31%</strong>&ensp;Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna aliqua per lorem ipsum initiative tracker.
+    </p>
+  </div>
+  <div style="padding-bottom:16px; border-bottom:1px solid #E0DBD5; margin-bottom:16px;">
+    <p style="font-family:'Inter',sans-serif; font-size:14px; color:#1A1A1A; line-height:1.6;">
+      <strong style="font-size:15.5px; color:#922B3E;">$2.1B</strong>&ensp;Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore, per lorem ipsum dolor Q1 2026 tracker.
+    </p>
+  </div>
+  <div style="padding-bottom:16px; border-bottom:1px solid #E0DBD5; margin-bottom:16px;">
+    <p style="font-family:'Inter',sans-serif; font-size:14px; color:#1A1A1A; line-height:1.6;">
+      <strong style="font-size:15.5px; color:#922B3E;">14 States</strong>&ensp;Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna, doubling lorem ipsum prior-year rate.
+    </p>
+  </div>
+  <div>
+    <p style="font-family:'Inter',sans-serif; font-size:14px; color:#1A1A1A; line-height:1.6;">
+      <strong style="font-size:15.5px; color:#922B3E;">Record High</strong>&ensp;Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, lorem ipsum Google Trends analysis.
+    </p>
+  </div>
+</div>-->
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [G] BY THE NUMBERS — Mid-scroll visual anchor
+     Beehiiv: Custom HTML block, or an Image block (design stat
+     graphic externally in Canva at 600px) inside a Section with
+     background #2C2824. No blue in The Dispatch — the dark
+     warm charcoal creates equal contrast for the stat without
+     the navy hue. Red percent sign reinforces brand accent.
+     F-PATTERN: Placed at ~40% scroll depth to intercept the
+     second horizontal scan. Maximum contrast = hard stop.
+     Left-aligned type reinforces the vertical left-axis scan.
+═══════════════════════════════════════════════════════════ -->
+<!--<div style="background:#2C2824; padding:42px 44px 38px;">
+  <span class="lbl lbl-white">▸ By the Numbers</span>
+  <div class="lbl-rule lbl-rule-white"></div>-->
+ 
+  <!-- Enormous stat — red percent sign ties to brand accent -->
+  <!--<div class="stat-num" style="font-family:'Inter',sans-serif; font-size:94px; font-weight:700; color:#FFFFFF; line-height:0.95; letter-spacing:-0.045em; margin-bottom:20px;">
+    73<span style="font-size:46px; font-weight:700; color:#922B3E;">%</span>
+  </div>
+ 
+  <p style="font-family:'Lora',Georgia,serif; font-size:17px; color:rgba(255,255,255,0.86); line-height:1.65; max-width:490px; margin-bottom:16px;">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit amet consectetur.
+  </p>
+  <p style="font-family:'Inter',sans-serif; font-size:10px; color:rgba(255,255,255,0.35); letter-spacing:0.07em; text-transform:uppercase;">
+    Source: Lorem Ipsum Research Institute &nbsp;·&nbsp; Lorem Ipsum Consumer Survey, Q1 2026
+  </p>
+</div>-->
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [D] READER PICK
+     Beehiiv: Image block (left-aligned ~140px) + Text block,
+     or Columns block (1/4 image, 3/4 text).
+     Reader tag (name + city) styled as a magazine byline —
+     recognition content, not UGC filler.
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <span class="lbl">▸ Reader Pick</span>
+  <div class="lbl-rule"></div>
+ 
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <!-- 1:1 square product image, left-anchored -->
+      <td width="144" style="vertical-align:top; padding-right:22px;">
+        <img
+          src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/970eee3f-7202-4414-8ac3-55b384ab8d19/Achievement.jpg?t=1785466877"
+          alt=""
+          width="144" height="144"
+          style="display:block; border-radius:2px; object-fit:cover;">
+      </td>
+      <td style="vertical-align:top;">
+        <!-- Reader attribution — the recognition element -->
+        <div style="font-family:'Inter',sans-serif; font-size:10px; text-transform:uppercase; letter-spacing:0.13em; color:#922B3E; font-weight:700; margin-bottom:7px;">
+          Readers with information to share are worth celebrating.<!--<strong style="color:#1A1A1A; letter-spacing:0.04em;">Marcus T. &nbsp;·&nbsp; Nashville, TN</strong>-->
+        </div>
+        <h3 style="font-family:'Inter',sans-serif; font-size:16px; font-weight:700; color:#1A1A1A; margin-bottom:9px; line-height:1.28; letter-spacing:-0.01em;">
+          We are always looking for the right businesses to promote and forward to our devoted readers. If you refer us to a business we want to connect with, we'd like to feature you as a shout out right here in the newsletter! We appreciate all you do to help us with our mission.
+        </h3>
+        <!--<p style="font-family:'Lora',Georgia,serif; font-size:14px; color:#4A3728; line-height:1.65; margin-bottom:14px;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim commodo laboris.
+        </p>-->
+        <a href="www.homefrontmarkets.com" style="font-family:'Inter',sans-serif; font-size:12px; color:#6B5E54; text-decoration:none; letter-spacing:0.02em;">
+          Are you a maker? Know someone in your hometown that deserves our attention? &nbsp;<span style="color:#922B3E; font-weight:700;">Apply to be featured →</span>
+        </a>
+      </td>
+    </tr>
+  </table>
+</div>
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [E] VOTE: WHAT'S NEXT
+     Beehiiv: Native Poll block (PREFERRED in production —
+     replace this HTML with Beehiiv's poll block). HTML below
+     shows the design goal: vote bars, real-time tallies,
+     left-accented option cards.
+     Placement after D is intentional — warmed-up readers
+     engage 2-3x more with polls than cold-entry readers.
+═══════════════════════════════════════════════════════════ -->
+<!--<div class="section" style="background:#F7F4F0;">
+  <span class="lbl">▸ Vote: What's Next</span>
+  <div class="lbl-rule"></div>
+ 
+  <p style="font-family:'Inter',sans-serif; font-size:14.5px; font-weight:700; color:#1A1A1A; margin-bottom:5px;">
+    Help shape our features in the coming weeks.
+  </p>
+  <p style="font-family:'Lora',Georgia,serif; font-size:13.5px; color:#6B5E54; margin-bottom:22px; line-height:1.55;">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Results update in real time.
+  </p>
+ 
+  <!-- Option 1 — leading, red left accent -->
+  <!--<a href="#" style="display:block; text-decoration:none; border:1.5px solid #E0DBD5; border-left:4px solid #922B3E; background:#FFFFFF; padding:13px 16px; margin-bottom:10px; border-radius:2px;">
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><span style="font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:#1A1A1A;">🏠&nbsp; Home Goods &amp; Kitchen</span></td>
+        <td style="text-align:right; white-space:nowrap;"><span style="font-family:'Inter',sans-serif; font-size:12px; color:#922B3E; font-weight:700;">38% · 214 votes</span></td>
+      </tr>
+    </table>
+    <div style="margin-top:9px; background:#F0EDE8; height:5px; border-radius:3px;">
+      <div style="background:#922B3E; height:5px; width:38%; border-radius:3px;"></div>
+    </div>
+  </a>-->
+ 
+  <!-- Option 2 -->
+  <!--<a href="#" style="display:block; text-decoration:none; border:1.5px solid #E0DBD5; border-left:4px solid #C8BFB8; background:#FFFFFF; padding:13px 16px; margin-bottom:10px; border-radius:2px;">
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><span style="font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:#1A1A1A;">🥾&nbsp; Outdoor &amp; Apparel</span></td>
+        <td style="text-align:right; white-space:nowrap;"><span style="font-family:'Inter',sans-serif; font-size:12px; color:#6B5E54; font-weight:600;">29% · 163 votes</span></td>
+      </tr>
+    </table>
+    <div style="margin-top:9px; background:#F0EDE8; height:5px; border-radius:3px;">
+      <div style="background:#B5AEA8; height:5px; width:29%; border-radius:3px;"></div>
+    </div>
+  </a>-->
+ 
+  <!-- Option 3 -->
+  <!--<a href="#" style="display:block; text-decoration:none; border:1.5px solid #E0DBD5; border-left:4px solid #C8BFB8; background:#FFFFFF; padding:13px 16px; margin-bottom:10px; border-radius:2px;">
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><span style="font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:#1A1A1A;">🔧&nbsp; Tools &amp; Workshop</span></td>
+        <td style="text-align:right; white-space:nowrap;"><span style="font-family:'Inter',sans-serif; font-size:12px; color:#6B5E54; font-weight:600;">22% · 124 votes</span></td>
+      </tr>
+    </table>
+    <div style="margin-top:9px; background:#F0EDE8; height:5px; border-radius:3px;">
+      <div style="background:#B5AEA8; height:5px; width:22%; border-radius:3px;"></div>
+    </div>
+  </a>-->
+ 
+  <!-- Option 4 -->
+  <!--<a href="#" style="display:block; text-decoration:none; border:1.5px solid #E0DBD5; border-left:4px solid #C8BFB8; background:#FFFFFF; padding:13px 16px; border-radius:2px;">
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><span style="font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:#1A1A1A;">🍳&nbsp; Food &amp; Pantry</span></td>
+        <td style="text-align:right; white-space:nowrap;"><span style="font-family:'Inter',sans-serif; font-size:12px; color:#6B5E54; font-weight:600;">11% · 62 votes</span></td>
+      </tr>
+    </table>
+    <div style="margin-top:9px; background:#F0EDE8; height:5px; border-radius:3px;">
+      <div style="background:#B5AEA8; height:5px; width:11%; border-radius:3px;"></div>
+    </div>
+  </a>
+ 
+  <p style="font-family:'Inter',sans-serif; font-size:10.5px; color:#8A7E78; margin-top:14px; letter-spacing:0.03em;">
+    563 total votes &nbsp;·&nbsp; Poll closes [Date] &nbsp;·&nbsp; Results updated in real time
+  </p>
+</div>-->
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [F] MEMBERS-ONLY DEAL
+     Beehiiv: Custom HTML block or Section (red bg) +
+     Image + Text + Button blocks.
+     Intent: insider access, not a coupon flyer.
+     Dashed code box = "this is special." White CTA on red =
+     maximum contrast.
+═══════════════════════════════════════════════════════════ -->
+<!--<div style="background:#922B3E; padding:36px 44px 32px;">
+  <span class="lbl lbl-white">▸ Members-Only Deal</span>
+  <div class="lbl-rule lbl-rule-white"></div>
+ 
+  <div style="font-family:'Inter',sans-serif; font-size:10px; text-transform:uppercase; letter-spacing:0.14em; color:rgba(255,255,255,0.6); font-weight:700; margin-bottom:9px;">
+    Subscriber Exclusive &nbsp;·&nbsp; This Week Only
+  </div>
+  <h3 style="font-family:'Inter',sans-serif; font-size:24px; font-weight:700; color:#FFFFFF; margin-bottom:8px; line-height:1.2; letter-spacing:-0.015em;">
+    20% Off Lorem Ipsum Leather Goods Co.
+  </h3>
+  <p style="font-family:'Lora',Georgia,serif; font-size:14.5px; color:rgba(255,255,255,0.82); line-height:1.6; margin-bottom:24px; max-width:440px;">
+    Hello Patriot, sed do eiusmod tempor incididunt ut labore et dolore magna. Lorem ipsum commodo consequat checkout dolor sit amet.
+  </p>
+ 
+  <table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td style="padding-right:16px; vertical-align:middle;">
+        <div style="display:inline-block; background:rgba(255,255,255,0.12); border:1.5px dashed rgba(255,255,255,0.45); padding:10px 20px; border-radius:2px;">
+          <span style="font-family:'Inter',sans-serif; font-size:18px; font-weight:700; color:#FFFFFF; letter-spacing:0.12em;">HOMEFRONT20</span>
+        </div>
+      </td>
+      <td style="vertical-align:middle;">
+        <a href="https://www.homefrontmarkets.com" class="btn-white">Shop Now →</a>
+      </td>
+    </tr>
+  </table>
+ 
+  <p style="font-family:'Inter',sans-serif; font-size:10px; color:rgba(255,255,255,0.35); margin-top:14px; letter-spacing:0.04em;">
+    Lorem ipsum [Date]. Lorem ipsum dolor sit amet per subscriber. Excludes lorem ipsum and prior purchases.
+  </p>
+</div>-->
+ 
+<hr class="rule">
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [H] THANK YOU, PATRIOTS + PLEDGE TIERS
+     Beehiiv: Text block + Columns block (3-col for tiers).
+     Tone: warm, editorial, personal. Not transactional.
+═══════════════════════════════════════════════════════════ -->
+<div class="section">
+  <span class="lbl">▸ Thank You, Patriot,</span>
+  <div class="lbl-rule"></div>
+ 
+  <p class="body-copy" style="margin-bottom:24px;">
+    Through our newsletter and digital marketplace, we hope to empower American makers and the American buyers that sustain them. As a subscriber and reader of the content we curate, you are a key player in making it possible for us to do what we do. Discover a deeper appreciation for your local, regional, and national community. Continue to read and learn with us about all that this great country has to offer.
+  </p>
+ 
+  <div style="border-top:1px solid #E0DBD5; padding-top:20px;">
+    <p style="font-family:'Inter',sans-serif; font-size:10px; text-transform:uppercase; letter-spacing:0.12em; color:#8A7E78; margin-bottom:16px; font-weight:700;">
+      Support the Mission
+    </p>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" class="pledge-table">
+      <tr>
+        <!-- Bronze -->
+        <td class="tier-col" width="33.3%" style="vertical-align:top; padding-right:16px; border-right:1px solid #E0DBD5;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:700; color:#8B6552; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">
+            <img src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/9da59b43-584e-427b-9eb9-de7033cf6782/HFM_Medal_Bronze.png?t=1785430679" alt="Bronze" width="16" height="16" style="display:inline-block; vertical-align:middle; margin-right:4px; border:0;"> Bronze
+          </div>
+          <p style="font-family:'Inter',sans-serif; font-size:12px; color:#4A3728; line-height:1.6; margin-bottom:8px;">
+            American hands. Every employee is a U.S. citizen, start to finish.
+          </p>
+        </td>
+        <!-- Silver -->
+        <td class="tier-col" width="33.3%" style="vertical-align:top; padding:0 16px; border-right:1px solid #E0DBD5;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:700; color:#6B7280; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">
+            <img src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/b4c6e09a-b626-4603-a7de-363b0f444de8/HFM_Medal_Silver.png?t=1785430679" alt="Silver" width="16" height="16" style="display:inline-block; vertical-align:middle; margin-right:4px; border:0;"> Silver
+          </div>
+          <p style="font-family:'Inter',sans-serif; font-size:12px; color:#4A3728; line-height:1.6; margin-bottom:8px;">
+            American materials. 75% or more of all product materials used are sourced from the United States and its territories, regardless of who's on the payroll.
+          </p>
+        </td>
+        <!-- Gold -->
+        <td class="tier-col" width="33.3%" style="vertical-align:top; padding-left:16px;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:700; color:#92741A; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">
+            <img src="https://beehiiv-images-production.s3.amazonaws.com/uploads/asset/file/6a83d1d2-7c69-49e1-a3b7-897ec5f6bd3f/HFM_Medal_Gold.png?t=1785430679" alt="Gold" width="16" height="16" style="display:inline-block; vertical-align:middle; margin-right:4px; border:0;"> Gold
+          </div>
+          <p style="font-family:'Inter',sans-serif; font-size:12px; color:#4A3728; line-height:1.6; margin-bottom:8px;">
+            Of America, By America, For America. All U.S. workers; all U.S. materials. (Complies with the FTC’s “all or virtually all” standard by default).
+          </p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [J] BEFORE YOU GO
+     Beehiiv: Text blocks inside a Section with tint bg.
+     Forward CTA uses dark charcoal outline — distinct from
+     all red buttons, signals sharing action vs. commerce.
+═══════════════════════════════════════════════════════════ -->
+<div class="section" style="background:#F7F4F0;">
+  <span class="lbl">▸ Before You Go</span>
+  <div class="lbl-rule"></div>
+ 
+  <!-- Miss last week? -->
+  <div style="padding-bottom:20px; border-bottom:1px solid #E0DBD5; margin-bottom:20px;">
+    <span style="font-family:'Inter',sans-serif; font-size:9.5px; text-transform:uppercase; letter-spacing:0.14em; color:#922B3E; font-weight:700; display:block; margin-bottom:6px;">
+      Miss Last Week?
+    </span>
+    <p style="font-family:'Lora',Georgia,serif; font-size:14px; color:#4A3728; line-height:1.65; margin-bottom:8px;">
+      If you'd like to browse over American successes across the last 25 decades, check out our most recent issue in the Craftsman's Archive.
+    </p>
+    <a href="https://www.homefrontmarkets.com/archive/craftsman/" style="font-family:'Inter',sans-serif; font-size:12px; color:#922B3E; font-weight:700; text-decoration:none; letter-spacing:0.02em;">Read it in the archive →</a>
+  </div>
+ 
+  <!-- Next week tease -->
+  <div>
+    <span style="font-family:'Inter',sans-serif; font-size:9.5px; text-transform:uppercase; letter-spacing:0.14em; color:#3A3530; font-weight:700; display:block; margin-bottom:6px;">
+      Next Issue:
+    </span>
+    <p style="font-family:'Lora',Georgia,serif; font-size:14px; color:#4A3728; line-height:1.65; margin-bottom:16px;">
+      <em><a href="https://www.homefrontmarkets.com" style="color:#922B3E; text-decoration:none;">Maxxing on Referrals</a></em> — how subscribers unlock exclusive deals by referring the Patriots in their life who want more content like this.
+    </p>
+    <!-- Forward CTA — dark charcoal outline signals sharing, not commerce -->
+    <a href="https://www.homefrontmarkets.com/archive/craftsman/" class="btn-dark-outline">→ Forward this issue to a friend</a>
+  </div>
+</div>
+ 
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [K] TEXT ALERTS — Elevated CTA card
+     Beehiiv: Custom HTML block or Section with #F0EDE8 bg +
+     Text + Button blocks. Redesigned from understated P.S.
+     to a proper CTA card with visual weight, prominent icon,
+     large headline, and full-width button.
+═══════════════════════════════════════════════════════════ -->
+<!--<div style="background:#F0EDE8; border-top:3px solid #922B3E; border-bottom:3px solid #922B3E; padding:32px 44px;">
+  <span class="lbl">▸ Text Alerts</span>
+  <div class="lbl-rule"></div>-->
+ 
+  <!-- Large icon — creates visual weight above the headline -->
+  <!--<div style="font-size:34px; line-height:1; margin-bottom:12px;">📱</div>-->
+ 
+  <!-- Headline — notably larger than section body copy, signals importance -->
+  <!--<h3 style="font-family:'Inter',sans-serif; font-size:22px; font-weight:700; color:#1A1A1A; margin-bottom:10px; line-height:1.2; letter-spacing:-0.015em;">
+    Flash Sales. New Drops. Text-First.
+  </h3>
+ 
+  <p style="font-family:'Lora',Georgia,serif; font-size:14.5px; color:#4A3728; line-height:1.65; margin-bottom:22px;">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit — sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum nostrud exercitation ullamco laboris nisi ut aliquip commodo.
+  </p>-->
+ 
+  <!-- Full-width button — gives the CTA maximum visual presence -->
+  <!--<a href="#" class="btn-red-full">Join the SMS List →</a>
+ 
+  <p style="font-family:'Inter',sans-serif; font-size:10.5px; color:#8A7E78; margin-top:12px; text-align:center; letter-spacing:0.03em;">
+    Lorem ipsum dolor sit amet. No spam, ever. Lorem ipsum opt-out any time.
+  </p>
+</div>-->
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     [I] QUICK LINKS
+     Beehiiv: Text block with inline hyperlinks.
+     Dark background = visual "basement" — clearly signals
+     transition from main content to footer zone.
+═══════════════════════════════════════════════════════════ -->
+<!--<div style="background:#1A1A1A; padding:18px 44px;">
+  <p style="font-family:'Inter',sans-serif; font-size:9.5px; text-transform:uppercase; letter-spacing:0.13em; color:rgba(255,255,255,0.35); margin-bottom:9px; font-weight:700;">
+    Quick Links
+  </p>
+  <p style="font-family:'Inter',sans-serif; font-size:12px; line-height:1.7;">
+    <a href="https://www.homefrontmarkets.com/" style="color:rgba(255,255,255,0.72); text-decoration:none; font-weight:500;">Marketplace</a>
+    <span style="color:rgba(255,255,255,0.2); margin:0 8px;">|</span>
+    <a href="https://www.newsletter.homefrontmarkets.com/" style="color:rgba(255,255,255,0.72); text-decoration:none; font-weight:500;">Referral Program</a>
+    <span style="color:rgba(255,255,255,0.2); margin:0 8px;">|</span>
+    <a hrefhttps://www.homefrontmarkets.com/archive/" style="color:rgba(255,255,255,0.72); text-decoration:none; font-weight:500;">The Archive</a>
+    <span style="color:rgba(255,255,255,0.2); margin:0 8px;">|</span>
+    <a href="#" style="color:rgba(255,255,255,0.72); text-decoration:none; font-weight:500;">Partner Newsletters</a>
+  </p>
+</div>-->
+ 
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     Beehiiv: Global Footer in Template Settings.
+     Beehiiv auto-generates the legal unsubscribe block.
+═══════════════════════════════════════════════════════════ -->
+<!--<div style="background:#1A1A1A; padding:30px 44px 24px;">
+  <p style="font-family:'Lora',Georgia,serif; font-size:13px; font-style:italic; color:rgba(255,255,255,0.42); text-align:center; margin-bottom:18px; line-height:1.75;">
+    "That business of America, by America, for America,<br>shall not perish from the earth."
+  </p>
+  <hr style="border:none; border-top:1px solid rgba(255,255,255,0.08); margin-bottom:18px;">
+  <p style="font-family:'Inter',sans-serif; font-size:10px; color:rgba(255,255,255,0.28); text-align:center; line-height:1.8; letter-spacing:0.02em;">
+    You're receiving this because you subscribed at homefrontmarkets.com
+    <br>
+    <a href="{{unsubscribe_url}}" style="color:rgba(255,255,255,0.38); text-decoration:underline;">Unsubscribe</a>
+    &nbsp;·&nbsp;
+    <a href="{{subscriber_preferences_url}}" style="color:rgba(255,255,255,0.38); text-decoration:underline;">Manage preferences</a>
+    <br>
+    Homefront Markets &nbsp;·&nbsp; [Street Address] &nbsp;·&nbsp; [City, State ZIP]
+  </p>
+</div>
+ 
+ 
+</div>--><!-- /email-wrapper -->
+</body>
+</html>
