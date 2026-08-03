@@ -91,7 +91,8 @@ Data source: /assets/posts.js filtered to craftsmans_letter.
 
   /* ── The ledger of letters — typography only, thin rules ── */
   .letter{display:block;text-decoration:none;color:var(--ink);
-       padding:28px 0 28px 18px;border-bottom:1px solid var(--divider);
+       padding:28px 0 28px 18px;margin-bottom:6px;
+       border-bottom:1px solid var(--divider);
        border-left:3px solid var(--navy)}
   .letter .no{font-family:'Inter',sans-serif;font-size:10px;font-weight:700;
        letter-spacing:.16em;text-transform:uppercase;color:var(--navy);
@@ -206,7 +207,7 @@ Data source: /assets/posts.js filtered to craftsmans_letter.
 
   function entry(p) {
     return '<a class="letter" href="' + p.url + '">' +
-      '<span class="no">Letter No. ' + hfmRoman(p.no) + '</span>' +
+      '<span class="no">Publication No. ' + hfmRoman(p.no) + '</span>' +
       '<h3>' + p.title + '</h3>' +
       '<p>' + p.deck + '</p>' +
       '<span class="meta">' + hfmFormatDate(p.date) +
