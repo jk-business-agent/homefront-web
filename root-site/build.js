@@ -222,6 +222,7 @@ function patchHead(page, post) {
   const canonical = `${SITE_URL}/archive/${post.branch}/${post.slug}/`;
   const titleTag = `<title>${escapeHtml(post.title)} — ${BRANCHES[post.branch].name} — Homefront Markets</title>`;
   const metaTags = [
+    `<link rel="icon" type="image/png" href="/assets/HFM_Favicon.png">`,
     `<meta name="description" content="${escapeHtml(post.deck)}">`,
     `<link rel="canonical" href="${canonical}">`,
     `<meta property="og:type" content="article">`,
@@ -231,6 +232,7 @@ function patchHead(page, post) {
   ].join("\n  ");
 
   let out = page.replace(/<meta\s+name=["']description["'][^>]*>\s*/i, "");
+  out = out.replace(/<link\s+rel=["']icon["'][^>]*>\s*/i, "");
 
   if (/<title>[\s\S]*?<\/title>/i.test(out)) {
     out = out.replace(/<title>[\s\S]*?<\/title>/i, `${titleTag}\n  ${metaTags}`);
