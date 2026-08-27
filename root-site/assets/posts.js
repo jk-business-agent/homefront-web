@@ -11,8 +11,18 @@
 
 const HFM_POSTS = [
   {
+    branch: "dispatch",
+    vol: 1, no: 5,
+    title: "Stripling's: Three Generations, One Recipe",
+    deck: "Doing meat the right way - one whole hot hog at a time.",
+    date: "2026-08-25",
+    readMins: 4,
+    url: "/archive/dispatch/striplings/",
+    tags: ["Food & Beverage", "American Made"]
+  },
+  {
     branch: "craftsmans_letter",
-    vol: 1, no: 1,
+    vol: 1, no: 2,
     title: "On the Origin of Homefront Markets",
     deck: "Why we do all of this — and how to join us.",
     date: "2026-07-29",
@@ -22,7 +32,7 @@ const HFM_POSTS = [
   },
   {
     branch: "craftsmans_letter",
-    vol: 1, no: 3,
+    vol: 1, no: 4,
     title: "250 Years of Excellence in Commerce",
     deck: "Twenty-five pivotal moments: one for nearly every decade since 1776 — that built the American marketplace we inherited.",
     date: "2026-07-29",
@@ -32,7 +42,7 @@ const HFM_POSTS = [
   },
   {
     branch: "dispatch",
-    vol: 1, no: 4,
+    vol: 1, no: 3,
     title: "The Maker Questionnaire",
     deck: "From the first phone call to the questions we actually ask, here's how a business earns an HFM Certification.",
     date: "2026-07-29",
@@ -42,7 +52,7 @@ const HFM_POSTS = [
   },
   {
     branch: "dispatch",
-    vol: 1, no: 2,
+    vol: 1, no: 1,
     title: "Evaluating American Made: It's Complicated",
     deck: "What counts as American made? Who decides? What is the HFM Standard?",
     date: "2026-07-29",
