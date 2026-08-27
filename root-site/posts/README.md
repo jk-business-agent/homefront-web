@@ -32,9 +32,12 @@ block **verbatim** as the page; it doesn't rewrite or wrap your HTML.
    -->
    ```
    - `title`, `deck`, `date` (`YYYY-MM-DD`), `readMins`, `vol`, `no` — all required.
-   - `vol`/`no` must match whatever issue number is already written into the
-     page itself (e.g. "Letter No. 1") — the build does **not** compute this
-     for you, so the summary card and the page always agree.
+   - `vol`/`no`/`date` are also what appear in the page's own "Vol. X, No. Y ·
+     Month Day, Year" issue-strip line — the build finds that line (by its
+     `&nbsp;·&nbsp;` separators) and overwrites its Vol./No./date from this
+     metadata block on every run, so you don't need to hand-type it to match
+     and it can't drift out of sync. Just make sure the line still has those
+     separators; if the build can't find it, it'll warn (not fail).
    - `tags` — optional, up to 3.
    - Do not set `branch` — it's derived from which folder the file is in.
 3. Use **absolute** paths for any images/assets in the page (e.g.

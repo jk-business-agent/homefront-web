@@ -22,20 +22,10 @@ const HFM_POSTS = [
   },
   {
     branch: "craftsmans_letter",
-    vol: 1, no: 2,
-    title: "On the Origin of Homefront Markets",
-    deck: "Why we do all of this — and how to join us.",
-    date: "2026-07-29",
-    readMins: 8,
-    url: "/archive/craftsmans_letter/on-the-origin-of-homefront-markets/",
-    tags: ["Origin", "Mission"]
-  },
-  {
-    branch: "craftsmans_letter",
     vol: 1, no: 4,
     title: "250 Years of Excellence in Commerce",
     deck: "Twenty-five pivotal moments: one for nearly every decade since 1776 — that built the American marketplace we inherited.",
-    date: "2026-07-29",
+    date: "2026-08-20",
     readMins: 10,
     url: "/archive/craftsmans_letter/250-years-of-excellence/",
     tags: ["History", "American Commerce"]
@@ -45,17 +35,27 @@ const HFM_POSTS = [
     vol: 1, no: 3,
     title: "The Maker Questionnaire",
     deck: "From the first phone call to the questions we actually ask, here's how a business earns an HFM Certification.",
-    date: "2026-07-29",
+    date: "2026-08-18",
     readMins: 7,
     url: "/archive/dispatch/the-maker-questionnaire/",
     tags: ["Certification", "American Made"]
+  },
+  {
+    branch: "craftsmans_letter",
+    vol: 1, no: 2,
+    title: "On the Origin of Homefront Markets",
+    deck: "Why we do all of this — and how to join us.",
+    date: "2026-08-13",
+    readMins: 8,
+    url: "/archive/craftsmans_letter/on-the-origin-of-homefront-markets/",
+    tags: ["Origin", "Mission"]
   },
   {
     branch: "dispatch",
     vol: 1, no: 1,
     title: "Evaluating American Made: It's Complicated",
     deck: "What counts as American made? Who decides? What is the HFM Standard?",
-    date: "2026-07-29",
+    date: "2026-08-11",
     readMins: 6,
     url: "/archive/dispatch/how-we-evaluate/",
     tags: ["Evaluation", "Manufacturing", "Craftsmanship"]

@@ -242,6 +242,42 @@ function patchHead(page, post) {
   return out;
 }
 
+/* ── 3b. Sync the hand-typed issue-strip (Vol./No./date) to the metadata ──
+   Every post's template has one line like:
+     Midweek Issue &nbsp;·&nbsp; Vol. 1, No. 5 &nbsp;·&nbsp; [August 25, 2026]
+   or:
+     Publication No. 3 &nbsp;·&nbsp; Vol. 1 &nbsp;·&nbsp; August 20, 2026
+   That line is otherwise hand-typed and drifts from the metadata block above
+   it. Find it via the "&nbsp;·&nbsp; ... Month Day, Year" shape it already
+   shares across both templates, then overwrite just the Vol./No./date
+   numbers on that one line — never anything else in the page — so the
+   metadata block stays the single source of truth. */
+
+const ISSUE_STRIP_LINE = /^.*&nbsp;·&nbsp;.*?(\[?)([A-Z][a-z]+ \d{1,2}, \d{4})(\]?).*$/m;
+
+function formatIssueDate(iso) {
+  const d = new Date(iso + "T12:00:00");
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+}
+
+function patchIssueStrip(page, post) {
+  const m = page.match(ISSUE_STRIP_LINE);
+  if (!m) {
+    warn(`${post.sourceFile} — couldn't find the "Vol./No./date" issue-strip line to sync with the metadata block. Double check it still contains the usual "&nbsp;·&nbsp;" separators.`);
+    return page;
+  }
+
+  const [openBracket, , closeBracket] = [m[1], m[2], m[3]];
+  const newDate = `${openBracket}${formatIssueDate(post.date)}${closeBracket}`;
+
+  let line = m[0];
+  line = line.replace(/\[?[A-Z][a-z]+ \d{1,2}, \d{4}\]?/, newDate);
+  line = line.replace(/Vol\.\s*\d+/, `Vol. ${post.vol}`);
+  line = line.replace(/No\.\s*\d+/, `No. ${post.no}`);
+
+  return page.slice(0, m.index) + line + page.slice(m.index + m[0].length);
+}
+
 /* ── 4. Write pages, prune stale ones ── */
 
 function writePages(posts) {
@@ -262,7 +298,7 @@ function writePages(posts) {
   for (const p of posts) {
     const outDir = path.join(ARCHIVE_ROOT, p.branch, p.slug);
     fs.mkdirSync(outDir, { recursive: true });
-    fs.writeFileSync(path.join(outDir, "index.html"), patchHead(p.page, p));
+    fs.writeFileSync(path.join(outDir, "index.html"), patchHead(patchIssueStrip(p.page, p), p));
   }
 }
 
