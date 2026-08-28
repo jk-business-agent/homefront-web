@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "craftsmans_letter",
+    vol: 1, no: 6,
+    title: "The Patent Clause and our Right to Create",
+    deck: "This is the story of August 18th, 1787.",
+    date: "2026-08-27",
+    readMins: 3,
+    url: "/archive/craftsmans_letter/the-patent-clause/",
+    tags: ["History", "American Founding"]
+  },
+  {
     branch: "dispatch",
     vol: 1, no: 5,
     title: "Stripling's: Three Generations, One Recipe",
