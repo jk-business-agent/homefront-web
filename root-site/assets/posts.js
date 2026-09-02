@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "dispatch",
+    vol: 1, no: 7,
+    title: "Koia: The Independent Protein Drink",
+    deck: "Sometimes, business on your own terms is worth the hard road",
+    date: "2026-09-01",
+    readMins: 4,
+    url: "/archive/dispatch/koia/",
+    tags: ["Food & Beverage", "Manufacturing"]
+  },
+  {
     branch: "craftsmans_letter",
     vol: 1, no: 6,
     title: "The Patent Clause and our Right to Create",
