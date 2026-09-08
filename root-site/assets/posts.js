@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "craftsmans_letter",
+    vol: 1, no: 8,
+    title: "Property: Founding an American Philosophy",
+    deck: "What can we learn from beliefs about property ownership in 1787?",
+    date: "2026-09-03",
+    readMins: 3,
+    url: "/archive/craftsmans_letter/right-to-property/",
+    tags: ["History", "American Founding"]
+  },
+  {
     branch: "dispatch",
     vol: 1, no: 7,
     title: "Koia: The Independent Protein Drink",
