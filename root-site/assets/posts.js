@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "dispatch",
+    vol: 1, no: 9,
+    title: "Laid Off, Hired Back",
+    deck: "Most apparel companies this size don't own a foot of factory floor.",
+    date: "2026-09-08",
+    readMins: 4,
+    url: "/archive/dispatch/buck-mason/",
+    tags: ["Apparel", "Manufacturing"]
+  },
+  {
     branch: "craftsmans_letter",
     vol: 1, no: 8,
     title: "Property: Founding an American Philosophy",
