@@ -12,6 +12,16 @@
 const HFM_POSTS = [
   {
     branch: "dispatch",
+    vol: 1, no: 10,
+    title: "Ashes to Paper",
+    deck: "Thirty of the plant's thirty-six buildings were gone, along with every converting line that turned raw paper rolls into something you could actually buy.",
+    date: "2026-09-15",
+    readMins: 4,
+    url: "/archive/dispatch/marcal/",
+    tags: ["Manufacturing", "Home Goods"]
+  },
+  {
+    branch: "dispatch",
     vol: 1, no: 9,
     title: "Laid Off, Hired Back",
     deck: "Most apparel companies this size don't own a foot of factory floor.",
