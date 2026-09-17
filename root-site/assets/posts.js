@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "craftsmans_letter",
+    vol: 1, no: 11,
+    title: "The Patent Franklin Never Filed",
+    deck: "The least he could do was pay it forward.",
+    date: "2026-09-17",
+    readMins: 4,
+    url: "/archive/craftsmans_letter/franklin-patent-free/",
+    tags: ["History", "American Founding"]
+  },
+  {
     branch: "dispatch",
     vol: 1, no: 10,
     title: "Ashes to Paper",
