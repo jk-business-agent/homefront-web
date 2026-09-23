@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "dispatch",
+    vol: 1, no: 12,
+    title: "Cheaper Box, Same Benefit",
+    deck: "This is the part when you should put the overpriced Benadryl back.",
+    date: "2026-09-22",
+    readMins: 3,
+    url: "/archive/dispatch/perrigo/",
+    tags: ["Manufacturing", "Healthcare"]
+  },
+  {
     branch: "craftsmans_letter",
     vol: 1, no: 11,
     title: "The Patent Franklin Never Filed",
