@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "craftsmans_letter",
+    vol: 1, no: 13,
+    title: "Jefferson's Notes on Virginia",
+    deck: "Obtaining a moose is such a strange way to win an argument.",
+    date: "2026-09-24",
+    readMins: 5,
+    url: "/archive/craftsmans_letter/notes-on-virginia/",
+    tags: ["History", "American Founding"]
+  },
+  {
     branch: "dispatch",
     vol: 1, no: 12,
     title: "Cheaper Box, Same Benefit",
