@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "craftsmans_letter",
+    vol: 1, no: 15,
+    title: "Hamilton's Industrial Nationalism",
+    deck: "It was the guarantee that a nation which had just fought off one empire wouldn't spend the next fifty years dependent on other empirical interests.",
+    date: "2026-10-01",
+    readMins: 4,
+    url: "/archive/craftsmans_letter/hamilton-and-industry/",
+    tags: ["History", "American Founding"]
+  },
+  {
     branch: "dispatch",
     vol: 1, no: 14,
     title: "Lavender and Origins",
