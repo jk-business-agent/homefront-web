@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "dispatch",
+    vol: 1, no: 14,
+    title: "Lavender and Origins",
+    deck: "We'll take a business that answers that question over one that prints \"natural\" on a label and hopes nobody asks further.",
+    date: "2026-09-29",
+    readMins: 3,
+    url: "/archive/dispatch/8days-botanicals/",
+    tags: ["Skincare", "Family Business"]
+  },
+  {
     branch: "craftsmans_letter",
     vol: 1, no: 13,
     title: "Jefferson's Notes on Virginia",
