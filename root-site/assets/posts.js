@@ -12,6 +12,26 @@
 const HFM_POSTS = [
   {
     branch: "craftsmans_letter",
+    vol: 1, no: 17,
+    title: "The Shovel is not The Ship",
+    deck: "That is a sturdy pressure (more than a simple charter), and it's the real reason to take this more seriously than a ribbon-cutting usually deserves.",
+    date: "2026-10-08",
+    readMins: 4,
+    url: "/archive/craftsmans_letter/saronic-s-promise/",
+    tags: ["Manufacturing", "Shipbuilding", "Pillar V"]
+  },
+  {
+    branch: "dispatch",
+    vol: 1, no: 16,
+    title: "No Contractor? No Problem.",
+    deck: "American businesses are held immediately accountable, and they face the natural domestic pressures that instigate the responsible choices.",
+    date: "2026-10-06",
+    readMins: 3,
+    url: "/archive/dispatch/victor/",
+    tags: ["Pet Food", "Home Products"]
+  },
+  {
+    branch: "craftsmans_letter",
     vol: 1, no: 15,
     title: "Hamilton's Industrial Nationalism",
     deck: "It was the guarantee that a nation which had just fought off one empire wouldn't spend the next fifty years dependent on other empirical interests.",
