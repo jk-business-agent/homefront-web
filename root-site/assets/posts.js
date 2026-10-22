@@ -11,6 +11,26 @@
 
 const HFM_POSTS = [
   {
+    branch: "dispatch",
+    vol: 1, no: 19,
+    title: "Origin: Business is Business",
+    deck: "He tends to back people who build instead of outsource, so Origin was a natural home for him.",
+    date: "2026-10-20",
+    readMins: 4,
+    url: "/archive/dispatch/origin/",
+    tags: ["Apparel", "Sport's Wear", "Discipline"]
+  },
+  {
+    branch: "dispatch",
+    vol: 1, no: 18,
+    title: "The Two Saucepans that still won’t leave Wisconsin",
+    deck: "This past February, the company did something quiet.",
+    date: "2026-10-13",
+    readMins: 3,
+    url: "/archive/dispatch/regal-ware/",
+    tags: ["Cooking", "Home Products"]
+  },
+  {
     branch: "craftsmans_letter",
     vol: 1, no: 17,
     title: "The Shovel is not The Ship",
