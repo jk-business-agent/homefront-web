@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "craftsmans_letter",
+    vol: 1, no: 20,
+    title: "A Furnace in the Wilderness",
+    deck: "We do not often picture them as the people who raised a world-class ironworks on stony ground inside a single generation.",
+    date: "2026-10-22",
+    readMins: 4,
+    url: "/archive/craftsmans_letter/the-calling/",
+    tags: ["History", "Manufacturing", "Pillar III"]
+  },
+  {
     branch: "dispatch",
     vol: 1, no: 19,
     title: "Origin: Business is Business",
