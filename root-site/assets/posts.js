@@ -12,6 +12,26 @@
 const HFM_POSTS = [
   {
     branch: "craftsmans_letter",
+    vol: 1, no: 22,
+    title: "The Crime of Doing Nothing",
+    deck: "We kept our freedom to do nothing and blew our responsibility to neighbor and community to the wind.",
+    date: "2026-10-29",
+    readMins: 4,
+    url: "/archive/craftsmans_letter/punishing-idleness/",
+    tags: ["History", "American Founding", "Pillar I"]
+  },
+  {
+    branch: "dispatch",
+    vol: 1, no: 21,
+    title: "Betting $418 Million on Georgia",
+    deck: "Investment at this scale is the sort of move that builds real jobs, real wealth, and real personal care products for so many Americans.",
+    date: "2026-10-27",
+    readMins: 4,
+    url: "/archive/dispatch/cuties/",
+    tags: ["Personal Care", "Manufacturing"]
+  },
+  {
+    branch: "craftsmans_letter",
     vol: 1, no: 20,
     title: "A Furnace in the Wilderness",
     deck: "We do not often picture them as the people who raised a world-class ironworks on stony ground inside a single generation.",
