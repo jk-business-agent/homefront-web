@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "dispatch",
+    vol: 1, no: 23,
+    title: "Red Baron and the Walt Z. Marketplace",
+    deck: "His labor and dignity meant more to him than cheap humor.",
+    date: "2026-11-03",
+    readMins: 4,
+    url: "/archive/dispatch/red-baron/",
+    tags: ["Food & Beverage", "Manufacturing"]
+  },
+  {
     branch: "craftsmans_letter",
     vol: 1, no: 22,
     title: "The Crime of Doing Nothing",
