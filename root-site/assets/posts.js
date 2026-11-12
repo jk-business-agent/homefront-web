@@ -11,6 +11,36 @@
 
 const HFM_POSTS = [
   {
+    branch: "craftsmans_letter",
+    vol: 1, no: 26,
+    title: "A Boy with a Chain",
+    deck: "This is the restless American habit, the one that will not leave good enough alone and takes a quiet pride in creating quality, start to finish.",
+    date: "2026-11-12",
+    readMins: 4,
+    url: "/archive/craftsmans_letter/washington-work-ethic/",
+    tags: ["History", "American Founding", "Pillar I"]
+  },
+  {
+    branch: "dispatch",
+    vol: 1, no: 25,
+    title: "Building a Cure in the Air",
+    deck: "He was an American businessman with a problem he couldn't buy his way out of. So he consulted the people with answers.",
+    date: "2026-11-10",
+    readMins: 4,
+    url: "/archive/dispatch/austin-air/",
+    tags: ["Home Goods", "Manufacturing"]
+  },
+  {
+    branch: "craftsmans_letter",
+    vol: 1, no: 24,
+    title: "What They Wore to Commencement",
+    deck: "And a corruptible people will, soon enough, trade its liberty for the comforts it can no longer do without, or hand itself quietly to whoever promises to manage the decline.",
+    date: "2026-11-05",
+    readMins: 4,
+    url: "/archive/craftsmans_letter/danger-of-luxury/",
+    tags: ["History", "American Founding", "Pillar III"]
+  },
+  {
     branch: "dispatch",
     vol: 1, no: 23,
     title: "Red Baron and the Walt Z. Marketplace",
