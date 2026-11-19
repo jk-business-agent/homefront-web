@@ -12,6 +12,26 @@
 const HFM_POSTS = [
   {
     branch: "craftsmans_letter",
+    vol: 1, no: 28,
+    title: "A Bad Fishing Season",
+    deck: "An external market control wasn’t about to make them. So they answered with the one lever they held.",
+    date: "2026-11-19",
+    readMins: 4,
+    url: "/archive/craftsmans_letter/boston-boycott/",
+    tags: ["History", "American Founding", "Pillar IV"]
+  },
+  {
+    branch: "dispatch",
+    vol: 1, no: 27,
+    title: "Three Guys, $200,000, and a Give Away",
+    deck: "His first real job out of school paid $18,000 a year, working for a nonprofit, and he had to raise that salary himself.",
+    date: "2026-11-17",
+    readMins: 3,
+    url: "/archive/dispatch/simple-modern/",
+    tags: ["Home Goods", "Manufacturing"]
+  },
+  {
+    branch: "craftsmans_letter",
     vol: 1, no: 26,
     title: "A Boy with a Chain",
     deck: "This is the restless American habit, the one that will not leave good enough alone and takes a quiet pride in creating quality, start to finish.",
