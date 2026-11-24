@@ -11,6 +11,16 @@
 
 const HFM_POSTS = [
   {
+    branch: "dispatch",
+    vol: 1, no: 29,
+    title: "It Starts with Hands",
+    deck: "At nearly every fork, All Good chose the grounded, pricey option.",
+    date: "2026-11-24",
+    readMins: 4,
+    url: "/archive/dispatch/all-good/",
+    tags: ["Personal Care", "Manufacturing"]
+  },
+  {
     branch: "craftsmans_letter",
     vol: 1, no: 28,
     title: "A Bad Fishing Season",
